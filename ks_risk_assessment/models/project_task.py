@@ -14,6 +14,8 @@ class RiskAssessment(models.Model):
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    # comment
+
     risk_assessment_ids = fields.One2many(
         'risk.assessment',
         'project_id',
