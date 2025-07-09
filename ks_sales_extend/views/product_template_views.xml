@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_product_form_inherit_pdf_flag" model="ir.ui.view">
+        <field name="name">product.template.pdf.flag</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <span class="d-inline-flex" groups="base.group_system">
+                    <field name="to_be_printed_on_pdf"/>
+                    <label for="to_be_printed_on_pdf"/>
+                </span>
+            </xpath>
+        </field>
+    </record>
+</odoo>
