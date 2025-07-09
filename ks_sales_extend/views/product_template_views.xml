@@ -1,4 +1,6 @@
 <odoo>
+
+        <!--  Product Form View Inherit    -->
     <record id="view_product_form_inherit_pdf_flag" model="ir.ui.view">
         <field name="name">product.template.pdf.flag</field>
         <field name="model">product.template</field>

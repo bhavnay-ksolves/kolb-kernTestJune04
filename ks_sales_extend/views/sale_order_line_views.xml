@@ -1,9 +1,12 @@
 <odoo>
+
+    <!--  Sale Order Form View Inherit    -->
     <record id="view_order_line_form_pdf_flag" model="ir.ui.view">
         <field name="name">sale.order.line.pdf.flag</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
                 <field name="to_be_printed_on_pdf"/>
             </xpath>
@@ -11,41 +14,38 @@
                 <attribute name="string">Detailed offer</attribute>
             </xpath>
 
-            <xpath expr="//page[@name='other_information']/group" position="after">
+<!--            <field name="project_id" position="replace">-->
+<!--            </field>-->
+
+            <group name="sale_header" position="after">
                 <group name="project_info" string="Project">
                     <group>
+                        <field name="project_id"/>
                         <field name="category"/>
                         <field name="is_same_delivery_address"/>
                         <field name="on_site"/>
                         <field name="is_unproductive"/>
-                        <field name="is_offer_date"/>
                     </group>
                     <group>
-                        <field name="is_portal_date"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
-                        <field name="send_offer_by" widget="radio"/>
                         <field name="offer_id"/>
+                        <field name="is_offer_date"/>
+                        <field name="is_portal_date"/>
+                        <label for="start_date"/>
+                        <div class="d-inline-flex">
+                            <field name="start_date" string="project Plan Date" widget="daterange"
+                                   options="{'end_date_field': 'end_date'}"/>
+                            <field name="end_date"/>
+                        </div>
+                        <field name="send_offer_by" widget="radio" options="{'horizontal': true}"/>
                     </group>
-
-
                 </group>
-            </xpath>
+
+            </group>
 
             <xpath expr="//page[@name='order_lines']" position="after">
                 <page string="EFB" name="efb">
                     <field name="efb_line">
                         <list editable="bottom">
-                            <!--                            <field name="offer_id"/>-->
-                            <!--                            <field name="category"/>-->
-                            <!--                            <field name="is_same_delivery_address"/>-->
-                            <!--                            <field name="on_site"/>-->
-                            <!--                            <field name="is_unproductive"/>-->
-                            <!--                            <field name="is_offer_date"/>-->
-                            <!--                            <field name="is_portal_date"/>-->
-                            <!--                            <field name="start_date"/>-->
-                            <!--                            <field name="end_date"/>-->
-                            <!--                            <field name="end_date"/>-->
                             <field name="description"/>
                             <field name="quantity"/>
                         </list>
@@ -56,6 +56,21 @@
         </field>
     </record>
 
+        <!--  Sale Order Form View Inherit    -->
+    <record id="ks_view_order_form_inherit_sale_project" model="ir.ui.view">
+        <field name="name">sale.order.line.pdf.project</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_project.view_order_form_inherit_sale_project"/>
+        <field name="arch" type="xml">
+
+            <field name="project_id" position="replace">
+            </field>
+
+        </field>
+    </record>
+
+
+    <!--  Sale Order Search View Inherit    -->
     <record id="view_sale_order_search_inherit_offer" model="ir.ui.view">
         <field name="name">sale.order.search.offer</field>
         <field name="model">sale.order</field>
