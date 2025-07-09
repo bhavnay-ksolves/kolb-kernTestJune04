@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_form_line_inherit_custom" model="ir.ui.view">
+        <field name="name">purchase.order.line.inherit.custom</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']" position="after">
+                <field name="manufacturer_special_price" optional="hide"/>
+                <field name="lvp" optional="hide"/>
+                <field name="lot_barcode"  optional="hide"/>
+                <field name="container" optional="hide"/>
+                <field name="default_code" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
