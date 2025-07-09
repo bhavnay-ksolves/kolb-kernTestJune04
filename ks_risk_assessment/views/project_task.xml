@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form_risk_management" model="ir.ui.view">
+        <field name="name">project.task.form.risk.management</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Risk Management">
+                    <field name="risk_assessment_ids">
+                        <list editable="bottom">
+                            <field name="risk"/>
+                            <field name="threat_measures"/>
+                            <field name="implementation"/>
+                            <field name="review"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
