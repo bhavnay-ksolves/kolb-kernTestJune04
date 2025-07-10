@@ -14,11 +14,11 @@ class RiskAssessment(models.Model):
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    # comment
-
     risk_assessment_ids = fields.One2many(
         'risk.assessment',
         'project_id',
         string='Risk Assessments'
     )
+    def action_report(self):
+        return self.env.ref('ks_risk_assessment.action_risk_assessment_pdf').report_action(self)
 

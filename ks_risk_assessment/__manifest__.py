@@ -8,6 +8,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/project_task.xml',
+        'report/risk_assessment_report.xml',
     ],
     'license': 'LGPL-3',
     'installable': True,
