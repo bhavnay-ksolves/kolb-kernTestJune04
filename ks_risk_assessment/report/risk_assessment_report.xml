@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- QWeb Report Template -->
     <template id="report_risk_assessment_document">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="task">
                 <div class="page">
-                    <h2>Risk Assessment Report</h2>
-                    <p>
-                        <strong>Project Task:</strong>
-                        <t t-esc="task.name"/>
-                    </p>
-
+                    <h2 style="text-align:center;">Risk Assessment Report</h2>
                     <t t-if="task.risk_assessment_ids">
-                        <table class="table table-sm">
+                        <table class="table table-sm" style="width: 100%; border-collapse: collapse;" border="1">
                             <thead>
                                 <tr>
-                                    <th>Risk</th>
-                                    <th>Measures</th>
-                                    <th>Implementation</th>
-                                    <th>Review</th>
+                                    <th style="border: 1px solid black;">Risk</th>
+                                    <th style="border: 1px solid black;">Measures Against the Threat</th>
+                                    <th style="border: 1px solid black;">Implementation of the Measures</th>
+                                    <th style="border: 1px solid black;">Review of Implementation</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="task.risk_assessment_ids" t-as="assessment">
                                     <tr>
-                                        <td>
+                                        <td style="border: 1px solid black;">
                                             <t t-esc="assessment.risk"/>
                                         </td>
-                                        <td>
+                                        <td style="border: 1px solid black;">
                                             <t t-esc="assessment.threat_measures"/>
                                         </td>
-                                        <td>
+                                        <td style="border: 1px solid black;">
                                             <t t-esc="assessment.implementation"/>
                                         </td>
-                                        <td>
+                                        <td style="border: 1px solid black;">
                                             <t t-esc="assessment.review"/>
                                         </td>
                                     </tr>
@@ -46,10 +40,8 @@
                     </t>
                 </div>
             </t>
-
         </t>
     </template>
-
     <!-- Report Action -->
     <record id="action_risk_assessment_pdf" model="ir.actions.report">
         <field name="name">Risk Assessment PDF</field>
