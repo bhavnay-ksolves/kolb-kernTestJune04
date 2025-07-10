@@ -7,10 +7,14 @@ class Employee(models.Model):
     performance = fields.Float(string="Performance (%)")
     productive_hours = fields.Float(string="Productive Hours")
     date_of_working = fields.Date(string="Date of Working")
-    last_working_date = fields.Date(string="Last Working Date")
+    last_working_date = fields.Date(string="Last Working Date",readonly=True)
 
-    short_name = fields.Char(string='Short name of Employee')
+    short_name = fields.Char(string='Short name of Employee',required=True)
 
+    _sql_constraints = [
+        ('short_name_unique', 'unique(short_name)',
+         'This short name already exists for another employee. Please enter a different short name. The short name must be unique.')
+    ]
     def _compute_display_name(self):
         result = []
         for record in self:
