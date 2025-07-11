@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="x86_sale_order_template">
+        <!-- GXML Toolbox V3.2 R20190425;  http://www.gaeb-toolbox.de/  -->
+        <GAEB xmlns="http://www.gaeb.de/GAEB_DA_XML/DA86/3.2">
+            <GAEBInfo>
+                <Version>3.2</Version>
+                <VersDate>2013-10</VersDate>
+                <Date t-esc="date"/>
+                <Time t-esc="time"/>
+                <ProgSystem>/ GXML Toolbox V3.2 R20190425</ProgSystem>
+            </GAEBInfo>
+            <SaleOrder>
+                <OrderName t-esc="order.name"/>
+                <Customer t-esc="order.partner_id.name"/>
+                <OrderLines>
+                    <t t-foreach="order.order_line" t-as="line">
+                        <Line>
+                            <Product t-esc="line.name"/>
+                            <Quantity t-esc="line.product_uom_qty"/>
+                            <UnitPrice t-esc="line.price_unit"/>
+                            <Subtotal t-esc="line.price_subtotal"/>
+                        </Line>
+                    </t>
+                </OrderLines>
+            </SaleOrder>
+        </GAEB>
+    </template>
+</odoo>

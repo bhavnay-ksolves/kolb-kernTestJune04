@@ -7,15 +7,29 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
 
+            <!-- Buttons -->
+            <xpath expr="//header" position="inside">
+                <button name="action_copy_offer_to_efb"
+                        type="object"
+                        string="Add to EFB"
+                        class="btn btn-primary"/>
+                <button name="action_copy_efb_to_offer"
+                        type="object"
+                        string="Add to Offer"
+                        invisible="show_efb_to_order_btn"
+                        class="btn btn-secondary"/>
+            </xpath>
+
+            <label for="date_order" position="replace">
+                <label for="date_order" string="Offer Date"/>
+            </label>
+
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
                 <field name="to_be_printed_on_pdf"/>
             </xpath>
             <xpath expr="//notebook/page[@name='order_lines']" position='attributes'>
                 <attribute name="string">Detailed offer</attribute>
             </xpath>
-
-<!--            <field name="project_id" position="replace">-->
-<!--            </field>-->
 
             <group name="sale_header" position="after">
                 <group name="project_info" string="Project">
@@ -28,11 +42,10 @@
                     </group>
                     <group>
                         <field name="offer_id"/>
-                        <field name="is_offer_date"/>
                         <field name="is_portal_date"/>
                         <label for="start_date"/>
                         <div class="d-inline-flex">
-                            <field name="start_date" string="project Plan Date" widget="daterange"
+                            <field name="start_date" string="Project Plan Date" widget="daterange"
                                    options="{'end_date_field': 'end_date'}"/>
                             <field name="end_date"/>
                         </div>
@@ -46,26 +59,35 @@
                 <page string="EFB" name="efb">
                     <field name="efb_line">
                         <list editable="bottom">
+<!--                            <field name="product_template_id"/>-->
                             <field name="description"/>
-                            <field name="quantity"/>
+                            <field name="long_desc"/>
+                            <field name="product_uom_qty"/>
+                            <field name="product_uom"/>
+<!--                            <field name="price_unit"/>-->
+<!--                            <field name="tax_id" widget="many2many_tags"/>-->
+<!--                            <field name="price_subtotal"/>-->
+<!--                            <field name="price_total"/>-->
                         </list>
                     </field>
+<!--                    <group string="EFB Totals" name="efb_totals" invisible='not efb_line'>-->
+<!--                        <field name="efb_amount_untaxed" widget="monetary" readonly="1"/>-->
+<!--                        <field name="efb_amount_tax" readonly="1"/>-->
+<!--                        <field name="efb_amount_total" widget="monetary" readonly="1"/>-->
+<!--                    </group>-->
                 </page>
             </xpath>
 
         </field>
     </record>
 
-        <!--  Sale Order Form View Inherit    -->
+    <!--  Sale Order Form View Inherit    -->
     <record id="ks_view_order_form_inherit_sale_project" model="ir.ui.view">
         <field name="name">sale.order.line.pdf.project</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale_project.view_order_form_inherit_sale_project"/>
         <field name="arch" type="xml">
-
-            <field name="project_id" position="replace">
-            </field>
-
+            <field name="project_id" position="replace"/>
         </field>
     </record>
 

@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+
+        <record id="view_order_form_inherit_x86" model="ir.ui.view">
+            <field name="name">sale.order.form.x86.download</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_download_x86_file"
+                            type="object"
+                            string="Download .x86"
+                            class="btn-primary"
+                            icon="fa-download"/>
+
+                    <button name="action_download_d86_file"
+                            type="object"
+                            string="Download .d86"
+                            class="btn-secondary"
+                            icon="fa-download"/>
+<!--                    <button name="action_import_x83"-->
+<!--                            type="object"-->
+<!--                            string="Import .x83"-->
+<!--                            class="btn-secondary"-->
+<!--                            icon="fa-download"/>-->
+                    <button name="%(action_import_sale_order_x83)d" string="Import .x83" type="action"/>
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_order_list_inherit_x86_import" model="ir.ui.view">
+            <field name="name">sale.order.list.inherit.x86.import</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="ks_name"/>
+
+                </field>
+            </field>
+        </record>
+
+        <record id="gaeb_import_button_action" model="ir.actions.server">
+            <field name="name">Import GAEB</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = {
+                "type": "ir.actions.act_window",
+                "res_model": "gaeb.importer",
+                "view_mode": "form",
+                "target": "new",
+                }
+            </field>
+        </record>
+
+    </data>
+</odoo>
