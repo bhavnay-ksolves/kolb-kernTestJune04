@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- list View -->
+    <record id="view_risk_assessment_template_list" model="ir.ui.view">
+        <field name="name">risk.assessment.template.list</field>
+        <field name="model">risk.assessment.template</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="threat_measures"/>
+                <field name="implementation"/>
+                <field name="review"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_risk_assessment_template" model="ir.actions.act_window">
+        <field name="name">Risk Assessment Templates</field>
+        <field name="res_model">risk.assessment.template</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_risk_assessment_template"
+              name="Risk Assessment Templates"
+              parent="project.menu_project_config"
+              action="action_risk_assessment_template"
+              />
+</odoo>

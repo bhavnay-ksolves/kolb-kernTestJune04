@@ -7,7 +7,6 @@ class Employee(models.Model):
     performance = fields.Float(string="Performance (%)")
     productive_hours = fields.Float(string="Productive Hours")
     date_of_working = fields.Date(string="Date of Working")
-    last_working_date = fields.Date(string="Last Working Date")
 
     short_name = fields.Char(string='Short name of Employee')
 

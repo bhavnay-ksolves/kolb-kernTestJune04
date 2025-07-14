@@ -1,0 +1,93 @@
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__art_type
+msgid "Art Type"
+msgstr "Kunsttyp"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__customer_address
+msgid "Customer Address / Construction Address"
+msgstr "Kundenadresse / Baustellenadresse"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__customer_name
+msgid "Customer Name"
+msgstr "Kundenname"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: ks_project_extend
+#: model:ir.model.fields.selection,name:ks_project_extend.selection__project_project__art_type__fixed
+msgid "Fixed"
+msgstr "Fest"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: ks_project_extend
+#: model:ir.model,name:ks_project_extend.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__responsible
+msgid "Responsible"
+msgstr "Verantwortlich"
+
+#. module: ks_project_extend
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_project_form_inherit_custom
+msgid "Site Manager"
+msgstr "Bauleiter"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__date_start
+msgid "Start Date"
+msgstr "Startdatum"
+
+#. module: ks_project_extend
+#: model:ir.model.fields.selection,name:ks_project_extend.selection__project_project__art_type__temporary
+msgid "Temporary"
+msgstr "Temporär"
+
+#. module: ks_project_extend
+#: model:ir.model,name:ks_project_extend.model_type_of_work
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__type_of_work_id
+#: model:ir.model.fields,field_description:ks_project_extend.field_type_of_work__name
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_type_of_work_form
+msgid "Type of Work"
+msgstr "Arbeitsart"
+
+#. module: ks_project_extend
+#: model:ir.actions.act_window,name:ks_project_extend.action_type_of_work
+#: model:ir.ui.menu,name:ks_project_extend.menu_type_of_work
+msgid "Types of Work"
+msgstr "Arten von Arbeiten"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__work_order_description
+msgid "Work Order Description"
+msgstr "Arbeitsauftragsbeschreibung"

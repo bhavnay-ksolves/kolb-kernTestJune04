@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_purchase_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 10:46+0000\n"
+"PO-Revision-Date: 2025-07-10 10:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__default_code
+msgid "Article Nr"
+msgstr "Artikel-Nr."
+
+#. module: ks_purchase_extend
+#: model:ir.model,name:ks_purchase_extend.model_product_container
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__container
+msgid "Container"
+msgstr "Container"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__name
+msgid "Container Name"
+msgstr "Containername"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__lot_barcode
+msgid "EAN/GTIN"
+msgstr "EAN/GTIN"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__lvp
+msgid "LVP"
+msgstr "LVP"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_product_container__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__manufacturer_special_price
+msgid "Manufacturer Special Price"
+msgstr "Sonderpreis des Herstellers"
+
+#. module: ks_purchase_extend
+#: model:ir.model,name:ks_purchase_extend.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Bestellposition"

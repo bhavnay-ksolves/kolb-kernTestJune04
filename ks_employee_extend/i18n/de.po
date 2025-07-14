@@ -1,0 +1,63 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_employee_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 09:51+0000\n"
+"PO-Revision-Date: 2025-07-10 09:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#. module: ks_employee_extend
+#: model_terms:ir.ui.view,arch_db:ks_employee_extend.view_employee_form_custom_private_info
+msgid "Business Info"
+msgstr "Geschäftsinformationen"
+
+#. module: ks_employee_extend
+#: model:ir.model.fields,field_description:ks_employee_extend.field_hr_employee__date_of_working
+msgid "Date of Working"
+msgstr "Arbeitsbeginn"
+
+#. module: ks_employee_extend
+#: model:ir.model,name:ks_employee_extend.model_hr_employee
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+#. module: ks_employee_extend
+#: model_terms:ir.ui.view,arch_db:ks_employee_extend.view_employee_form_custom_private_info
+msgid "Hours Per week"
+msgstr "Stunden pro Woche"
+
+#. module: ks_employee_extend
+#: model:ir.model.fields,field_description:ks_employee_extend.field_hr_employee__last_working_date
+msgid "Last Working Date"
+msgstr "Letzter Arbeitstag"
+
+#. module: ks_employee_extend
+#: model:ir.model.fields,field_description:ks_employee_extend.field_hr_employee__performance
+msgid "Performance (%)"
+msgstr "Leistung (%)"
+
+#. module: ks_employee_extend
+#: model:ir.model.fields,field_description:ks_employee_extend.field_hr_employee__productive_hours
+msgid "Productive Hours"
+msgstr "Produktive Stunden"
+
+#. module: ks_employee_extend
+#: model_terms:ir.ui.view,arch_db:ks_employee_extend.view_employee_form_custom_private_info
+msgid "Salary Cost Per Worker"
+msgstr "Lohnkosten pro Mitarbeiter"
+
+#. module: ks_employee_extend
+#: model:ir.model.fields,field_description:ks_employee_extend.field_hr_employee__short_name
+msgid "Short name of Employee"
+msgstr "Kurzname des Mitarbeiters"
+
