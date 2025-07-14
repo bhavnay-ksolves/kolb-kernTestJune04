@@ -15,6 +15,9 @@ class RiskAssessment(models.Model):
 
     @api.onchange('danger')
     def _onchange_danger(self):
+        """Updates related fields when the danger field is changed.
+        Sets threat_measures, implementation, and review based on the selected danger.
+        """
         if self.danger:
             self.threat_measures = self.danger.threat_measures
             self.implementation = self.danger.implementation
@@ -33,6 +36,7 @@ class ProjectTask(models.Model):
 
 
     def action_report(self):
+        """Generates the risk assessment PDF and sets the report creation date."""
         self.write({'date_report_creation': datetime.now()})
         return self.env.ref(
             'ks_risk_assessment.action_risk_assessment_pdf'

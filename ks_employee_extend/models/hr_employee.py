@@ -14,6 +14,7 @@ class Employee(models.Model):
          'This short name already exists for another employee. Please enter a different short name. The short name must be unique.')
     ]
     def _compute_display_name(self):
+        """Computes a custom display name using name and short_name."""
         result = []
         for record in self:
             name = record.name or ''
