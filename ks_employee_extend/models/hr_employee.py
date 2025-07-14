@@ -11,6 +11,7 @@ class Employee(models.Model):
     short_name = fields.Char(string='Short name of Employee')
 
     def _compute_display_name(self):
+        """Computes a custom display name using name and short_name."""
         result = []
         for record in self:
             name = record.name or ''
