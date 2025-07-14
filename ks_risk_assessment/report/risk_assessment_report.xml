@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_risk_assessment_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="project">
+                <div class="page" style="margin-top: 0; padding-top: 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h1 style="margin: 0;">Risk Assessment</h1>
+                            <div>Project Number:</div>
+                            <div>Project Name:
+                                <t t-esc="project.name or ''"/>
+                            </div>
+                            <div>Date of Creating Risk Assessment Report:
+                            <t t-esc="project.date_report_creation.strftime('%d.%m.%Y') if project.date_report_creation else ''"/></div>
+                        </div>
+                        <div>
+                            <t t-if="project.company_id.logo">
+                                <img t-att-src="image_data_uri(project.company_id.logo)" style="height: 150px;width:150px;"/>
+                            </t>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <t t-if="project.risk_assessment_ids">
+                        <table class="table table-sm"
+                               style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left; border: 1px solid black;">Danger</th>
+                                    <th style="text-align: left; border: 1px solid black;">Measures against the threat
+                                    </th>
+                                    <th style="text-align: left; border: 1px solid black;">Implementation of the
+                                        measures
+                                    </th>
+                                    <th style="text-align: left; border: 1px solid black;">Review of implementation</th>
+                                    <th style="text-align: left; border: 1px solid black;">Documentation (who,when)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="project.risk_assessment_ids" t-as="assessment">
+                                    <tr>
+                                        <td style="text-align: left; border: 1px solid black;">
+                                            <t t-esc="assessment.danger.name"/>
+                                        </td>
+                                        <td style="text-align: left; border: 1px solid black;">
+                                            <t t-esc="assessment.threat_measures"/>
+                                        </td>
+                                        <td style="text-align: left; border: 1px solid black;">
+                                            <t t-esc="assessment.implementation"/>
+                                        </td>
+                                        <td style="text-align: left; border: 1px solid black;">
+                                            <t t-esc="assessment.review"/>
+                                        </td>
+                                        <td style="text-align: left; border: 1px solid black;">
+
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <t t-if="not project.risk_assessment_ids">
+                        <p>No risk assessments available.</p>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_risk_assessment" model="report.paperformat">
+        <field name="name">Risk Assessment Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">150</field>
+    </record>
+
+    <!-- Report Action -->
+    <record id="action_risk_assessment_pdf" model="ir.actions.report">
+        <field name="name">Risk Assessment PDF</field>
+        <field name="model">project.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ks_risk_assessment.report_risk_assessment_document</field>
+        <field name="report_file">ks_risk_assessment.report_risk_assessment_document</field>
+        <field name="binding_model_id" ref="model_risk_assessment"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="ks_risk_assessment.paperformat_risk_assessment"/>
+    </record>
+</odoo>

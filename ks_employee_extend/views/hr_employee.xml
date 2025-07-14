@@ -13,7 +13,6 @@
                     <field name="performance" widget="percent"/>
                     <field name="productive_hours"/>
                     <field name="date_of_working"/>
-                    <field name="last_working_date"/>
                     <field name="hourly_cost" string="Salary Cost Per Worker"/>
                 </group>
             </xpath>
