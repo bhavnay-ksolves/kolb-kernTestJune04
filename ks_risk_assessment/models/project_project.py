@@ -8,9 +8,9 @@ class RiskAssessment(models.Model):
     _rec_name = 'project_id'
 
     danger = fields.Many2one('risk.assessment.template', string="Danger", required=True)
-    threat_measures = fields.Text(string="Measures against the threat")
-    implementation = fields.Text(string="Implementation of the measures")
-    review = fields.Text(string="Review of implementation")
+    threat_measures = fields.Text(string="Measures against the threat",store=True)
+    implementation = fields.Text(string="Implementation of the measures",store=True)
+    review = fields.Text(string="Review of implementation",store=True)
     project_id = fields.Many2one('project.project', string="Project")
 
     @api.onchange('danger')

@@ -14,10 +14,44 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="customer_address"/>
                 <field name="art_type"/>
+                <field name="site_location"/>
+                <field name="attendance"/>
+                <field name="date"/>
+                <field name="weather"/>
             </xpath>
             <xpath expr="//field[@name='date_start']" position="after">
                 <field name="work_order_description"/>
                 <field name="type_of_work_id"/>
+            </xpath>
+             <xpath expr="//notebook" position="inside">
+                 <page string="Execution">
+                     <group>
+                         <field name="description"/>
+                         <field name="machine"/>
+                         <field name="delivery"/>
+                     </group>
+                 </page>
+                 <page string="Incidents">
+                    <group>
+                        <field name="incidents"/>
+                        <field name="incident_attachment"/>
+                    </group>
+                 </page>
+                <page string="Sign Off">
+                    <group>
+                        <field name="responsible" widget="many2many_tags" readonly="1"/>
+                        <field name="supervisor_signature" widget="image" filename="supervisor_signature"/>
+                        <field name="client_signature" widget="image" filename="client_signature"/>
+                        <field name="signoff_attachment" filename="signoff_attachment_name"/>
+                    </group>
+                </page>
+             </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="daily_construction_report"
+                        type="object"
+                        string="Daily Construction Report"
+                        class="btn-primary"
+                        icon="fa-print"/>
             </xpath>
         </field>
     </record>

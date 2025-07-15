@@ -1,0 +1,86 @@
+<odoo>
+    <template id="report_daily_construction">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <main>
+                    <div class="page">
+                        <h2 style="text-align:center;">Daily Construction Report</h2>
+
+                        <!-- General Info -->
+                        <table class="table table-sm" style="width:100%; margin-top: 10px;">
+                            <tr>
+                                <th style="text-align:left;">Project</th>
+                                <td><t t-esc="doc.name"/></td>
+                                <th style="text-align:left;">Date</th>
+                                <td><t t-esc="doc.date"/></td>
+                            </tr>
+                        </table>
+
+                        <!-- Execution Section -->
+                        <h3 style="margin-top:20px;">Execution</h3>
+                        <table class="table table-sm" style="width:100%;">
+                            <tr><th>Description</th><td><t t-esc="doc.description"/></td></tr>
+                            <tr><th>Machine</th><td><t t-esc="doc.machine"/></td></tr>
+                            <tr><th>Delivery</th><td><t t-esc="doc.delivery"/></td></tr>
+                        </table>
+
+                        <!-- Incidents Section -->
+                        <h3 style="margin-top:20px;">Incidents</h3>
+                        <table class="table table-sm" style="width:100%;">
+                            <tr><th>Incidents</th><td><t t-esc="doc.incidents"/></td></tr>
+                        </table>
+
+                        <!-- Sign Off Section -->
+                        <h3 style="margin-top:20px;">Sign Off</h3>
+                        <table class="table table-sm" style="width:100%;">
+                            <t t-foreach="doc.responsible" t-as="user">
+                                <t t-if="user">
+                                    <t t-esc="user.name"/>
+                                </t>
+                            </t>
+                            <tr>
+                                <th>Supervisor Signature</th>
+                                <td>
+                                    <img t-if="doc.supervisor_signature" t-att-src="image_data_uri(doc.supervisor_signature)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Client Signature</th>
+                                <td>
+                                    <img t-if="doc.client_signature" t-att-src="image_data_uri(doc.client_signature)"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+<!--    Paper formating-->
+    <record id="paperformat_daily_construction" model="report.paperformat">
+        <field name="name">Daily Construction</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">90</field>
+        <field name="page_height">0</field> <!-- auto -->
+        <field name="page_width">0</field>  <!-- auto -->
+    </record>
+
+    <record id="action_daily_construction_pdf" model="ir.actions.report">
+        <field name="name">Daily Construction Report</field>
+        <field name="model">project.project</field> <!-- fix here too -->
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ks_project_extend.report_daily_construction</field>
+        <field name="report_file">ks_project_extend.report_daily_construction</field>
+        <field name="binding_model_id" ref="model_daily_construction_report"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'%s - Daily Construction Report' % (object.name or 'No Project')</field>
+        <field name="paperformat_id" ref="ks_project_extend.paperformat_daily_construction"/>
+    </record>
+</odoo>
