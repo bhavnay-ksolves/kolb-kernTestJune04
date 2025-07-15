@@ -1,0 +1,599 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_sales_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-15 08:13+0000\n"
+"PO-Revision-Date: 2025-07-15 08:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__type
+msgid " Typ"
+msgstr "PosTyp"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__quantity
+msgid "Actual Qty"
+msgstr "Ist-Menge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_attachment_count
+msgid "Attachment Count"
+msgstr "Anzahl der Anhänge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__measurement_calculation_line__type__bp
+msgid "BP"
+msgstr "BP"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__send_offer_by__both
+msgid "Both"
+msgstr "Beide"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__category__build
+msgid "Building for one person"
+msgstr "Bauen für eine Person"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.measurement_calculation_view_search
+msgid "Cancel"
+msgstr "Stornieren"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__measurement_calculation__state__cancel
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+msgid "Cancelled"
+msgstr "Abgesagt"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__category
+msgid "Category"
+msgstr "Kategorie"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__closing_date
+msgid "Closing Date"
+msgstr "Einsendeschluss"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__category__commercial
+msgid "Commercial"
+msgstr "Kommerziell"
+
+#. module: ks_sales_extend
+#: model_terms:ir.actions.act_window,help:ks_sales_extend.action_offer_type
+msgid "Create the master records to link with sale orders."
+msgstr "Erstellen Sie die Stammdatensätze zur Verknüpfung mit Verkaufsaufträgen."
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__create_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__create_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__create_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__create_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__create_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__create_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__create_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__create_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__currency_id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__currency_id
+msgid "Currency"
+msgstr "Währung"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__delivered_quantity
+msgid "Delivered Quantity"
+msgstr "Gelieferte Menge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__description
+msgid "Description"
+msgstr "Bezeichnung"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_order_line_form_pdf_flag
+msgid "Detailed offer"
+msgstr "Detailliertes Angebot"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+msgid "Details"
+msgstr "Einzelheiten"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__display_name
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__display_name
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__display_name
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__display_name
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__measurement_calculation__state__draft
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.measurement_calculation_view_search
+msgid "Draft"
+msgstr "Entwurf"
+
+#. module: ks_sales_extend
+#: model:ir.model,name:ks_sales_extend.model_offer_efb
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_order_line_form_pdf_flag
+msgid "EFB"
+msgstr "EFB"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__efb_line
+msgid "EFB Lines"
+msgstr "EFB-Linien"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__total_price
+msgid "EP"
+msgstr "EP"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__send_offer_by__email
+msgid "Email"
+msgstr "E-Mail"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__on_site
+msgid "Employee on Construction Site"
+msgstr "Mitarbeiter auf der Baustelle"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__end_date
+msgid "End Date Of the Project"
+msgstr "Enddatum des Projekts"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__end_date_gvh
+msgid "End date GVH"
+msgstr "GVH bis"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_follower_ids
+msgid "Followers"
+msgstr "Anhänger"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Anhänger"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__gvh_unit
+msgid "GVH-Unit"
+msgstr "GVH-Einheit"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.measurement_calculation_view_search
+msgid "Group By"
+msgstr "Gruppieren nach"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__has_message
+msgid "Has Message"
+msgstr "Hat Nachricht"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__height
+msgid "Height"
+msgstr "Höhe"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Wenn diese Option aktiviert ist, erfordern neue Nachrichten Ihre Aufmerksamkeit."
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__message_has_error
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Wenn diese Option aktiviert ist, liegt bei einigen Nachrichten ein Zustellungsfehler vor."
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_is_follower
+msgid "Is Follower"
+msgstr "Ist Follower"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__is_same_delivery_address
+msgid "Is Same Delivery Address"
+msgstr "Ist die gleiche Lieferadresse"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__is_unproductive
+msgid "Is Unproductive"
+msgstr "Ist unproduktiv"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__write_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__write_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__write_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__write_uid
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__write_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__write_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__write_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__write_date
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__length
+msgid "Length"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: ks_sales_extend
+#: model:product.template,name:ks_sales_extend.product_main_position
+msgid "Main position"
+msgstr "Hauptposition"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__measurement_id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__measurement_id
+msgid "Measurement"
+msgstr "Messung"
+
+#. module: ks_sales_extend
+#: model:ir.actions.act_window,name:ks_sales_extend.action_ks_measurement_calculation
+#: model:ir.model,name:ks_sales_extend.model_measurement_calculation
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__measurement_ids
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__measurement_ids
+#: model:ir.ui.menu,name:ks_sales_extend.menu_measurement_calculation
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation_subtable
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_tree_measurement_calculation
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_tree_measurement_calculation_subtable
+msgid "Measurement Calculation"
+msgstr "Messberechnung"
+
+#. module: ks_sales_extend
+#: model:ir.actions.act_window,name:ks_sales_extend.action_ks_measurement_calculation_line
+#: model:ir.model,name:ks_sales_extend.model_measurement_calculation_line
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_tree_measurement_calculation_line
+msgid "Measurement Calculation Line"
+msgstr "Messberechnungslinie"
+
+#. module: ks_sales_extend
+#: model:ir.actions.act_window,name:ks_sales_extend.action_ks_measurement_calculation_subtable
+#: model:ir.ui.menu,name:ks_sales_extend.menu_measurement_calculation_lines
+msgid "Measurement Calculation Lines"
+msgstr "Messberechnungslinien"
+
+#. module: ks_sales_extend
+#: model:ir.ui.menu,name:ks_sales_extend.menu_measurement_calculation_subtable
+msgid "Measurement Calculation Sub-table"
+msgstr "Untertabelle zur Messungsberechnung"
+
+#. module: ks_sales_extend
+#: model:ir.model,name:ks_sales_extend.model_measurement_calculation_subtable
+msgid "Measurement Calculation Subtable"
+msgstr "Untertabelle zur Messungsberechnung"
+
+#. module: ks_sales_extend
+#. odoo-python
+#: code:addons/ks_sales_extend/models/sale_order_line.py:0
+msgid "Measurement Calculations"
+msgstr "Messberechnungen"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__measurement_count
+msgid "Measurement Cals"
+msgstr "Messkalen"
+
+#. module: ks_sales_extend
+#: model:ir.ui.menu,name:ks_sales_extend.menu_measurement
+msgid "Measurements"
+msgstr "Messungen"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_has_error
+msgid "Message Delivery error"
+msgstr "Fehler bei der Nachrichtenübermittlung"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_ids
+msgid "Messages"
+msgstr "Nachrichten"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_type__name
+msgid "Name"
+msgstr "Name"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Anzahl der Aktionen"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_has_error_counter
+msgid "Number of errors"
+msgstr "Anzahl der Fehler"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Anzahl der Nachrichten, die eine Aktion erfordern"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Anzahl der Nachrichten mit Zustellungsfehler"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__is_offer_date
+msgid "Offer Date"
+msgstr "Angebotsdatum"
+
+#. module: ks_sales_extend
+#: model:ir.actions.act_window,name:ks_sales_extend.action_offer_type
+#: model:ir.model,name:ks_sales_extend.model_offer_type
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__offer_id
+#: model:ir.ui.menu,name:ks_sales_extend.menu_offer_type
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_sale_order_search_inherit_offer
+msgid "Offer Type"
+msgstr "Angebotstyp"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__order_id
+msgid "Order Reference"
+msgstr "Bestellreferenz"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__measurement_calculation_line__type__pos
+msgid "POS"
+msgstr "POS"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__is_portal_date
+msgid "Portal Date"
+msgstr "Portaldatum"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__position
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__position
+msgid "Position"
+msgstr "Positions-Nr"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__send_offer_by__post
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+msgid "Post"
+msgstr "Post"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__measurement_calculation__state__posted
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.measurement_calculation_view_search
+msgid "Posted"
+msgstr "Gepostet"
+
+#. module: ks_sales_extend
+#: model:ir.model,name:ks_sales_extend.model_product_template
+msgid "Product"
+msgstr "Produkt"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_order_line_form_pdf_flag
+msgid "Project"
+msgstr "Projekt"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__quantity_erected
+msgid "Qty Erected"
+msgstr "Menge Abgebaut"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__quantity
+#: model:ir.model.fields,field_description:ks_sales_extend.field_offer_efb__quantity
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__rating_ids
+msgid "Ratings"
+msgstr "Bewertungen"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+msgid "Re-open"
+msgstr "Erneut öffnen"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__rental_position
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__rental_position
+msgid "Rental Position"
+msgstr "Mieteposition"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__rental_total_amount
+msgid "Rental Total Amount"
+msgstr "Gesamtmietbetrag"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__rental_unit
+msgid "Rental Unit"
+msgstr "Miete-Einheit"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__rental_unit_price
+msgid "Rental Unit Price"
+msgstr "Mietepreis (€)"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__rental_cut_off_date
+msgid "Rental date"
+msgstr "Mietdatum"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__rental_end_date
+msgid "Rental end date"
+msgstr "Vorh. ende"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__gvh
+msgid "Rental free Time"
+msgstr "GVH"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__rental_quantity
+msgid "Rental qty"
+msgstr "Mietmenge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__rental_start_date
+msgid "Rental start date"
+msgstr "Mietbeginn"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS-Zustellungsfehler"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__order_id
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__order_id
+msgid "Sale Order"
+msgstr "Verkaufsauftrag"
+
+#. module: ks_sales_extend
+#. odoo-python
+#: code:addons/ks_sales_extend/models/measurement_calculations.py:0
+msgid "Sales"
+msgstr "Verkauf"
+
+#. module: ks_sales_extend
+#: model:ir.model,name:ks_sales_extend.model_sale_order
+msgid "Sales Order"
+msgstr "Verkaufsauftrag"
+
+#. module: ks_sales_extend
+#: model:ir.model,name:ks_sales_extend.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Verkaufsauftragszeile"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__send_offer_by
+msgid "Send Offer By"
+msgstr "Angebot senden bis"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__description
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__description
+msgid "Short Description"
+msgstr "Bezeichnung"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields.selection,name:ks_sales_extend.selection__sale_order__category__skyscrapper
+msgid "Sky Scrapper"
+msgstr "Sky Scrapper"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order__start_date
+msgid "Start Date Of the Project"
+msgstr "Startdatum des Projekts"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__state
+msgid "Status"
+msgstr "Status"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_form_measurement_calculation
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_tree_measurement_calculation_line
+msgid "Sum of Rental Unit Price"
+msgstr ""
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__target_rental_quantity
+msgid "Target Qty"
+msgstr "Soll-Menge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__target_quantity
+msgid "Target rental qty"
+msgstr "Zielmietmenge"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_product_product__to_be_printed_on_pdf
+#: model:ir.model.fields,field_description:ks_sales_extend.field_product_template__to_be_printed_on_pdf
+#: model:ir.model.fields,field_description:ks_sales_extend.field_sale_order_line__to_be_printed_on_pdf
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.product_product_search_view_inherit_pdf_flag
+msgid "To Be Printed on PDF"
+msgstr "Auf PDF drucken"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_line__uom_id
+msgid "Unit"
+msgstr "GVH-Einheit"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__name
+msgid "Version"
+msgstr "Version"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation__website_message_ids
+msgid "Website Messages"
+msgstr "Website-Nachrichten"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,help:ks_sales_extend.field_measurement_calculation__website_message_ids
+msgid "Website communication history"
+msgstr "Website-Kommunikationsverlauf"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__week
+msgid "Weeks"
+msgstr "Wochen"
+
+#. module: ks_sales_extend
+#: model:ir.model.fields,field_description:ks_sales_extend.field_measurement_calculation_subtable__width
+msgid "Width"
+msgstr "Breite"
+
+#. module: ks_sales_extend
+#: model_terms:ir.ui.view,arch_db:ks_sales_extend.view_order_line_form_pdf_flag
+msgid "project Plan Date"
+msgstr "Projektplandatum"

@@ -1,3 +1,6 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_offer_efb,offer.efb,model_offer_efb,"",1,1,1,1
 access_offer_type,offer.type,model_offer_type,"",1,1,1,1
+access_measurement_calculation_subtable,measurement.calculation.subtable,model_measurement_calculation_subtable,,1,1,1,1
+access_measurement_calculation_line,measurement.calculation.line,model_measurement_calculation_line,,1,1,1,1
+access_measurement_calculation,measurement.calculation,model_measurement_calculation,,1,1,1,1
