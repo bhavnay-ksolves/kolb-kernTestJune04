@@ -6,14 +6,10 @@ class MeasurementCalculationLine(models.Model):
     _description = 'Measurement Calculation Line'
 
     type = fields.Selection([("bp", "BP"), ("pos", "POS")],
-                            default="Lato", string=' Typ')
-    # position = fields.Many2one('product.product', string='Position',
-    #                            tracking=True, domain=[('rent_ok', '!=', True)])
-    # rental_position = fields.Many2one('product.product', string='Rental Position',
-    #                                   tracking=True, domain=[('rent_ok', '=', True)])
+                            default="pos", string=' Typ')
     position = fields.Char(string='Position', tracking=True)
     rental_position = fields.Char(string='Rental Position', tracking=True)
-    gvh = fields.Integer(string="Rental free Time", tracking=True)
+    gvh = fields.Char(string="Rental free Time", tracking=True)
     gvh_unit = fields.Many2one('uom.uom', string='GVH-Unit', tracking=True)
     description = fields.Char(string='Short Description', tracking=True)
     target_rental_quantity = fields.Float(string='Target Qty', tracking=True)
