@@ -1,0 +1,166 @@
+<odoo>
+    <!-- form_view for Measurement calculation -->
+    <record id="view_form_measurement_calculation" model="ir.ui.view">
+        <field name="name">measurement.calculation.form</field>
+        <field name="model">measurement.calculation</field>
+        <field name="arch" type="xml">
+            <form string="Measurement Calculation">
+                <header>
+                    <button string="Post" class="btn-primary"
+                            type="object" name="move_to_posted"
+                            invisible="state != 'draft'"/>
+                    <button string="Re-open"
+                            type="object" name="move_to_draft"
+                            invisible="state in ('posted', 'draft')"/>
+                    <button string="Cancelled"
+                            type="object" name="move_to_cancelled"
+                            invisible="state not in ('posted', 'draft')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="object" icon="fa-file-text-o"
+                                name="action_get_sale_order">
+                            <field name="order_id" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" required="True"/>
+                            <field name="closing_date" required="state == 'posted'"/>
+                        </group>
+                        <group>
+                            <field name="order_id" readonly="1"/>
+                            <field name="project_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Details">
+                        <field name="measurement_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="position" optional="show"/>
+                                <field name="rental_position" optional="show"/>
+                                <field name="gvh" optional="show"/>
+                                <field name="gvh_unit" optional="show"/>
+                                <field name="description" optional="show"/>
+                                <field name="target_rental_quantity" optional="show"/>
+                                <field name="quantity" optional="show"/>
+                                <field name="quantity_erected" optional="show"/>
+                                <field name="uom_id" optional="show"/>
+                                <field name="total_price" optional="show"/>
+                                <field name="target_quantity" optional="show"/>
+                                <field name="rental_quantity" optional="show"/>
+                                <field name="rental_unit" optional="show"/>
+                                <field name="rental_unit_price" optional="show"
+                                       sum="Sum of Rental Unit Price"/>
+                                <field name="currency_id" column_invisible="True"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view Measurement Calculation-->
+    <record id="view_tree_measurement_calculation" model="ir.ui.view">
+        <field name="name">measurement.calculation.tree</field>
+        <field name="model">measurement.calculation</field>
+        <field name="arch" type="xml">
+            <list string="Measurement Calculation">
+                <field name="name"/>
+                <field name="order_id" optional="hide"/>
+                <field name="project_id" optional="hide"/>
+                <field name="closing_date" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'"
+                       decoration-info="state == 'draft'" decoration-muted="state == 'cancel'"
+                       optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search view-->
+    <record model="ir.ui.view" id="measurement_calculation_view_search">
+        <field name="name">measurement.calculation.view.search</field>
+        <field name="model">measurement.calculation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="closing_date"/>
+                <field name="order_id"/>
+                <field name="project_id"/>
+
+                <filter string="Draft" name="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Posted" name="Posted" domain="[('state', '=', 'posted')]"/>
+                <filter string="Cancel" name="Cancel" domain="[('state', '=', 'cancel')]"/>
+
+                <group expand="0" string="Group By" colspan="4">
+                    <filter name="state"
+                            domain="[]" context="{'group_by':'state'}"/>
+                    <filter name="closing_date"
+                            domain="[]" context="{'group_by':'closing_date'}"/>
+                    <filter name="order_id" domain="[]"
+                            context="{'group_by':'order_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Measurement calculation line Tree view-->
+    <record id="view_tree_measurement_calculation_line" model="ir.ui.view">
+        <field name="name">measurement.calculation.line.tree</field>
+        <field name="model">measurement.calculation.line</field>
+        <field name="arch" type="xml">
+            <list string="Measurement Calculation Line" editable="top">
+                <field name="position" optional="show"/>
+                <field name="rental_position" optional="show"/>
+                <field name="gvh" optional="show"/>
+                <field name="gvh_unit" optional="show"/>
+                <field name="description" optional="show"/>
+                <field name="target_rental_quantity" optional="show"/>
+                <field name="quantity" optional="show"/>
+                <field name="quantity_erected" optional="show"/>
+                <field name="uom_id" optional="show"/>
+                <field name="total_price" optional="show"/>
+                <field name="target_quantity" optional="show"/>
+                <field name="rental_quantity" optional="show"/>
+                <field name="rental_unit" optional="show"/>
+                <field name="rental_unit_price" optional="show"
+                       sum="Sum of Rental Unit Price"/>
+                <field name="currency_id" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!--  Action for Measurement Calculation -->
+    <record id="action_ks_measurement_calculation"
+            model="ir.actions.act_window">
+        <field name="name">Measurement Calculation</field>
+        <field name="res_model">measurement.calculation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!--  Action for Measurement Calculation Line -->
+    <record id="action_ks_measurement_calculation_line"
+            model="ir.actions.act_window">
+        <field name="name">Measurement Calculation Line</field>
+        <field name="res_model">measurement.calculation.line</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!--  New menu for Measurement Calculation -->
+    <menuitem id="menu_measurement" name="Measurements"
+              parent="sale.menu_sale_general_settings"/>
+
+    <!--  New menu for Measurement Calculation -->
+    <menuitem id="menu_measurement_calculation" name="Measurement Calculation"
+              parent="ks_sales_extend.menu_measurement"
+              action="action_ks_measurement_calculation"/>
+
+    <!--  New menu for Measurement Calculations -->
+    <menuitem id="menu_measurement_calculation_lines" name="Measurement Calculation Lines"
+              parent="ks_sales_extend.menu_measurement"
+              action="action_ks_measurement_calculation_line"/>
+
+</odoo>
