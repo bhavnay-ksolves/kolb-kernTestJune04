@@ -7,7 +7,7 @@
                "2. Measurement Calculation"
                "3. Add GEAB option on Sales."
                "4. Print flag on product and sales order line",
-    "depends": ['base',"sale_management", 'sale_project', "product"],
+    "depends": ['base','sale_management', 'sale_project', 'product','account'],
     "data": [
         'security/ir.model.access.csv',
         "data/product_data.xml",
@@ -17,7 +17,8 @@
         "views/offer_type.xml",
         "views/measurement_calulation_view.xml",
         "views/measurement_calculation_subtotal_view.xml",
-        "views/project_project_view.xml"
+        "views/project_project_view.xml",
+        "views/account_move_view.xml"
     ],
     "installable": True,
     "application": True

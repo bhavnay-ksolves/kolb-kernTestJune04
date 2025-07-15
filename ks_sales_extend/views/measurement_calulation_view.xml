@@ -37,6 +37,7 @@
                     <group string="Details">
                         <field name="measurement_ids" nolabel="1">
                             <list editable="bottom">
+                                <field name="type" optional="show"/>
                                 <field name="position" optional="show"/>
                                 <field name="rental_position" optional="show"/>
                                 <field name="gvh" optional="show"/>
