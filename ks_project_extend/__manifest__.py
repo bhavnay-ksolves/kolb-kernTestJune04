@@ -9,6 +9,7 @@
         'security/ir.model.access.csv',
         'views/project_project.xml',
         'views/type_of_work.xml',
+        'report/daily_construction_report.xml'
     ],
     'license': 'LGPL-3',
     'installable': True,

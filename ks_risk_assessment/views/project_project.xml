@@ -41,11 +41,37 @@
         </field>
     </record>
 
+     <!-- Search View -->
+    <record id="view_risk_assessment_search" model="ir.ui.view">
+        <field name="name">risk.assessment.search</field>
+        <field name="model">risk.assessment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="project_id"/>
+                <field name="danger"/>
+                <field name="threat_measures"/>
+                <field name="implementation"/>
+                <field name="review"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Danger" name="group_by_danger" context="{'group_by': 'danger'}"/>
+                    <filter string="Threat Measures" name="group_by_threat_measures"
+                            context="{'group_by': 'threat_measures'}"/>
+                    <filter string="Implementation" name="group_by_implementation"
+                            context="{'group_by': 'implementation'}"/>
+                    <filter string="Review" name="group_by_review" context="{'group_by': 'review'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
 <!--    Action Risk Assessments-->
     <record id="action_risk_assessment" model="ir.actions.act_window">
         <field name="name">Risk Assessments</field>
         <field name="res_model">risk.assessment</field>
         <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_risk_assessment_search"/>
     </record>
 <!--    Menu Risk Assessments-->
     <menuitem id="menu_risk_assessment_root"
