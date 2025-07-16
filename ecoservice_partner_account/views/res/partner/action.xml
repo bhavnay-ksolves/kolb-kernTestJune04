@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Developed by ecoservice (Uwe Böttcher und Falk Neubert GbR).
+# See COPYRIGHT and LICENSE files in the root directory of this module for full details.
+-->
+
+<odoo>
+
+  <record
+    id="action_selection_create_partner_account"
+    model="ir.actions.server"
+  >
+    <field name="name">Create Accounts (Selection)</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="binding_model_id" ref="base.model_res_partner"/>
+    <field name="state">code</field>
+    <field name="code">records.filtered('is_company').create_accounts()</field>
+  </record>
+
+  <record
+    id="action_all_create_partner_account"
+    model="ir.actions.server"
+  >
+    <field name="name">Create Accounts (All)</field>
+    <field name="model_id" ref="base.model_res_partner"/>
+    <field name="binding_model_id" ref="base.model_res_partner"/>
+    <field name="state">code</field>
+    <field name="code">records.search([('is_company', '=', True)]).create_accounts()</field>
+  </record>
+
+</odoo>

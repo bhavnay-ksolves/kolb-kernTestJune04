@@ -1,0 +1,255 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ecoservice_partner_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-01 10:45+0000\n"
+"PO-Revision-Date: 2025-04-01 10:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ecoservice_partner_account
+#: model:ir.model,name:ecoservice_partner_account.model_account_account
+msgid "Account"
+msgstr "Konto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_company__asset_receivable_sequence_id
+msgid "Asset Receivable Sequence"
+msgstr "Debitorensequenz"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Automated generation"
+msgstr "Kontengenerierung"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_company__partner_account_generate_automatically
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__partner_account_generate_automatically
+msgid "Automatic Account Generation"
+msgstr "Automatische Kontengenerierung"
+
+#. module: ecoservice_partner_account
+#: model:ir.model,name:ecoservice_partner_account.model_res_company
+msgid "Companies"
+msgstr "Unternehmen"
+
+#. module: ecoservice_partner_account
+#: model:ir.model,name:ecoservice_partner_account.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: ecoservice_partner_account
+#: model:ir.model,name:ecoservice_partner_account.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__module_ecoservice_partner_account_confirm_purchase
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Create Creditor Account on Purchase Order Confirm"
+msgstr "Kreditorenkonto bei Bestätigung einer Bestellung erstellen"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__module_ecoservice_partner_account_confirm_sale
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Create Debitor Account on Sale Order Confirm"
+msgstr "Debitorenkonto bei Bestätigung eines Verkaufsauftrags erstellen"
+
+#. module: ecoservice_partner_account
+#: model:ir.actions.server,name:ecoservice_partner_account.action_all_create_partner_account
+msgid "Create Accounts (All)"
+msgstr "Kontengenerierung (Alle)"
+
+#. module: ecoservice_partner_account
+#: model:ir.actions.server,name:ecoservice_partner_account.action_selection_create_partner_account
+msgid "Create Accounts (Selection)"
+msgstr "Kontengenerierung (Auswahl)"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_partner__has_custom_payable
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_users__has_custom_payable
+msgid "Custom Payable"
+msgstr "Eigenes Kreditorenkonto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_partner__has_custom_receivable
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_users__has_custom_receivable
+msgid "Custom Receivable"
+msgstr "Eigenes Debitorenkonto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__property_account_payable_id
+msgid "Default Payable Account"
+msgstr "Standard-Kreditorenkonto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__property_account_receivable_id
+msgid "Default Receivable Account"
+msgstr "Standard-Debitorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Default payable Accounts"
+msgstr "Standard-Kreditorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Default payable Partner account"
+msgstr "Standard-Kreditorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Default receivable Accounts"
+msgstr "Standard-Debitorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Default receivable Partner account"
+msgstr "Standard-Debitorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.view_partner_property_form
+msgid "Generate Payable"
+msgstr "Kreditorenkonto generieren"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.view_partner_property_form
+msgid "Generate Receivable"
+msgstr "Debitorenkonto generieren"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,help:ecoservice_partner_account.field_res_company__partner_account_generate_automatically
+#: model:ir.model.fields,help:ecoservice_partner_account.field_res_config_settings__partner_account_generate_automatically
+msgid ""
+"Generate partner payable or receivable account with first in or out going "
+"invoice related to the partner."
+msgstr ""
+"Automatische Erstellung von Partnerkonten mit der ersten gebuchten "
+"Ein- oder Ausgangsrechnung des Partners."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid ""
+"Generate partner payable or receivable accounts with the first in or out "
+"going invoice related to the partner."
+msgstr ""
+"Automatische Erstellung von Partnerkonten mit der ersten gebuchten "
+"Ein- oder Ausgangsrechnung des Partners."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Install Module for account creation on purchase order confirm."
+msgstr "Installiere Modul für Kontoerstellung bei Bestätigung einer Bestellung."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Install Module for account creation on sale order confirm."
+msgstr "Installiere Modul für Kontoerstellung bei Bestätigung eines Verkaufsauftrags."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid ""
+"Instead of using company specific partner accounts, use partner             "
+"accounts shared across all companies that have this option enabled."
+msgstr ""
+"Anstatt unternehmensspezifische Partnerkonten zu nutzen, "
+"werden gemeinsam genutzte Partnerkonten für alle Unternehmen verwendet, die diese Option aktiviert haben."
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,help:ecoservice_partner_account.field_res_company__shared_partner_accounts
+#: model:ir.model.fields,help:ecoservice_partner_account.field_res_config_settings__shared_partner_accounts
+msgid ""
+"Instead of using company specific partner accounts, use partner accounts "
+"shared across all companies that have this option enabled."
+msgstr ""
+"Anstatt unternehmensspezifische Partnerkonten zu nutzen, "
+"werden gemeinsam genutzte Partnerkonten für alle Unternehmen verwendet, die diese Option aktiviert haben."
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_account_account__is_partner_account
+msgid "Is Partner Account"
+msgstr "Ist Partnerkonto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model,name:ecoservice_partner_account.model_account_move
+msgid "Journal Entry"
+msgstr "Journalbuchung"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_company__liability_payable_sequence_id
+msgid "Liability Payable Sequence"
+msgstr "Kreditorensequenz"
+
+#. module: ecoservice_partner_account
+#. odoo-python
+#: code:addons/ecoservice_partner_account/models/res/company.py:0
+#: code:addons/ecoservice_partner_account/models/res/company.py:0
+#, python-format
+msgid ""
+"Please set a Fiscal Localization Package for your company in the setting"
+msgstr "Bitte legen Sie ein Steuerlokalisierungspaket für Ihr Unternehmen in der Einstellung"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Multi-Company Partner Account"
+msgstr "Multi-Company Partnerkonten"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields.selection,name:ecoservice_partner_account.selection__res_company__partner_ref_source__none
+msgid "None"
+msgstr "Deaktiviert"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Partner Account Generation"
+msgstr "Automatische Partner Kontengenerierung"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_company__partner_ref_source
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__partner_ref_source
+msgid "Partner Reference"
+msgstr "Partner Referenz"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Partner account as reference"
+msgstr "Konto als Partner Referenz"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields.selection,name:ecoservice_partner_account.selection__res_company__partner_ref_source__liability_payable
+msgid "Payable"
+msgstr "Kreditorenkonto"
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields.selection,name:ecoservice_partner_account.selection__res_company__partner_ref_source__asset_receivable
+msgid "Receivable"
+msgstr "Debitorenkonto"
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Set default payable Partner for your company."
+msgstr "Lege das Standardkonto für Verbindlichkeiten deines Unternehmens fest."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Set default receivable Partner for your company."
+msgstr "Lege das Standardkonto für Forderungen deines Unternehmens fest."
+
+#. module: ecoservice_partner_account
+#: model_terms:ir.ui.view,arch_db:ecoservice_partner_account.res_config_settings_view_form
+msgid "Set payable/receivable code as partner reference"
+msgstr "Verwende den Kreditoren-/Debitorenkonto-Code als Partnerreferenz."
+
+#. module: ecoservice_partner_account
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_company__shared_partner_accounts
+#: model:ir.model.fields,field_description:ecoservice_partner_account.field_res_config_settings__shared_partner_accounts
+msgid "Share Accounts"
+msgstr "Geteilte Konten"
