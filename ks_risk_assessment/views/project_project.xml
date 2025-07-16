@@ -23,6 +23,11 @@
                         string="Print Risk Report"
                         class="btn-primary"
                         icon="fa-print"/>
+                 <button name="action_send_esignature"
+                         type="object"
+                         string="Send for E-Signature"
+                         class="btn-primary"
+                         icon="fa-pencil"/>
             </xpath>
         </field>
     </record>
