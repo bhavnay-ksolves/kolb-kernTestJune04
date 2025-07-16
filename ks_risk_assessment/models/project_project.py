@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields,api
 from datetime import datetime
+import base64
+from odoo.exceptions import UserError
 
 class RiskAssessment(models.Model):
     _name = 'risk.assessment'
@@ -41,4 +43,60 @@ class ProjectTask(models.Model):
         return self.env.ref(
             'ks_risk_assessment.action_risk_assessment_pdf'
         ).report_action(self)
+
+    def action_send_esignature(self):
+        self.ensure_one()
+
+        # Check that partner has email
+        if not self.partner_id or not self.partner_id.email:
+            raise UserError("Customer must have an email address to send e-signature request.")
+
+        # Get the report and render PDF
+        report = self.env['ir.actions.report']._get_report_from_name(
+            'ks_risk_assessment.report_risk_assessment_document')
+        if not report:
+            raise UserError("Risk report not found.")
+
+        pdf_content, _ = self.env['ir.actions.report']._render_qweb_pdf(
+            'ks_risk_assessment.report_risk_assessment_document', self.id
+        )
+
+        # Create PDF attachment
+        attachment = self.env['ir.attachment'].create({
+            'name': f"Risk_Assessment_{self.name or self.id}.pdf",
+            'type': 'binary',
+            'datas': base64.b64encode(pdf_content),
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'application/pdf',
+        })
+
+        # Create new template from attachment
+        sign_template = self.env['sign.template'].create({
+            'attachment_id': attachment.id,
+            'name': f"Risk Assessment Template - {self.name or self.id}",
+        })
+        self.env['sign.item'].create({
+            'template_id': sign_template.id,
+            'type_id': self.env.ref('sign.sign_item_type_signature').id,
+            'required': True,
+            'width': 0.1,
+            'height': 0.1,
+            'page': 1,
+            'posX': 0,  # left side
+            'posY': 700,  # higher
+            'responsible_id': 1,
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'sign.send.request',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_template_id': sign_template.id,
+                'default_partner_id': self.partner_id.id,
+                'sign_directly_without_mail': False,
+                'show_email': True,
+            }
+        }
 
