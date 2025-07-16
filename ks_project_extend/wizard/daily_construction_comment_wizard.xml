@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_daily_construction_comment_wizard_form" model="ir.ui.view">
+        <field name="name">daily.construction.comment.wizard.form</field>
+        <field name="model">daily.construction.comment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Comment">
+                <group>
+                    <field name="action_type" readonly="1"/>
+                    <field name="comment"/>
+                </group>
+                <footer>
+                    <button name="apply_action" type="object" string="Submit" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

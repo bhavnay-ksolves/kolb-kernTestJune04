@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+        <!-- list View -->
+    <record id="view_daily_construction_report_list" model="ir.ui.view">
+        <field name="name">daily.construction.report.list</field>
+        <field name="model">daily.construction.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="project_id"/>
+                <field name="date"/>
+                <field name="state"/>
+                <field name="site_location" optional="hide"/>
+                <field name="attendance" optional="hide"/>
+                <field name="weather" optional="hide"/>
+                <field name="description" optional="hide"/>
+                <field name="machine" optional="hide"/>
+                <field name="delivery" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_daily_construction_report_form" model="ir.ui.view">
+        <field name="name">daily.construction.report.form</field>
+        <field name="model">daily.construction.report</field>
+        <field name="arch" type="xml">
+            <form string="Daily Construction Report">
+                 <header>
+                     <button name="daily_construction_report"
+                             type="object"
+                             string="Print Construction Report"
+                             class="btn-primary"
+                             icon="fa-print"/>
+                     <field name="state" widget="statusbar"
+                            statusbar_visible="new,in_progress,submitted,approved,rejected"/>
+
+                     <button name="action_start_progress" type="object" string="In Progress"
+                             invisible="state != 'new'"
+                             class="btn-primary"/>
+
+                     <button name="action_submit" type="object" string="Submit"
+                             invisible="state != 'in_progress'"
+                             class="btn-primary"/>
+
+                     <button name="open_approval_comment_wizard"
+                             type="object"
+                             string="Approve"
+                             class="btn-primary"
+                             icon="fa-check"
+                             invisible="state != 'submitted'"
+                             context="{'action_type': 'approve'}"/>
+
+                     <button name="open_approval_comment_wizard"
+                             type="object"
+                             string="Reject"
+                             class="btn-secondary"
+                             icon="fa-times"
+                             invisible="state != 'submitted'"
+                             context="{'action_type': 'reject'}"
+                     />
+
+                 </header>
+                <sheet>
+                    <group>
+                        <field name="project_id"/>
+                        <field name="date"/>
+                        <field name="site_location"/>
+                        <field name="attendance"/>
+                        <field name="weather"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Execution">
+                            <group>
+                                <field name="description"/>
+                                <field name="machine"/>
+                                <field name="delivery"/>
+                            </group>
+                        </page>
+
+                        <page string="Incidents">
+                            <group>
+                                <field name="incidents"/>
+                                <field name="incident_1"/>
+                                <field name="incident_2"/>
+                                <field name="incident_3"/>
+                                <field name="incident_4"/>
+                                <field name="incident_5"/>
+                                <field name="incident_attachment" widget="image"/>
+                            </group>
+                        </page>
+
+                        <page string="Sign Off">
+                            <group>
+                                <field name="responsible" widget="many2many_tags"/>
+                                <field name="supervisor_signature" widget="image"/>
+                                <field name="client_signature" widget="image"/>
+                                <field name="signoff_attachment" widget="image"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+<!--    Search view-->
+    <record id="view_daily_construction_report_search" model="ir.ui.view">
+        <field name="name">daily.construction.report.search</field>
+        <field name="model">daily.construction.report</field>
+        <field name="arch" type="xml">
+            <search string="Search Daily Construction Reports">
+                <field name="project_id"/>
+                <field name="site_location"/>
+                <field name="attendance"/>
+                <field name="date"/>
+                <field name="weather"/>
+                <field name="state"/>
+                <field name="description"/>
+                <field name="machine"/>
+                <field name="delivery"/>
+                <field name="incidents"/>
+                <field name="incident_1"/>
+                <field name="incident_2"/>
+                <field name="incident_3"/>
+                <field name="incident_4"/>
+                <field name="incident_5"/>
+
+                <separator/>
+                <filter name="filter_new" string="New" domain="[('state', '=', 'new')]"/>
+                <filter name="filter_in_progress" string="In Progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="filter_submitted" string="Submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter name="filter_approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                <filter name="filter_rejected" string="Rejected" domain="[('state', '=', 'rejected')]"/>
+
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter name="group_by_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_by_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_by_date" string="Date" context="{'group_by': 'date'}"/>
+                    <filter name="group_by_site_location" string="Site Location"
+                            context="{'group_by': 'site_location'}"/>
+                    <filter name="group_by_attendance" string="Attendance" context="{'group_by': 'attendance'}"/>
+                    <filter name="group_by_weather" string="Weather" context="{'group_by': 'weather'}"/>
+                    <filter name="group_by_description" string="Description" context="{'group_by': 'description'}"/>
+                    <filter name="group_by_machine" string="Machine" context="{'group_by': 'machine'}"/>
+                    <filter name="group_by_delivery" string="Delivery" context="{'group_by': 'delivery'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_daily_construction_report" model="ir.actions.act_window">
+        <field name="name">Daily Construction Reports</field>
+        <field name="res_model">daily.construction.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_daily_construction_report_search"/>
+    </record>
+
+    <record id="action_daily_construction_report_from_project" model="ir.actions.act_window">
+        <field name="name">Daily Construction Reports</field>
+        <field name="res_model">daily.construction.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('project_id','=',context.get('active_id'))]</field>
+        <field name="context">{'default_project_id': context.get('active_id')}</field>
+    </record>
+
+    <!-- Bulk Approve using existing method -->
+    <record id="action_bulk_approve_reports" model="ir.actions.server">
+        <field name="name">Approve Daily Construction Reports</field>
+        <field name="model_id" ref="model_daily_construction_report"/>
+        <field name="binding_model_id" ref="model_daily_construction_report"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_approve()
+        </field>
+    </record>
+
+    <!-- Bulk Reject using existing method -->
+    <record id="action_bulk_reject_reports" model="ir.actions.server">
+        <field name="name">Reject Daily Conatruction Reports</field>
+        <field name="model_id" ref="model_daily_construction_report"/>
+        <field name="binding_model_id" ref="model_daily_construction_report"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_reject()
+        </field>
+    </record>
+
+    <menuitem id="menu_daily_construction_report"
+              name="Daily Construction Reports"
+              parent="project.menu_main_pm"
+              action="action_daily_construction_report"
+              />
+
+</odoo>

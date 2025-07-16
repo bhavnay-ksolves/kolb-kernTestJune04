@@ -6,27 +6,16 @@ class ProjectProject(models.Model):
     responsible = fields.Many2many('res.users',string='Responsible',tracking=True)
     customer_address = fields.Text(string="Customer Address / Construction Address",tracking=True)
     date_start = fields.Datetime(string='Start Date',tracking=True)
-    art_type = fields.Selection(selection=[('fixed', 'Fixed'),('temporary', 'Temporary')],string="Art Type",required=True,tracking=True)
+    art_type = fields.Selection(selection=[('fixed', 'Fixed'),('temporary', 'Temporary')],string="Art Type",
+                                required=True,tracking=True)
     work_order_description = fields.Char(string="Work Order Description",tracking=True)
     type_of_work_id = fields.Many2one('type.of.work', string="Type of Work",tracking=True,store=True)
 
-    site_location = fields.Char(string="Site Location",tracking=True)
-    attendance = fields.Char(string="Attendance",tracking=True)
-    date = fields.Date(string="Date", default=fields.Date.context_today,tracking=True)
-    weather = fields.Float(string="Weather",tracking=True)
-
-    description = fields.Char(string="Description")
-    machine = fields.Char(string="Machine")
-    delivery = fields.Char(string="Delivery")
-
-    # Incidents Tab
-    incidents = fields.Text(string="Incidents")
-    incident_attachment = fields.Binary(string="Incident Attachment")
-
-    # Sign Off Tab
-    supervisor_signature = fields.Binary(string="Supervisor Signature")
-    client_signature = fields.Binary(string="Client Signature")
-    signoff_attachment = fields.Binary(string="Sign-Off Attachment")
+    daily_construction_report_ids = fields.One2many(
+        'daily.construction.report',
+        'project_id',
+        string='Daily Construction Reports'
+    )
 
     @api.model
     def create(self, vals):
@@ -55,8 +44,4 @@ class ProjectProject(models.Model):
             project.task_ids.write({
                 'user_ids': [(6, 0, user_ids)]
             })
-
-    def daily_construction_report(self):
-        """Generate PDF report for Execution, Incidents, and Sign Off."""
-        return self.env.ref('ks_project_extend.action_daily_construction_pdf').report_action(self)
 

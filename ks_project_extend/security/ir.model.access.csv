@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_type_of_work_user,access.type.of.work.user,model_type_of_work,,1,1,1,1
+access_daily_construction_report,access.daily.construction.report,model_daily_construction_report,,1,1,1,1
+access_daily_construction_comment_wizard,access.daily.construction.comment.wizard,model_daily_construction_comment_wizard,,1,1,1,0

@@ -7,10 +7,11 @@
                         <h2 style="text-align:center;">Daily Construction Report</h2>
 
                         <!-- General Info -->
+                        <h3 style="margin-top:20px;">General</h3>
                         <table class="table table-sm" style="width:100%; margin-top: 10px;">
                             <tr>
                                 <th style="text-align:left;">Project</th>
-                                <td><t t-esc="doc.name"/></td>
+                                <td><t t-esc="doc.project_id.name"/></td>
                                 <th style="text-align:left;">Date</th>
                                 <td><t t-esc="doc.date"/></td>
                             </tr>
@@ -68,19 +69,19 @@
         <field name="margin_right">0</field>
         <field name="header_line" eval="False"/>
         <field name="dpi">90</field>
-        <field name="page_height">0</field> <!-- auto -->
-        <field name="page_width">0</field>  <!-- auto -->
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
     </record>
 
     <record id="action_daily_construction_pdf" model="ir.actions.report">
         <field name="name">Daily Construction Report</field>
-        <field name="model">project.project</field> <!-- fix here too -->
+        <field name="model">daily.construction.report</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">ks_project_extend.report_daily_construction</field>
         <field name="report_file">ks_project_extend.report_daily_construction</field>
         <field name="binding_model_id" ref="model_daily_construction_report"/>
         <field name="binding_type">report</field>
-        <field name="print_report_name">'%s - Daily Construction Report' % (object.name or 'No Project')</field>
+        <field name="print_report_name">'%s - Daily Construction Report' % (object.project_id.name or 'No Project')</field>
         <field name="paperformat_id" ref="ks_project_extend.paperformat_daily_construction"/>
     </record>
 </odoo>
