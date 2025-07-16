@@ -34,7 +34,7 @@
                     <!-- Right Column: Company Logo -->
                     <td style="vertical-align: top; text-align: right; width: 30%;">
                         <t t-if="project.company_id.logo">
-                            <img t-att-src="image_data_uri(project.company_id.logo)" style="height: 120px; width: 120px; object-fit: contain;"/>
+                            <img t-att-src="image_data_uri(project.company_id.logo)" style="height: 95px; width: 120px; object-fit: cover;"/>
                         </t>
                     </td>
                 </tr>

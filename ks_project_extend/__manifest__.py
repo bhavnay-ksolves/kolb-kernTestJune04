@@ -7,9 +7,11 @@
     'depends': ['base','project','ks_custom_security'],
     'data': [
         'security/ir.model.access.csv',
+        'views/daily_construction_report_views.xml',
         'views/project_project.xml',
         'views/type_of_work.xml',
-        'report/daily_construction_report.xml'
+        'report/daily_construction_report.xml',
+        'wizard/daily_construction_comment_wizard.xml'
     ],
     'license': 'LGPL-3',
     'installable': True,

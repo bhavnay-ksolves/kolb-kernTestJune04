@@ -11,7 +11,8 @@ class Employee(models.Model):
 
     _sql_constraints = [
         ('short_name_unique', 'unique(short_name)',
-         'This short name already exists for another employee. Please enter a different short name. The short name must be unique.')
+         'This short name already exists for another employee. Please enter a different short name. '
+         'The short name must be unique.')
     ]
     def _compute_display_name(self):
         """Computes a custom display name using name and short_name."""
