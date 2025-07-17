@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--  Updating project form view.  -->
+    <record id="view_project_form_inherit_measurement_cal" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.measurement.cal</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!--  For adding Smart buttons on Project. -->
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" icon="fa-calculator"
+                        name="action_get_measurement_calculation_record">
+                    <field name="measurement_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

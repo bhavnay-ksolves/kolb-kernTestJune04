@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_custom_security
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 10:31+0000\n"
+"PO-Revision-Date: 2025-07-10 10:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#. module: ks_custom_security
+#: model:res.groups,name:ks_custom_security.group_admin
+msgid "Admin"
+msgstr "Administrator"
+
+#. module: ks_custom_security
+#: model:res.groups,name:ks_custom_security.group_employee
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+#. module: ks_custom_security
+#: model:res.groups,name:ks_custom_security.group_responsible
+msgid "Responsible"
+msgstr "Verantwortlicher"
+
+#. module: ks_custom_security
+#: model:res.groups,name:ks_custom_security.group_site_manager
+msgid "Site Manager"
+msgstr "Standortleiter"

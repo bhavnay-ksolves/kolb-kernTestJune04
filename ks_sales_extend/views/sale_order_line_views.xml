@@ -6,6 +6,13 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+            <!--  For adding Smart buttons on SO. -->
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" icon="fa-calculator"
+                        name="action_get_measurement_calculation_record">
+                    <field name="measurement_count" widget="statinfo"/>
+                </button>
+            </div>
 
             <!-- Buttons -->
             <xpath expr="//header" position="inside">
@@ -24,6 +31,7 @@
                 <label for="date_order" string="Offer Date"/>
             </label>
 
+            <!--  For adding To be print on SO line. -->
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
                 <field name="to_be_printed_on_pdf"/>
             </xpath>
@@ -31,6 +39,7 @@
                 <attribute name="string">Detailed offer</attribute>
             </xpath>
 
+            <!--  For adding Project Info on SO. -->
             <group name="sale_header" position="after">
                 <group name="project_info" string="Project">
                     <group>
@@ -42,6 +51,7 @@
                     </group>
                     <group>
                         <field name="offer_id"/>
+                        <field name="is_offer_date"/>
                         <field name="is_portal_date"/>
                         <label for="start_date"/>
                         <div class="d-inline-flex">

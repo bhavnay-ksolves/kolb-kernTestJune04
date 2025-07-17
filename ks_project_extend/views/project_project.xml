@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_project_form_inherit_custom" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.custom</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="user_id" string="Site Manager"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="responsible" widget="many2many_tags" domain="[('id', '!=', user_id)]"/>
+            </xpath>
+            <xpath expr="//field[@name='date_start']" position="after">
+                <field name="work_order_description"/>
+                <field name="type_of_work_id"/>
+            </xpath>
+             <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="%(action_daily_construction_report_from_project)s"
+                        type="action"
+                        class="oe_stat_button"
+                        icon="fa-file-text">
+                    <field name="daily_construction_report_ids" widget="statinfo" string="Daily Construction Report"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

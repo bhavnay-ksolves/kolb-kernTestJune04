@@ -1,0 +1,74 @@
+<odoo>
+    <!-- form_view  -->
+    <record id="view_form_measurement_calculation_subtable" model="ir.ui.view">
+        <field name="name">measurement.calculation.subtable.form</field>
+        <field name="model">measurement.calculation.subtable</field>
+        <field name="arch" type="xml">
+            <form string="Measurement Calculation">
+                <sheet>
+                    <group>
+                        <field name="position"/>
+                        <field name="rental_position"/>
+                        <field name="description"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="quantity"/>
+                        <field name="length"/>
+                        <field name="width"/>
+                        <field name="height"/>
+                    </group>
+                    <group>
+                        <field name="delivered_quantity" readonly="1"/>
+                        <field name="rental_total_amount" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="rental_start_date"/>
+                        <field name="rental_cut_off_date"/>
+                        <field name="rental_end_date"/>
+                        <field name="end_date_gvh"/>
+                        <field name="week"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_measurement_calculation_subtable" model="ir.ui.view">
+        <field name="name">measurement.calculation.subtable.tree</field>
+        <field name="model">measurement.calculation.subtable</field>
+        <field name="arch" type="xml">
+            <list string="Measurement Calculation">
+                <field name="position"/>
+                <field name="rental_position"/>
+                <field name="description"/>
+                <field name="quantity"/>
+                <field name="length"/>
+                <field name="width"/>
+                <field name="height"/>
+                <field name="delivered_quantity"/>
+                <field name="rental_total_amount"/>
+                <field name="rental_start_date"/>
+                <field name="rental_cut_off_date"/>
+                <field name="rental_end_date"/>
+                <field name="end_date_gvh"/>
+                <field name="week"/>
+                <field name="currency_id" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="action_ks_measurement_calculation_subtable"
+            model="ir.actions.act_window">
+        <field name="name">Measurement Calculation Lines</field>
+        <field name="res_model">measurement.calculation.subtable</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!--  New menu for Measurement Calculations -->
+    <menuitem id="menu_measurement_calculation_subtable" name="Measurement Calculation Sub-table"
+              parent="ks_sales_extend.menu_measurement"
+              action="action_ks_measurement_calculation_subtable"/>
+
+</odoo>

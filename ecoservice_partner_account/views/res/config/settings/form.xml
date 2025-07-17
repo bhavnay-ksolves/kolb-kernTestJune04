@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Developed by ecoservice (Uwe Böttcher und Falk Neubert GbR).
+# See COPYRIGHT and LICENSE files in the root directory of this module for full details.
+-->
+
+<odoo>
+
+  <record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">Res Config Settings | Partner Account | Form</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+
+      <block id="bank_cash" position="after">
+        <block
+          title="Partner Account Generation"
+          id="partner_account_generation"
+        >
+          <setting
+            id="partner_account_generate_automatically"
+            title="Automated generation"
+            string="Automated generation"
+            help="Generate partner payable or receivable accounts with the first in or out going invoice related to the partner."
+          >
+            <field name="partner_account_generate_automatically"/>
+          </setting>
+
+          <setting
+            id="module_ecoservice_partner_account_confirm_sale"
+            title="Create Debitor Account on Sale Order Confirm"
+            string="Create Debitor Account on Sale Order Confirm"
+            help="Install Module for account creation on sale order confirm."
+          >
+            <field name="module_ecoservice_partner_account_confirm_sale"/>
+          </setting>
+
+          <setting
+            id="module_ecoservice_partner_account_confirm_purchase"
+            title="Create Creditor Account on Purchase Order Confirm"
+            string="Create Creditor Account on Purchase Order Confirm"
+            help="Install Module for account creation on purchase order confirm."
+          >
+            <field name="module_ecoservice_partner_account_confirm_purchase"/>
+          </setting>
+
+          <setting
+            id="partner_ref_source"
+            title="Partner account as reference"
+            string="Partner account as reference"
+            help="Set payable/receivable code as partner reference"
+          >
+            <field name="partner_ref_source"/>
+          </setting>
+
+          <setting
+            id="shared_partner_accounts"
+            title="Multi-Company Partner Account"
+            string="Multi-Company Partner Account"
+            help="Instead of using company specific partner accounts, use partner
+            accounts shared across all companies that have this option enabled."
+          >
+            <field name="shared_partner_accounts"/>
+          </setting>
+
+          <setting
+            id="default_receivable_Accounts"
+            title="Default receivable Accounts"
+            string="Default receivable Partner account"
+            help="Set default receivable Partner for your company."
+          >
+            <div class="row">
+              <field name="property_account_receivable_id" />
+            </div>
+          </setting>
+          <setting
+            id="space"
+            title=""
+            string=""
+            help=""
+          >
+            <div class="row"></div>
+          </setting>
+          <setting
+            id="default_payable_Accounts"
+            title="Default payable Accounts"
+            string="Default payable Partner account"
+            help="Set default payable Partner for your company."
+          >
+            <div class="row">
+              <field name="property_account_payable_id" />
+            </div>
+          </setting>
+
+        </block>
+      </block>
+
+    </field>
+  </record>
+
+</odoo>

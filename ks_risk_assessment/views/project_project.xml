@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form_risk_management" model="ir.ui.view">
+        <field name="name">project.project.form.risk.management</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Risk Management">
+                    <field name="risk_assessment_ids">
+                        <list editable="bottom">
+                            <field name="danger"/>
+                            <field name="threat_measures"/>
+                            <field name="implementation"/>
+                            <field name="review"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_report"
+                        type="object"
+                        string="Print Risk Report"
+                        class="btn-primary"
+                        icon="fa-print"/>
+                 <button name="action_send_esignature"
+                         type="object"
+                         string="Send Risk Report for E-Signature"
+                         class="btn-primary"
+                         icon="fa-pencil"/>
+            </xpath>
+        </field>
+    </record>
+<!--    View Risk Assessments-->
+    <record id="view_risk_assessment_list" model="ir.ui.view">
+        <field name="name">risk.assessment.list</field>
+        <field name="model">risk.assessment</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="project_id"/>
+                <field name="danger"/>
+                <field name="threat_measures"/>
+                <field name="implementation"/>
+                <field name="review"/>
+            </list>
+        </field>
+    </record>
+
+     <!-- Search View -->
+    <record id="view_risk_assessment_search" model="ir.ui.view">
+        <field name="name">risk.assessment.search</field>
+        <field name="model">risk.assessment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="project_id"/>
+                <field name="danger"/>
+                <field name="threat_measures"/>
+                <field name="implementation"/>
+                <field name="review"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
+                    <filter string="Danger" name="group_by_danger" context="{'group_by': 'danger'}"/>
+                    <filter string="Threat Measures" name="group_by_threat_measures"
+                            context="{'group_by': 'threat_measures'}"/>
+                    <filter string="Implementation" name="group_by_implementation"
+                            context="{'group_by': 'implementation'}"/>
+                    <filter string="Review" name="group_by_review" context="{'group_by': 'review'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+<!--    Action Risk Assessments-->
+    <record id="action_risk_assessment" model="ir.actions.act_window">
+        <field name="name">Risk Assessments</field>
+        <field name="res_model">risk.assessment</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_risk_assessment_search"/>
+    </record>
+<!--    Menu Risk Assessments-->
+    <menuitem id="menu_risk_assessment_root"
+          name="Risk Assessments"
+          parent="project.menu_project_config"
+          sequence="100"
+          action="action_risk_assessment"/>
+</odoo>

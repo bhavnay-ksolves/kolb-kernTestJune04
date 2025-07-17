@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_type_of_work_list" model="ir.ui.view">
+        <field name="name">type.of.work.list</field>
+        <field name="model">type.of.work</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_type_of_work_form" model="ir.ui.view">
+        <field name="name">type.of.work.form</field>
+        <field name="model">type.of.work</field>
+        <field name="arch" type="xml">
+            <form string="Type of Work">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Search View with Group By -->
+    <record id="view_type_of_work_search" model="ir.ui.view">
+        <field name="name">type.of.work.search</field>
+        <field name="model">type.of.work</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Type of work" name="group_by_name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="action_type_of_work" model="ir.actions.act_window">
+        <field name="name">Types of Work</field>
+        <field name="res_model">type.of.work</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_type_of_work_search"/>
+    </record>
+
+    <!-- Menu under Project Configuration -->
+    <menuitem id="menu_type_of_work"
+              name="Types of Work"
+              parent="project.menu_project_config"
+              action="action_type_of_work"/>
+</odoo>

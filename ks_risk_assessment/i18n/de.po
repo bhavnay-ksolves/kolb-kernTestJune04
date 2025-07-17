@@ -1,0 +1,166 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ks_risk_assessment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-11 13:18+0000\n"
+"PO-Revision-Date: 2025-07-11 13:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__create_uid
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__create_date
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__danger
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Danger"
+msgstr "Gefahr"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_project_project__date_report_creation
+msgid "Date of Creating Risk Assessment Report"
+msgstr "Erstellungsdatum des Risikobewertungsberichts"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Date of Creating Risk Assessment Report:"
+msgstr "Erstellungsdatum des Risikobewertungsberichts:"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__display_name
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Documentation (who,when)"
+msgstr "Dokumentation (wer, wann)"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__id
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid ""
+"Implementation of the\n"
+"                                        measures"
+msgstr "Umsetzung der Maßnahmen"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__implementation
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__implementation
+msgid "Implementation of the measures"
+msgstr "Umsetzung der Maßnahmen"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__write_uid
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__write_date
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__threat_measures
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__threat_measures
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Measures against the threat"
+msgstr "Maßnahmen gegen die Bedrohung"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "No risk assessments available."
+msgstr "Keine Risikobewertungen verfügbar."
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.view_task_form_risk_management
+msgid "Print Risk Report"
+msgstr "Risiko-Bericht drucken"
+
+#. module: ks_risk_assessment
+#: model:ir.model,name:ks_risk_assessment.model_project_project
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__project_id
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__project_id
+msgid "Project"
+msgstr "Projekt"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Project Name:"
+msgstr "Projektname:"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Project Number:"
+msgstr "Projektnummer:"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__review
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__review
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Review of implementation"
+msgstr "Überprüfung der Umsetzung"
+
+#. module: ks_risk_assessment
+#: model:ir.model,name:ks_risk_assessment.model_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.report_risk_assessment_document
+msgid "Risk Assessment"
+msgstr "Risikobewertung"
+
+#. module: ks_risk_assessment
+#: model:ir.actions.report,name:ks_risk_assessment.action_risk_assessment_pdf
+msgid "Risk Assessment PDF"
+msgstr "PDF der Risikobewertung"
+
+#. module: ks_risk_assessment
+#: model:ir.model,name:ks_risk_assessment.model_risk_assessment_template
+msgid "Risk Assessment Template"
+msgstr "Vorlage für Risikobewertung"
+
+#. module: ks_risk_assessment
+#: model:ir.actions.act_window,name:ks_risk_assessment.action_risk_assessment_template
+#: model:ir.ui.menu,name:ks_risk_assessment.menu_risk_assessment_template
+msgid "Risk Assessment Templates"
+msgstr "Vorlagen für Risikobewertungen"
+
+#. module: ks_risk_assessment
+#: model:ir.actions.act_window,name:ks_risk_assessment.action_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_project_project__risk_assessment_ids
+#: model:ir.ui.menu,name:ks_risk_assessment.menu_risk_assessment_root
+msgid "Risk Assessments"
+msgstr "Risikobewertungen"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.view_task_form_risk_management
+msgid "Risk Management"
+msgstr "Risikomanagement"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__name
+msgid "Risk Type"
+msgstr "Risikotyp"

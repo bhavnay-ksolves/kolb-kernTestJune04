@@ -4,7 +4,8 @@ from odoo import models, fields, api
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    efb_line = fields.One2many(comodel_name='offer.efb', inverse_name='order_id', string="EFB Lines")
+    efb_line = fields.One2many(comodel_name='offer.efb',
+                               inverse_name='order_id', string="EFB Lines")
 
     offer_id = fields.Many2one('offer.type', string='Offer Type')
     category = fields.Selection([
@@ -15,6 +16,7 @@ class SaleOrder(models.Model):
     is_same_delivery_address = fields.Boolean("Is Same Delivery Address", default=False)
     on_site = fields.Boolean("Employee on Construction Site", default=False)
     is_unproductive = fields.Boolean("Is Unproductive", default=False)
+    is_offer_date = fields.Date(string="Offer Date")
     is_portal_date = fields.Date(string="Portal Date")
     start_date = fields.Date(string="Start Date Of the Project")
     end_date = fields.Date(string="End Date Of the Project")
@@ -27,6 +29,11 @@ class SaleOrder(models.Model):
         string="Send Offer By",
         default='email'
     )
+    measurement_ids = fields.One2many(comodel_name='measurement.calculation',
+                                      inverse_name='order_id', string="Measurement Calculation")
+    measurement_count = fields.Integer(string="Measurement Cals",
+                                       compute='measurement_calculation_count',
+                                       default=0)
     show_efb_to_order_btn = fields.Boolean(
         compute="_compute_show_efb_to_order_btn",
         string="Show Copy EFB to Order Button"
@@ -156,6 +163,23 @@ class SaleOrder(models.Model):
                 subtype_xmlid="mail.mt_note"
             )
 
+    def measurement_calculation_count(self):
+        """Get count of Measurement Calculations."""
+        for rec in self:
+            rec.measurement_count = self.env['measurement.calculation'].search_count([
+                ('order_id', '=', self.id)])
+
+    def action_get_measurement_calculation_record(self):
+        """To call Measurement Calculation tree view."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _("Measurement Calculations"),
+            'view_mode': 'list,form',
+            'res_model': 'measurement.calculation',
+            'context': "{'default_order_id': active_id}",
+            'domain': [('order_id', '=', self.id)],
+        }
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
