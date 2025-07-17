@@ -18,7 +18,7 @@
                             <tr>
                                 <td style="text-align: center;
                                     padding: 24px 0;">
-                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
+                                    <img src="haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
                                     <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">
                                         <span style="color: red;">(Daily Construction Report)</span>
                                     </span>
@@ -57,7 +57,10 @@
                                         ">
                                         <tr>
                                             <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon" style="vertical-align: top;" />
+                                                <img src="/ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon" style="vertical-align: top;" />
+<!--                                                <i class="fa fa-list-ul" style="font-size: 20px; vertical-align: top;color:black;"></i>-->
+                                                <span style="font-size:18px; color:#007bff;">🔹</span>
+
                                                 <span style="color: red; padding-left: 4px;">
                                                     (Site Information)
                                                 </span>
@@ -68,7 +71,7 @@
                                                 <span><t t-esc="doc.project_id.name" /></span>
                                             </td>
                                             <td style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>(Site Location)</span>
+                                                <span><t t-esc="doc.site_location" /></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -81,7 +84,7 @@
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
                                                 <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png" width="20" height="20" alt="cloud icon" style="vertical-align: top;" />
                                                 <span style="padding-left: 4px;">
-                                                    14°C- Bewölkt, Wind 12 km/h ( 14°C - Cloudy, Wind 12 km/h
+                                                    <t t-esc="doc.weather"/>
                                                 </span>
                                             </td>
                                         </tr>
@@ -95,7 +98,8 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <textarea rows="4" style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anwesende Firmen / Gewerke (Companies / Trades present)
+                                                <textarea rows="4" style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
+                                                    <t t-esc="doc.attendance"/>
                                                 </textarea>
                                             </td>
                                         </tr>
@@ -466,7 +470,6 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">ks_project_extend.report_daily_construction</field>
         <field name="report_file">ks_project_extend.report_daily_construction</field>
-        <field name="binding_type">report</field>
         <field name="print_report_name">'%s - Daily Construction Report' % (object.project_id.name or 'No Project')</field>
         <field name="paperformat_id" ref="ks_project_extend.paperformat_daily_construction"/>
     </record>

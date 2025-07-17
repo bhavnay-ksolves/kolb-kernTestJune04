@@ -1,5 +1,6 @@
 from odoo import models, fields, api
-from datetime import date
+import base64
+from odoo.exceptions import UserError
 
 class DailyConstructionReport(models.Model):
     _name = 'daily.construction.report'
@@ -90,6 +91,48 @@ class DailyConstructionReport(models.Model):
     def daily_construction_report(self):
         """Generate PDF report for Execution, Incidents, and Sign Off."""
         return self.env.ref('ks_project_extend.action_daily_construction_pdf').report_action(self)
+
+    def action_send_esignature_report(self):
+        self.ensure_one()
+
+        # Get the report and render PDF
+        report = self.env['ir.actions.report']._get_report_from_name(
+            'ks_project_extend.report_daily_construction')
+        if not report:
+            raise UserError("Daily Construction Report not found.")
+
+        pdf_content, _ = self.env['ir.actions.report']._render_qweb_pdf(
+            'ks_project_extend.report_daily_construction', self.id
+        )
+
+        # Create PDF attachment
+        attachment = self.env['ir.attachment'].create({
+            'name': f"Daily_Construction_Report_{self.project_id.name or self.id}.pdf",
+            'type': 'binary',
+            'datas': base64.b64encode(pdf_content),
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'application/pdf',
+        })
+
+        # Create new template from attachment
+        sign_template = self.env['sign.template'].create({
+            'attachment_id': attachment.id,
+            'name': f"Daily Construction Template - {self.project_id.name or self.id}",
+        })
+        return {
+            "type": "ir.actions.client",
+            "tag": "sign.Template",
+            "name": f"Template {attachment.name}",
+            "target": "current",
+            "params": {
+                "sign_edit_call": "sign_send_request",  # this can be True or custom context
+                "id": sign_template.id,
+                "sign_directly_without_mail": False,
+                "resModel": self._name,
+            },
+        }
+
 
 
 
