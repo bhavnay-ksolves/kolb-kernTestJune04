@@ -76,27 +76,15 @@ class ProjectTask(models.Model):
             'attachment_id': attachment.id,
             'name': f"Risk Assessment Template - {self.name or self.id}",
         })
-        self.env['sign.item'].create({
-            'template_id': sign_template.id,
-            'type_id': self.env.ref('sign.sign_item_type_signature').id,
-            'required': True,
-            'width': 0.1,
-            'height': 0.1,
-            'page': 1,
-            'posX': 0,  # left side
-            'posY': 700,  # higher
-            'responsible_id': 1,
-        })
         return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'sign.send.request',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {
-                'default_template_id': sign_template.id,
-                'default_partner_id': self.partner_id.id,
-                'sign_directly_without_mail': False,
-                'show_email': True,
-            }
+            "type": "ir.actions.client",
+            "tag": "sign.Template",
+            "name": f"Template {attachment.name}",
+            "target": "current",
+            "params": {
+                "sign_edit_call": "sign_send_request",  # this can be True or custom context
+                "id": sign_template.id,
+                "sign_directly_without_mail": False,
+                "resModel": self._name,
+            },
         }
-

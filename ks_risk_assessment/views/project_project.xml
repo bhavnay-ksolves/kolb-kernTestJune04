@@ -25,7 +25,7 @@
                         icon="fa-print"/>
                  <button name="action_send_esignature"
                          type="object"
-                         string="Send for E-Signature"
+                         string="Send Risk Report for E-Signature"
                          class="btn-primary"
                          icon="fa-pencil"/>
             </xpath>

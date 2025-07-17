@@ -31,6 +31,12 @@
                              string="Print Construction Report"
                              class="btn-primary"
                              icon="fa-print"/>
+                     <button name="action_send_esignature_report"
+                             type="object"
+                             string="Send Report for E-Signature"
+                             class="btn-primary"
+                             icon="fa-pencil-square-o"/>
+
                      <field name="state" widget="statusbar"
                             statusbar_visible="new,in_progress,submitted,approved,rejected"/>
 
