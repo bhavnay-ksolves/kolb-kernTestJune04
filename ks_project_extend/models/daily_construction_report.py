@@ -24,17 +24,17 @@ class DailyConstructionReport(models.Model):
     ], string='Status', default='new', tracking=True)
 
     # Execution Tab
-    description = fields.Char(string="Description")
-    machine = fields.Char(string="Machine")
-    delivery = fields.Char(string="Delivery")
+    description = fields.Text(string="Description")
+    machine = fields.Text(string="Machine")
+    delivery = fields.Text(string="Delivery")
 
     # Incidents Tab
-    incidents = fields.Char(string="Incidents")
-    incident_1 = fields.Char(string="Incidents")
-    incident_2 = fields.Char(string="Incidents")
-    incident_3 = fields.Char(string="Incidents")
-    incident_4 = fields.Char(string="Incidents")
-    incident_5 = fields.Char(string="Incidents")
+    incidents = fields.Text(string="Incidents")
+    incident_1 = fields.Text(string="Incidents")
+    incident_2 = fields.Text(string="Incidents")
+    incident_3 = fields.Text(string="Incidents")
+    incident_4 = fields.Text(string="Incidents")
+    incident_5 = fields.Text(string="Incidents")
     incident_attachment = fields.Binary(string="Incident Attachment")
 
     # Sign Off Tab
