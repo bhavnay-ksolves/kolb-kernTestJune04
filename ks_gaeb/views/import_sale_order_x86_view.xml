@@ -1,0 +1,26 @@
+<odoo>
+  <record id="view_import_sale_order_x83" model="ir.ui.view">
+    <field name="name">gaeb.importer.form</field>
+    <field name="model">gaeb.importer</field>
+    <field name="arch" type="xml">
+      <form string="Import .x83 Sale Order">
+        <group>
+          <field name="file_type"/>
+          <field name="gaeb_file" filename="filename"/>
+          <field name="filename"/>
+        </group>
+        <footer>
+          <button name="action_import_file" type="object" string="Import" class="btn-primary"/>
+          <button string="Cancel" class="btn-secondary" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_import_sale_order_x83" model="ir.actions.act_window">
+    <field name="name">Import Sale Order (.x83)</field>
+    <field name="res_model">gaeb.importer</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+</odoo>
