@@ -2,6 +2,7 @@ from odoo import models, fields, api
 import base64
 from odoo.exceptions import UserError
 
+
 class DailyConstructionReport(models.Model):
     _name = 'daily.construction.report'
     _description = 'Daily Construction Report'

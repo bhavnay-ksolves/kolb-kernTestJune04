@@ -10,6 +10,7 @@
     "depends": ['base','sale_management', 'sale_project', 'product','account'],
     "data": [
         'security/ir.model.access.csv',
+        'security/efb_rule.xml',
         "data/product_data.xml",
         "views/product_template_views.xml",
         "views/sale_order_line_views.xml",

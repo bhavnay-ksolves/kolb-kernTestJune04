@@ -5,11 +5,12 @@
     <field name="arch" type="xml">
       <form string="Import .x83 Sale Order">
         <group>
+          <field name="file_type"/>
           <field name="gaeb_file" filename="filename"/>
           <field name="filename"/>
         </group>
         <footer>
-          <button name="action_import_x83" type="object" string="Import" class="btn-primary"/>
+          <button name="action_import_file" type="object" string="Import" class="btn-primary"/>
           <button string="Cancel" class="btn-secondary" special="cancel"/>
         </footer>
       </form>

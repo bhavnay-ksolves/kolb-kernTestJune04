@@ -33,7 +33,7 @@
 
             <!--  For adding To be print on SO line. -->
             <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="before">
-                <field name="to_be_printed_on_pdf"/>
+                <field name="long_desc"/>
             </xpath>
             <xpath expr="//notebook/page[@name='order_lines']" position='attributes'>
                 <attribute name="string">Detailed offer</attribute>
@@ -69,22 +69,23 @@
                 <page string="EFB" name="efb">
                     <field name="efb_line">
                         <list editable="bottom">
-<!--                            <field name="product_template_id"/>-->
+                            <field name="sequence"/>
                             <field name="description"/>
                             <field name="long_desc"/>
+                            <field name="company_id" groups="base.group_multi_company" optional="hide"/>
                             <field name="product_uom_qty"/>
                             <field name="product_uom"/>
-<!--                            <field name="price_unit"/>-->
-<!--                            <field name="tax_id" widget="many2many_tags"/>-->
-<!--                            <field name="price_subtotal"/>-->
-<!--                            <field name="price_total"/>-->
+                            <field name="price_unit"/>
+                            <field name="price_subtotal"/>
                         </list>
                     </field>
-<!--                    <group string="EFB Totals" name="efb_totals" invisible='not efb_line'>-->
-<!--                        <field name="efb_amount_untaxed" widget="monetary" readonly="1"/>-->
-<!--                        <field name="efb_amount_tax" readonly="1"/>-->
-<!--                        <field name="efb_amount_total" widget="monetary" readonly="1"/>-->
-<!--                    </group>-->
+                    <group>
+                        <group></group>
+                        <group string="EFB Totals" name="efb_totals" invisible='not efb_line'>
+                            <field name="efb_total_unit_price" widget="monetary" readonly="1"/>
+                            <field name="efb_total_price" widget="monetary" readonly="1"/>
+                        </group>
+                    </group>
                 </page>
             </xpath>
 

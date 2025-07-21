@@ -1,31 +1,57 @@
 <odoo>
 
-    <template id="gaeb_d86_sale_template">
-        <t t-set="line_no" t-value="1"/>
+    <!-- Download template for GAEB D86    -->
+  <template id="gaeb_d86_sale_template">
+     <t t-set="line_no" t-value="1"/>
         <t t-set="lines" t-value="[]"/>
-
-        <t t-set="lines" t-value="lines + [('00', '86L                                                 1PP00000090')]"/>
+        <t t-set="lines" t-value="lines + [('00', '             86L                                  1PP00000090')]"/>
         <t t-set="lines" t-value="lines + [('01', 'VAT')]"/>
         <t t-set="lines" t-value="lines + [('02', order.name)]"/>
-        <t t-set="lines" t-value="lines + [('03', order.partner_id.name or '')]"/>
-
-        <t t-foreach="(order.partner_id.contact_address or '').split('\n')" t-as="line">
-            <t t-set="lines" t-value="lines + [('04', line.strip())]"/>
-        </t>
-
-        <t t-set="lines" t-value="lines + [('08', currency + '   ' + currency)]"/>
+        <t t-set="lines" t-value="lines + [('03', order.company_id.name or '')]"/>
+        <t t-set="lines" t-value="lines + [('04', order.partner_id.name or '')]"/>
+        <t t-set="lines" t-value="lines + [('08', order.currency_id.name + '   ' + order.currency_id.name)]"/>
         <t t-set="lines" t-value="lines + [('20', '')]"/>
         <t t-set="lines" t-value="lines + [('26', '   Sehr geehrte Damen und Herren,')]"/>
         <t t-set="lines" t-value="lines + [('26', '')]"/>
         <t t-set="lines" t-value="lines + [('26', '   wir danken Ihnen für Ihre Anfrage und bieten nachstehen')]"/>
         <t t-set="lines" t-value="lines + [('26', '   d an:')]"/>
         <t t-set="lines" t-value="lines + [('111', '        N    Titel')]"/>
-
-        <t t-foreach="order.order_line" t-as="ol">
-            <t t-set="desc"
-               t-value="'        P    ' + ol.product_id.display_name[:40] + ' Qty: ' + '%.2f' % ol.product_uom_qty + ' Price: ' + '%.2f' % ol.price_unit"/>
-            <t t-set="lines" t-value="lines + [('112', desc)]"/>
+        <t t-set="lines" t-value="lines + [('12', 'Vorbereitende Arbeiten')]"/>
+        <t t-set="lines" t-value="lines + [('20', '')]"/>
+        <t t-set="counter" t-value="0"/>
+        <t t-foreach="order.efb_line" t-as="ol">
+            <t t-set="lines" t-value="lines + [('26','   ' + ol.long_desc)]"/>
+            <t t-set="code" t-value="'%05d' % (21101 + counter)"/>
+            <t t-set="amount_code" t-value="'%05d' % (23101 + counter)"/>
+            <t t-set="line_text" t-value="'   ' + 'NNN ' + '%.2f' % ol.product_uom_qty + ' ' + ol.product_uom.name"/>
+            <t t-set="line_amount" t-value="'   ' + '%.2f' % ol.price_unit + ' ' + '%.2f' % ol.price_subtotal"/>
+            <t t-set="lines" t-value="lines + [(code, line_text)]"/>
+            <t t-set="lines" t-value="lines + [(amount_code, line_amount)]"/>
+             <t t-set="counter" t-value="counter + 1"/>
+            <t t-set="lines" t-value="lines + [('25', '')]"/>
         </t>
+
+        <t t-set="lines" t-value="lines + [('26', '    Material-, Geräte- und Entsorgungskostenanteil beträgt')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    35(Unknown) % (auf die Tagelohnstunden)')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    Dieses Angebot ist freibleibend. Sofern Sie den Auftrag')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    an uns erteilen möchten, senden Sie uns bitte eine Kop')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    ie unseres Angebotes unterschrieben per Fax: 06021/8591-22')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    bzw. maler@kolb-kern.de oder per Post zurück.')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    Bitte überprüfen Sie die uns vorliegenden Daten Ihrer Anschrift')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    und teilen Sie uns evtl. Korrekturen für die Rechnungsstellung')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    möglichst zeitnah mit.')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    Über Ihren Auftrag würden wir uns sehr freuen. Danke!')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '')]"/>
+        <t t-set="lines" t-value="lines + [('26', '    Ort, Datum\t\tRechtsverbindliche Unterschrift (optional')]"/>
+        <t t-set="lines" t-value="lines + [('26', '     Firmenstempel)')]"/>
+       <t t-set="lines" t-value="lines + [('26', '    ' +str(order.amount_total) if order.amount_total else '0.0')]"/>
+
 
         <t t-set="output" t-value="[]"/>
         <t t-foreach="enumerate(lines, start=1)" t-as="pair">
@@ -34,6 +60,7 @@
             <t t-set="line_num" t-value="str(pair[0]).zfill(6)"/>
             <t t-set="output" t-value="output + [(code + text).ljust(74) + line_num]"/>
         </t>
+            <t t-set="output" t-value="output + [('99' + '    ').ljust(74) + '00028'+line_num]"/>
 
         <t t-esc="'\n'.join(output)"/>
     </template>
