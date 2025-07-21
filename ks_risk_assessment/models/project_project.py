@@ -15,6 +15,10 @@ class RiskAssessment(models.Model):
     review = fields.Text(string="Review of implementation",store=True)
     project_id = fields.Many2one('project.project', string="Project")
 
+    company_id = fields.Many2one(
+        'res.company', string="Company",related='project_id.company_id',readonly=True
+    )
+
     @api.onchange('danger')
     def _onchange_danger(self):
         """Updates related fields when the danger field is changed.
