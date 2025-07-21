@@ -9,6 +9,7 @@ class PurchaseOrderLine(models.Model):
     lot_barcode = fields.Many2one('stock.lot',string="EAN/GTIN")
     container = fields.Many2one('product.container',string='Container')
     default_code = fields.Char('Article Nr', index=True)
+    product_description = fields.Text(string='Product Description')
 
 class StockContainer(models.Model):
     _name = 'product.container'

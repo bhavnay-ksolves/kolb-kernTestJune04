@@ -6,7 +6,7 @@
                 <Version>3.2</Version>
                 <VersDate>2013-10</VersDate>
                 <Date t-esc="date"/>
-                <Time t-esc="time"/>
+                <Time t-esc="time.strftime('%H:%M:%S')"/>
                 <ProgSystem>/ GXML Toolbox V3.2 R20190425</ProgSystem>
                 <ProgName>Odoo ERP</ProgName>
             </GAEBInfo>
@@ -173,9 +173,9 @@
         <t t-set="lines" t-value="lines + [('02', order.name)]"/>
         <t t-set="lines" t-value="lines + [('03', order.partner_id.name or '')]"/>
 
-        <t t-foreach="(order.partner_id.contact_address or '').split('\n')" t-as="line">
-            <t t-set="lines" t-value="lines + [('04', line.strip())]"/>
-        </t>
+<!--        <t t-foreach="(order.partner_id.contact_address or '').split('\n')" t-as="line">-->
+<!--            <t t-set="lines" t-value="lines + [('04', line.strip())]"/>-->
+<!--        </t>-->
 
         <t t-set="lines" t-value="lines + [('08', order.currency_id.name + '   ' + order.currency_id.name)]"/>
         <t t-set="lines" t-value="lines + [('20', '')]"/>
@@ -184,11 +184,15 @@
         <t t-set="lines" t-value="lines + [('26', '   wir danken Ihnen für Ihre Anfrage und bieten nachstehen')]"/>
         <t t-set="lines" t-value="lines + [('26', '   d an:')]"/>
         <t t-set="lines" t-value="lines + [('111', '        N    Titel')]"/>
+        <t t-set="lines" t-value="lines + [('12', 'Vorbereitende Arbeiten')]"/>
+        <t t-set="lines" t-value="lines + [('20', '')]"/>
 
         <t t-foreach="order.order_line" t-as="ol">
             <t t-set="desc"
                t-value="'        P    ' + ol.product_id.display_name[:40] + ' Qty: ' + '%.2f' % ol.product_uom_qty + ' Price: ' + '%.2f' % ol.price_unit"/>
-            <t t-set="lines" t-value="lines + [('112', desc)]"/>
+            <t t-set="lines" t-value="lines + [('26','   ' + ol.product_id.display_name)]"/>
+            <t t-set="lines" t-value="lines + [('26','   ' + ol.product_description)]"/>
+            <t t-set="lines" t-value="lines + [('21101','   ' + ol.product_description)]"/>
         </t>
 
         <t t-set="output" t-value="[]"/>

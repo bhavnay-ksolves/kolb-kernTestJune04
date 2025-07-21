@@ -8,7 +8,7 @@
                 <Version>3.2</Version>
                 <VersDate>2013-10</VersDate>
                 <Date t-esc="date"/>
-                <Time t-esc="time"/>
+                <Time t-esc="time.strftime('%H:%M:%S')"/>
                 <ProgSystem>/ GXML Toolbox V3.2 R20190425</ProgSystem>
             </GAEBInfo>
             <SaleOrder>
