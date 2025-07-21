@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="daily_construction_report_company_rule" model="ir.rule">
+            <field name="name">Daily Report: Company-based access</field>
+            <field name="model_id" ref="model_daily_construction_report"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+        </record>
+    </data>
+</odoo>

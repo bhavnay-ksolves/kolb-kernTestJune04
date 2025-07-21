@@ -9,11 +9,15 @@ class DailyConstructionReport(models.Model):
     _rec_name = 'project_id'
 
     project_id = fields.Many2one('project.project', string="Project", required=True)
-    site_location = fields.Char(string="Site Location")
-    attendance = fields.Char(string="Attendance")
+    site_location = fields.Char(string="Site Location",required=True,tracking=True)
+    attendance = fields.Char(string="Attendance",required=True)
     date = fields.Date(string="Date", default=fields.Date.context_today)
-    weather = fields.Float(string="Weather")
+    weather = fields.Float(string="Weather",required=True)
 
+    company_id = fields.Many2one(
+        'res.company', string="Company",
+        related='project_id.company_id',required=True
+    )
     # Stage field
     state = fields.Selection([
         ('new', 'New'),
@@ -93,6 +97,7 @@ class DailyConstructionReport(models.Model):
         return self.env.ref('ks_project_extend.action_daily_construction_pdf').report_action(self)
 
     def action_send_esignature_report(self):
+        """This functions will redirect the page to sign the customer on daily construction report"""
         self.ensure_one()
 
         # Get the report and render PDF
