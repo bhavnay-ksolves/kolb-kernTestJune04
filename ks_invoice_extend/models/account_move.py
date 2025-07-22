@@ -26,8 +26,3 @@ class AccountMove(models.Model):
     )
     period_start = fields.Datetime(string="Period Start")
     period_end = fields.Datetime(string="Period End")
-    measurement_id = fields.Many2one(
-        'measurement.calculation',  # Replace with your actual model name
-        string='Measurement Calculation',
-        help='Select the measurement record associated with this invoice'
-    )
