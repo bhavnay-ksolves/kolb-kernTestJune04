@@ -17,19 +17,5 @@
             </xpath>
         </field>
     </record>
-</odoo><odoo>
-
-        <!--  Product Search View Inherit    -->
-    <record id="product_product_search_view_inherit_pdf_flag" model="ir.ui.view">
-        <field name="name">product.product.search.pdf.flag</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_search_form_view"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
-                <filter name="to_be_printed_on_pdf" string="To Be Printed on PDF"
-                        domain="[('to_be_printed_on_pdf', '=', True)]"/>
-            </xpath>
-        </field>
-    </record>
-
 </odoo>
+
