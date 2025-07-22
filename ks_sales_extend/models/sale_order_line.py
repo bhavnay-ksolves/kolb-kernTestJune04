@@ -192,6 +192,7 @@ class SaleOrderLine(models.Model):
     to_be_printed_on_pdf = fields.Boolean(string='To Be Printed on PDF', default=False)
     efb_id = fields.Many2one('offer.efb', string='EFB Reference')
     long_desc = fields.Text(string='Long Description')
+    ks_pos = fields.Char(string="POS", digits='Product Price', default='POS 1')
 
     @api.onchange('product_id')
     def _onchange_product_id_set_pdf_flag(self):

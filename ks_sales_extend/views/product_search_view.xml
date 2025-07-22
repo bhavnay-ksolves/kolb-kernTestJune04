@@ -17,7 +17,6 @@
             </xpath>
         </field>
     </record>
-</odoo>
 
         <!--  Product Search View Inherit    -->
     <record id="product_product_search_view_inherit_pdf_flag" model="ir.ui.view">

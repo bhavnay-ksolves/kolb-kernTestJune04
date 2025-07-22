@@ -14,3 +14,20 @@ class AccountMove(models.Model):
         string='Project',
         help='Related project for this invoice'
     )
+    invoice_stage = fields.Selection([
+        ('intermediate', 'Intermediate Invoice'),
+        ('final', 'Final Invoice'),
+    ], string='Invoice Stage', default='intermediate',required=True)
+    qr_code = fields.Binary("Payment QR Code",tracking=True)
+    project_number = fields.Char(
+        string='Project Number',
+        related='project_id.sequence_code',
+        readonly=True
+    )
+    period_start = fields.Datetime(string="Period Start")
+    period_end = fields.Datetime(string="Period End")
+    measurement_id = fields.Many2one(
+        'measurement.calculation',  # Replace with your actual model name
+        string='Measurement Calculation',
+        help='Select the measurement record associated with this invoice'
+    )

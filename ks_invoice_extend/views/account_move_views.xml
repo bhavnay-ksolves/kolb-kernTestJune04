@@ -18,11 +18,27 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <group>
-                    <field name="project_id" string="Project"/>
-                </group>
+            <xpath expr="//field[@name='partner_shipping_id']" position="before">
+                <field name="project_id"/>
+                <field name="project_number"/>
             </xpath>
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <div class="o_row" name="invoice_period_section" style="display: flex; gap: 16px; align-items: center;">
+                    <div class="o_form_label " style="width: 150px;font-weight: 550;">Invoice Period</div>
+                    <div style="flex: 1;">
+                        <field name="period_start"/>
+                    </div>
+                    <div style="flex: 1;">
+                        <field name="period_end"/>
+                    </div>
+                </div>
+                <field name="invoice_stage"/>
+            </xpath>
+             <xpath expr="//group[@name='accounting_info_group']" position="after">
+                 <group string="Customer Payment QR">
+                     <field name="qr_code" widget="image" class="oe_avatar"/>
+                 </group>
+             </xpath>
         </field>
     </record>
 </odoo>
