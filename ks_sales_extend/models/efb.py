@@ -2,6 +2,24 @@ from odoo import models, fields, api
 
 
 class EfbOffer(models.Model):
+    """
+    Represents the EFB Offer model in Odoo.
+
+    This model is used to manage offers linked to sale orders and order lines,
+    with additional details such as description, quantity, unit price, and total price.
+
+    Attributes:
+        order_id (fields.Many2one): Reference to the related sale order.
+        order_line_id (fields.Many2one): Reference to the related sale order line.
+        description (fields.Char): Short description of the offer.
+        long_desc (fields.Text): Detailed description of the offer.
+        sequence (fields.Float): Sequence number for ordering, defaults to 0.0.
+        company_id (fields.Many2one): Reference to the company, defaults to the current company.
+        product_uom_qty (fields.Float): Quantity of the product, defaults to 1.0.
+        product_uom (fields.Many2one): Unit of measure for the product.
+        price_unit (fields.Float): Unit price of the product.
+        price_subtotal (fields.Float): Total price, computed as quantity multiplied by unit price.
+    """
     _name = 'offer.efb'
     _description = 'EFB'
 
@@ -20,7 +38,12 @@ class EfbOffer(models.Model):
 
     @api.depends('product_uom_qty', 'price_unit')
     def _compute_amount(self):
-        """Compute for the total(Unit price x QTY)"""
+        """
+        Computes the total price (Unit price x Quantity) for the offer.
+
+        This method updates the `price_subtotal` field based on the quantity
+        and unit price of the product.
+        """
         for line in self:
             line.price_subtotal = line.product_uom_qty * line.price_unit
 
@@ -29,7 +52,18 @@ class EfbOffer(models.Model):
 
     @api.model
     def create(self, vals):
-        """Sequence Generated"""
+        """
+        Overrides the create method to generate a sequence number for the offer.
+
+        The sequence is incremented based on the highest existing sequence
+        in the database.
+
+        Args:
+            vals (dict): Dictionary of values for the new record.
+
+        Returns:
+            recordset: The newly created record.
+        """
         max_seq = self.search([], order='sequence desc', limit=1).sequence or 0
         vals['sequence'] = max_seq + 1
         return super().create(vals)
