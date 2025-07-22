@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_product_form_inherit_pdf_flag" model="ir.ui.view">
+        <field name="name">product.product.form.to_be_printed_on_pdf</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <span class="d-inline-flex">
+                    <field name="to_be_printed_on_pdf"/>
+                    <label for="to_be_printed_on_pdf"/>
+                </span>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_move_form_inherit_project" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.project</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <group>
+                    <field name="project_id" string="Project"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
