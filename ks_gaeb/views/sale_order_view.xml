@@ -1,6 +1,7 @@
 <odoo>
     <data>
 
+            <!-- Inherit sale order form  -->
         <record id="view_order_form_inherit_x86" model="ir.ui.view">
             <field name="name">sale.order.form.x86.download</field>
             <field name="model">sale.order</field>
@@ -18,17 +19,13 @@
                             string="Download .d86"
                             class="btn-secondary"
                             icon="fa-download"/>
-<!--                    <button name="action_import_x83"-->
-<!--                            type="object"-->
-<!--                            string="Import .x83"-->
-<!--                            class="btn-secondary"-->
-<!--                            icon="fa-download"/>-->
-                    <button name="%(action_import_sale_order_x83)d" string="Import .x83" type="action"/>
+                    <button name="%(action_import_sale_order_x83)d" string="Import GAEB" type="action"/>
 
                 </xpath>
             </field>
         </record>
 
+                    <!-- Inherit sale order list  -->
         <record id="view_sale_order_list_inherit_x86_import" model="ir.ui.view">
             <field name="name">sale.order.list.inherit.x86.import</field>
             <field name="model">sale.order</field>
@@ -36,11 +33,11 @@
             <field name="arch" type="xml">
                 <field name="name" position="after">
                     <field name="ks_name"/>
-
                 </field>
             </field>
         </record>
 
+                            <!-- Inherit sale order action  -->
         <record id="gaeb_import_button_action" model="ir.actions.server">
             <field name="name">Import GAEB</field>
             <field name="model_id" ref="sale.model_sale_order"/>

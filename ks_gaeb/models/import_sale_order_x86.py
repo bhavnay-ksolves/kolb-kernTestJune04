@@ -22,6 +22,8 @@ class GaebImporter(models.TransientModel):
     ], string="File Type", default='x83', required=True)
 
     def _create_efb_line(self, item, desc_lines, efb_model, chatter_lines):
+        """method for create EFB line on import"""
+
         uom = self.env['uom.uom'].sudo().search([('name', 'ilike', item['unit'])], limit=1)
         if not uom:
             raise UserError(f"UoM not found for: {item['unit']}")
@@ -42,38 +44,79 @@ class GaebImporter(models.TransientModel):
             f"{desc} — Qty: {item['qty']}, Unit: {item['unit']}, Price: {item['price']}"
         )
 
-    def _import_x86(self):
+    def _import_x83(self):
+        """method for import x83 file type"""
         try:
             content = base64.b64decode(self.gaeb_file)
             tree = etree.fromstring(content)
         except Exception as e:
             raise UserError(f"Invalid XML file: {e}")
 
-        ns = {'g': 'http://www.gaeb.de/GAEB_DA_XML/DA83/3.2'}
+        # Detect GAEB version and namespace
+        root_ns = tree.nsmap.get(None)
+        if root_ns not in ["http://www.gaeb.de/GAEB_DA_XML/DA83/3.2","http://www.gaeb.de/GAEB_DA_XML/DA83/3.3","http://www.gaeb.de/GAEB_DA_XML/200407"]:
+            raise UserError(f"Unsupported GAEB namespace: {root_ns}")
+        ns = {'g': root_ns}
+
+        efb_model = self.env['offer.efb']
+        order = self.env[self._context['active_model']].browse(self._context['active_id'])
+
+        # ---------- Handle <AddText> and <Remark> with clean HTML formatting ----------
+        html_sections = []
+
+        # AddText content
+        addtext_nodes = tree.xpath('//g:AddText', namespaces=ns)
+        for addtext in addtext_nodes:
+            html_parts = []
+
+            outlines = addtext.xpath('.//g:OutlineAddText//g:p', namespaces=ns)
+            details = addtext.xpath('.//g:DetailAddText//g:p', namespaces=ns)
+
+            for p in outlines + details:
+                html_parts.append(etree.tostring(p, method='html', encoding='unicode'))
+
+            if html_parts:
+                html_sections.append("<div><h3 style='color:#2a2a2a'>AddText:</h3>" + "".join(html_parts) + "</div>")
+
+        # Remark content
+        remark_nodes = tree.xpath('//g:Remark//g:CompleteText//g:DetailTxt//g:Text//g:p', namespaces=ns)
+        remark_parts = []
+        for p in remark_nodes:
+            remark_parts.append(etree.tostring(p, method='html', encoding='unicode'))
+
+        if remark_parts:
+            html_sections.append("<div><h3 style='color:#2a2a2a'>Remarks:</h3>" + "".join(remark_parts) + "</div>")
+
+        # Write to sale order note
+        if html_sections:
+            order.note = "<br/><br/>".join(html_sections)
+
+        # ---------- Import EFB lines from <Item> ----------
         items = tree.xpath('//g:Item', namespaces=ns)
         if not items:
             raise UserError("No <Item> elements found in GAEB file.")
 
-        efb_model = self.env['offer.efb']
         chatter_lines = []
 
         for item in items:
             qty = float(item.findtext('g:Qty', namespaces=ns) or 0.0)
-            unit = item.findtext('g:QU', namespaces=ns) or False
+            unit = item.findtext('g:QU', namespaces=ns) or ''
             uom = self.env['uom.uom'].sudo().search([('name', 'ilike', unit)], limit=1)
 
             if not uom:
-                raise UserError(f"UoM not found for symbol: {unit}")
+                raise UserError(f"UoM not found for unit: {unit}")
 
+            # Outline (short) description
             desc_nodes = item.xpath('.//g:Description//g:CompleteText//g:OutlineText//g:OutlTxt//g:TextOutlTxt//g:span',
                                     namespaces=ns)
             desc = " ".join(span.text.strip() for span in desc_nodes if span.text)
 
+            # Detail (long) description
             span_nodes = item.xpath('.//g:Description//g:CompleteText//g:DetailTxt//g:Text//g:span', namespaces=ns)
             full_description = " ".join(span.text.strip() for span in span_nodes if span.text)
 
             efb_model.create({
-                'order_id': self.env[self._context['active_model']].browse(self._context['active_id']).id,
+                'order_id': order.id,
                 'description': desc or 'No description',
                 'long_desc': full_description or 'No description',
                 'product_uom_qty': qty,
@@ -82,13 +125,15 @@ class GaebImporter(models.TransientModel):
 
             chatter_lines.append(f"{desc or 'No name'} — Qty: {qty}, Unit: {unit}")
 
+        # ---------- Post import summary to chatter ----------
         if chatter_lines:
-            self.env.user.partner_id.message_post(
+            order.message_post(
                 body="<pre>GAEB (.x86) Import:\n" + "\n".join(chatter_lines) + "</pre>",
                 subtype_xmlid="mail.mt_note"
             )
 
-    def _import_d86(self):
+    def _import_d83(self):
+        """method for import d83 file type"""
         content = base64.b64decode(self.gaeb_file)
         lines = content.decode("utf-8", errors="ignore").splitlines()
 
@@ -104,7 +149,7 @@ class GaebImporter(models.TransientModel):
 
             # Start processing only after '111' code appears
             if not processing:
-                if line[:3] == "111":
+                if line[:6].strip() in ("111", "110101"):
                     processing = True
                 continue
 
@@ -165,6 +210,7 @@ class GaebImporter(models.TransientModel):
             )
 
     def action_import_file(self):
+        """method for validate for import file type"""
         if not self.gaeb_file or not self.filename:
             raise UserError("Please upload a GAEB file.")
 
@@ -173,11 +219,11 @@ class GaebImporter(models.TransientModel):
         if self.file_type == 'x83':
             if ext != '.x83':
                 raise UserError("Selected file type is .x83 but uploaded file is not .x83.")
-            self._import_x86()
+            self._import_x83()
 
         elif self.file_type == 'd83':
             if ext != '.d83':
                 raise UserError("Selected file type is .d83 but uploaded file is not .d83.")
-            self._import_d86()
+            self._import_d83()
         else:
             raise UserError("Unsupported file type.")

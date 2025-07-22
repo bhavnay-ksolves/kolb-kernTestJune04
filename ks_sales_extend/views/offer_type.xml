@@ -10,7 +10,7 @@
         </field>
     </record>
 
-    <!--  New action for Offer    -->
+    <!--  Offer Action    -->
     <record id="action_offer_type" model="ir.actions.act_window">
         <field name="name">Offer Type</field>
         <field name="res_model">offer.type</field>
@@ -20,7 +20,7 @@
         </field>
     </record>
 
-    <!--  New menu for Offer    -->
+    <!--  Offer Menu   -->
     <menuitem id="menu_offer_type" name="Offer Type" parent="sale.menu_sale_general_settings"
               action="action_offer_type"/>
 
