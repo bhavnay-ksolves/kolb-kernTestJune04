@@ -2,42 +2,85 @@ from odoo import models, fields, api, _
 
 
 class MeasurementCalculation(models.Model):
+    """
+    Model for Measurement Calculation.
+
+    This model is used to manage measurement calculations related to sales orders.
+    It includes fields for tracking the version, closing date, associated sale order,
+    measurement lines, and the state of the calculation. It also provides methods
+    to change the state and interact with related records.
+    """
     _name = 'measurement.calculation'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread']  # Inherits mail.thread for tracking changes.
     _description = 'Measurement Calculation'
 
+    # Name of the measurement calculation version, tracked for changes.
     name = fields.Char(string='Version', tracking=True)
-    closing_date = fields.Date(string='Closing Date', tracking=True,
-                               default=lambda self: fields.date.today())
+
+    # Closing date of the measurement calculation, tracked for changes.
+    closing_date = fields.Date(
+        string='Closing Date',
+        tracking=True,
+        default=lambda self: fields.date.today()
+    )
+
+    # Many2one relation to the associated sale order.
     order_id = fields.Many2one('sale.order', string='Sale Order')
-    measurement_ids = fields.One2many(comodel_name='measurement.calculation.line',
-                                      inverse_name='measurement_id', tracking=True,
-                                      string="Measurement Calculation")
-    state = fields.Selection(selection=[('draft', 'Draft'),
-                                        ('posted', 'Posted'),
-                                        ('cancel', 'Cancelled')],
-        string='Status', required=True, readonly=True, copy=False,
-        tracking=True, default='draft')
+
+    # One2many relation to measurement calculation lines, tracked for changes.
+    measurement_ids = fields.One2many(
+        comodel_name='measurement.calculation.line',
+        inverse_name='measurement_id',
+        tracking=True,
+        string="Measurement Calculation"
+    )
+
+    # State of the measurement calculation, tracked for changes.
+    state = fields.Selection(
+        selection=[
+            ('draft', 'Draft'),
+            ('posted', 'Posted'),
+            ('cancel', 'Cancelled')
+        ],
+        string='Status',
+        required=True,
+        readonly=True,
+        copy=False,
+        tracking=True,
+        default='draft'
+    )
+
+    # Related field to fetch the project ID from the associated sale order.
     project_id = fields.Many2one(related='order_id.project_id', store=True)
 
-
     def move_to_posted(self):
-        """To move the record to posted stage"""
+        """
+        Change the state of the record to 'posted'.
+        """
         for rec in self:
             rec.state = 'posted'
 
     def move_to_cancelled(self):
-        """To move the record to cancelled stage"""
+        """
+        Change the state of the record to 'cancelled'.
+        """
         for rec in self:
             rec.state = 'cancel'
 
     def move_to_draft(self):
-        """To move the record to draft stage"""
+        """
+        Change the state of the record to 'draft'.
+        """
         for rec in self:
             rec.state = 'draft'
 
     def action_get_sale_order(self):
-        """To call SO form view."""
+        """
+        Open the Sale Order form view filtered by the current measurement calculation.
+
+        Returns:
+            dict: Action dictionary to open the Sale Order form view.
+        """
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
@@ -48,7 +91,12 @@ class MeasurementCalculation(models.Model):
         }
 
     def action_get_invoice(self):
-        """To call SO form view."""
+        """
+        Placeholder method to open the Invoice form view.
+
+        TODO:
+            Implement the logic to open the Invoice form view.
+        """
         self.ensure_one()
         pass
         # TODO: build the Invoice form

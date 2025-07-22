@@ -1,4 +1,25 @@
 # -*- coding: utf-8 -*-
+"""
+Module for GAEB File Importer.
+
+This module defines the `GaebImporter` class, which provides functionality to import GAEB files (.x83 and .d83)
+and process their contents into Odoo models. It includes methods for parsing, validating, and creating records
+based on the imported data.
+
+Classes:
+    GaebImporter: Handles the import and processing of GAEB files.
+
+Attributes:
+    gaeb_file (Binary): The uploaded GAEB file.
+    filename (Char): The name of the uploaded file.
+    file_type (Selection): The type of GAEB file being imported (.x83 or .d83).
+
+Methods:
+    _create_efb_line: Creates an EFB line based on the imported data.
+    _import_x83: Handles the import of .x83 file type.
+    _import_d83: Handles the import of .d83 file type.
+    action_import_file: Validates and initiates the import process based on the file type.
+"""
 
 import base64
 import os
@@ -11,19 +32,34 @@ from odoo import models, fields, api
 
 
 class GaebImporter(models.TransientModel):
+    """
+    GAEB File Importer class.
+
+    This class provides methods to import GAEB files (.x83 and .d83) and process their contents into Odoo models.
+    """
     _name = 'gaeb.importer'
     _description = 'GAEB File Importer'
 
+    # Binary field to store the uploaded GAEB file
     gaeb_file = fields.Binary("GAEB File", required=True)
+    # Char field to store the filename of the uploaded file
     filename = fields.Char("Filename")
+    # Selection field to specify the type of GAEB file being imported
     file_type = fields.Selection([
         ('x83', 'GAEB (.x83)'),
         ('d83', 'GAEB (.d83)'),
     ], string="File Type", default='x83', required=True)
 
     def _create_efb_line(self, item, desc_lines, efb_model, chatter_lines):
-        """method for create EFB line on import"""
+        """
+        Creates an EFB line based on the imported data.
 
+        Args:
+            item (dict): Dictionary containing item details (quantity, unit, price, etc.).
+            desc_lines (list): List of description lines for the item.
+            efb_model (Model): The model to create the EFB line in.
+            chatter_lines (list): List to store summary lines for the chatter.
+        """
         uom = self.env['uom.uom'].sudo().search([('name', 'ilike', item['unit'])], limit=1)
         if not uom:
             raise UserError(f"UoM not found for: {item['unit']}")
@@ -45,7 +81,11 @@ class GaebImporter(models.TransientModel):
         )
 
     def _import_x83(self):
-        """method for import x83 file type"""
+        """
+        Handles the import of .x83 file type.
+
+        Parses the XML content of the uploaded .x83 file and processes its elements to create records in Odoo.
+        """
         try:
             content = base64.b64decode(self.gaeb_file)
             tree = etree.fromstring(content)
@@ -54,14 +94,15 @@ class GaebImporter(models.TransientModel):
 
         # Detect GAEB version and namespace
         root_ns = tree.nsmap.get(None)
-        if root_ns not in ["http://www.gaeb.de/GAEB_DA_XML/DA83/3.2","http://www.gaeb.de/GAEB_DA_XML/DA83/3.3","http://www.gaeb.de/GAEB_DA_XML/200407"]:
+        if root_ns not in ["http://www.gaeb.de/GAEB_DA_XML/DA83/3.2", "http://www.gaeb.de/GAEB_DA_XML/DA83/3.3",
+                           "http://www.gaeb.de/GAEB_DA_XML/200407"]:
             raise UserError(f"Unsupported GAEB namespace: {root_ns}")
         ns = {'g': root_ns}
 
         efb_model = self.env['offer.efb']
         order = self.env[self._context['active_model']].browse(self._context['active_id'])
 
-        # ---------- Handle <AddText> and <Remark> with clean HTML formatting ----------
+        # Handle <AddText> and <Remark> with clean HTML formatting
         html_sections = []
 
         # AddText content
@@ -91,7 +132,7 @@ class GaebImporter(models.TransientModel):
         if html_sections:
             order.note = "<br/><br/>".join(html_sections)
 
-        # ---------- Import EFB lines from <Item> ----------
+        # Import EFB lines from <Item>
         items = tree.xpath('//g:Item', namespaces=ns)
         if not items:
             raise UserError("No <Item> elements found in GAEB file.")
@@ -125,7 +166,7 @@ class GaebImporter(models.TransientModel):
 
             chatter_lines.append(f"{desc or 'No name'} — Qty: {qty}, Unit: {unit}")
 
-        # ---------- Post import summary to chatter ----------
+        # Post import summary to chatter
         if chatter_lines:
             order.message_post(
                 body="<pre>GAEB (.x86) Import:\n" + "\n".join(chatter_lines) + "</pre>",
@@ -133,7 +174,11 @@ class GaebImporter(models.TransientModel):
             )
 
     def _import_d83(self):
-        """method for import d83 file type"""
+        """
+        Handles the import of .d83 file type.
+
+        Parses the content of the uploaded .d83 file and processes its elements to create records in Odoo.
+        """
         content = base64.b64decode(self.gaeb_file)
         lines = content.decode("utf-8", errors="ignore").splitlines()
 
@@ -210,7 +255,12 @@ class GaebImporter(models.TransientModel):
             )
 
     def action_import_file(self):
-        """method for validate for import file type"""
+        """
+        Validates and initiates the import process based on the file type.
+
+        Raises:
+            UserError: If the file type or extension does not match the selected file type.
+        """
         if not self.gaeb_file or not self.filename:
             raise UserError("Please upload a GAEB file.")
 

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!--  Updating project form view.  -->
+    <!-- Updating the project form view to include measurement calculations. -->
     <record id="view_project_form_inherit_measurement_cal" model="ir.ui.view">
+        <!-- Name of the view for identification. -->
         <field name="name">project.project.form.inherit.measurement.cal</field>
+
+        <!-- Specifies the model this view is associated with. -->
         <field name="model">project.project</field>
+
+        <!-- Inherits the base project form view to extend its functionality. -->
         <field name="inherit_id" ref="project.edit_project"/>
+
+        <!-- XML architecture for the view. -->
         <field name="arch" type="xml">
-            <!--  For adding Smart buttons on Project. -->
+            <!-- Adding smart buttons to the project form view. -->
             <div name="button_box" position="inside">
+                <!-- Button to access measurement calculation records. -->
                 <button class="oe_stat_button" type="object" icon="fa-calculator"
                         name="action_get_measurement_calculation_record">
+                    <!-- Displays the count of measurement calculations. -->
                     <field name="measurement_count" widget="statinfo"/>
                 </button>
             </div>

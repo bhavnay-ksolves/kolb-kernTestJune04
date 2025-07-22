@@ -1,4 +1,23 @@
 <odoo>
+    <!-- Product Search View Inherit -->
+    <record id="product_product_search_view_inherit_pdf_flag" model="ir.ui.view">
+        <!-- Name of the view -->
+        <field name="name">product.product.search.pdf.flag</field>
+        <!-- Model associated with the view -->
+        <field name="model">product.product</field>
+        <!-- Reference to the parent view to inherit -->
+        <field name="inherit_id" ref="product.product_search_form_view"/>
+        <!-- XML architecture of the view -->
+        <field name="arch" type="xml">
+            <!-- Add a filter after the 'name' field -->
+            <xpath expr="//field[@name='name']" position="after">
+                <!-- Filter to display products flagged for PDF printing -->
+                <filter name="to_be_printed_on_pdf" string="To Be Printed on PDF"
+                        domain="[('to_be_printed_on_pdf', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo><odoo>
 
         <!--  Product Search View Inherit    -->
     <record id="product_product_search_view_inherit_pdf_flag" model="ir.ui.view">

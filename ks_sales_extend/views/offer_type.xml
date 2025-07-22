@@ -1,27 +1,35 @@
 <odoo>
-    <!--  List View of Offer Type    -->
+    <!-- List View of Offer Type -->
     <record id="view_offer_type_tree" model="ir.ui.view">
+        <!-- Name of the view for identification -->
         <field name="name">offer.type.tree</field>
+        <!-- Specifies the model this view is associated with -->
         <field name="model">offer.type</field>
+        <!-- XML architecture for the list view -->
         <field name="arch" type="xml">
             <list editable="bottom">
+                <!-- Field displayed in the list view -->
                 <field name="name"/>
             </list>
         </field>
     </record>
 
-    <!--  Offer Action    -->
+    <!-- Offer Action -->
     <record id="action_offer_type" model="ir.actions.act_window">
+        <!-- Name of the action -->
         <field name="name">Offer Type</field>
+        <!-- Specifies the model this action is associated with -->
         <field name="res_model">offer.type</field>
+        <!-- View modes available for this action -->
         <field name="view_mode">list,form</field>
+        <!-- Help text displayed when no records are available -->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">Create the master records to link with sale orders.</p>
         </field>
     </record>
 
-    <!--  Offer Menu   -->
-    <menuitem id="menu_offer_type" name="Offer Type" parent="sale.menu_sale_general_settings"
+    <!-- Offer Menu -->
+    <menuitem id="menu_offer_type" name="Offer Type"
+              parent="sale.menu_sale_general_settings"
               action="action_offer_type"/>
-
 </odoo>
