@@ -3,18 +3,11 @@
 import base64
 import logging
 from datetime import datetime
-from datetime import datetime, date, timedelta
-from odoo import models, fields, api, exceptions
 
 from odoo.http import request
 
 from odoo import models, fields
 from odoo import models, fields, api, exceptions
-import requests
-from lxml import etree
-from odoo import models,fields
-from meteostat import Point, Hourly, Daily
-import logging
 
 _logger = logging.getLogger(__name__)
 THUNDERSTORM_WEATHER_CODES = [95, 96, 97, 98, 99]

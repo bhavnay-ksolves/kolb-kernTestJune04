@@ -125,19 +125,19 @@
                     </Description>
                    </Remark>
                 <t t-set="index" t-value="0"/>
-                <t t-foreach="order.order_line" t-as="line">
+                <t t-foreach="order.efb_line" t-as="line">
                     <t t-set="index" t-value="index + 1"/>
                     <Item t-att-ID="'item-%s' % line.id" t-att-RNoPart="'%02d' % index">
                         <Qty t-esc="line.product_uom_qty"/>
                         <QU t-esc="line.product_uom.name"/>
                         <UP t-esc="line.price_unit"/>
-                        <IT t-esc="line.price_total"/>
+                        <IT t-esc="line.price_subtotal"/>
                         <Description>
                             <CompleteText>
                                 <DetailTxt>
                                     <Text>
                                         <p>
-                                            <span t-esc="line.name"/>
+                                            <span t-esc="line.long_desc"/>
                                         </p>
                                     </Text>
                                 </DetailTxt>

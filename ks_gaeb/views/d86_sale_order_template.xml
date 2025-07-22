@@ -23,8 +23,8 @@
             <t t-set="lines" t-value="lines + [('26','   ' + ol.long_desc)]"/>
             <t t-set="code" t-value="'%05d' % (21101 + counter)"/>
             <t t-set="amount_code" t-value="'%05d' % (23101 + counter)"/>
-            <t t-set="line_text" t-value="'   ' + 'NNN ' + '%.2f' % ol.product_uom_qty + ' ' + ol.product_uom.name"/>
-            <t t-set="line_amount" t-value="'   ' + '%.2f' % ol.price_unit + ' ' + '%.2f' % ol.price_subtotal"/>
+            <t t-set="line_text" t-value="'   ' + 'NNN ' + str(ol.product_uom_qty) + ' ' + str(ol.product_uom.name or '')"/>
+            <t t-set="line_amount" t-value="'   ' + str(ol.price_unit or 0.0) + ' ' + str(ol.price_subtotal or 0.0)"/>
             <t t-set="lines" t-value="lines + [(code, line_text)]"/>
             <t t-set="lines" t-value="lines + [(amount_code, line_amount)]"/>
              <t t-set="counter" t-value="counter + 1"/>
@@ -50,7 +50,7 @@
         <t t-set="lines" t-value="lines + [('26', '')]"/>
         <t t-set="lines" t-value="lines + [('26', '    Ort, Datum\t\tRechtsverbindliche Unterschrift (optional')]"/>
         <t t-set="lines" t-value="lines + [('26', '     Firmenstempel)')]"/>
-       <t t-set="lines" t-value="lines + [('26', '    ' +str(order.amount_total) if order.amount_total else '0.0')]"/>
+       <t t-set="lines" t-value="lines + [('26', '    ' +str(order.amount_total) if order.amount_total else '   0.0')]"/>
 
 
         <t t-set="output" t-value="[]"/>

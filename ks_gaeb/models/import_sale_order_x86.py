@@ -44,8 +44,8 @@ class GaebImporter(models.TransientModel):
             f"{desc} — Qty: {item['qty']}, Unit: {item['unit']}, Price: {item['price']}"
         )
 
-    def _import_x86(self):
-        """method for import x86 file type"""
+    def _import_x83(self):
+        """method for import x83 file type"""
         try:
             content = base64.b64decode(self.gaeb_file)
             tree = etree.fromstring(content)
@@ -132,8 +132,8 @@ class GaebImporter(models.TransientModel):
                 subtype_xmlid="mail.mt_note"
             )
 
-    def _import_d86(self):
-        """method for import d86 file type"""
+    def _import_d83(self):
+        """method for import d83 file type"""
         content = base64.b64decode(self.gaeb_file)
         lines = content.decode("utf-8", errors="ignore").splitlines()
 
@@ -149,7 +149,7 @@ class GaebImporter(models.TransientModel):
 
             # Start processing only after '111' code appears
             if not processing:
-                if line[:3] == "111":
+                if line[:6].strip() in ("111", "110101"):
                     processing = True
                 continue
 
@@ -219,11 +219,11 @@ class GaebImporter(models.TransientModel):
         if self.file_type == 'x83':
             if ext != '.x83':
                 raise UserError("Selected file type is .x83 but uploaded file is not .x83.")
-            self._import_x86()
+            self._import_x83()
 
         elif self.file_type == 'd83':
             if ext != '.d83':
                 raise UserError("Selected file type is .d83 but uploaded file is not .d83.")
-            self._import_d86()
+            self._import_d83()
         else:
             raise UserError("Unsupported file type.")
