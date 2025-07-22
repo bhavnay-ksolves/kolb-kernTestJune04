@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
     <!-- Main Position Product -->
   <record id="product_main_position" model="product.template">
     <field name="name">Main position</field>

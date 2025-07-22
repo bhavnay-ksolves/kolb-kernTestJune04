@@ -10,10 +10,10 @@
         <!-- XML architecture of the view -->
         <field name="arch" type="xml">
             <!-- Add a button inside the header section -->
-            <xpath expr="//header" position="inside">
-                <button name="action_print_measurement_calculation" class="oe_highlight"
-                        type="object"/>
-            </xpath>
+<!--            <xpath expr="//header" position="inside">-->
+<!--                <button name="action_print_measurement_calculation" class="oe_highlight"-->
+<!--                        type="object"/>-->
+<!--            </xpath>-->
             <!-- Add a field for measurement_id after the delivery_date field -->
             <xpath expr="//field[@name='delivery_date']" position="after">
                 <field name='measurement_id' options="{'no_create': True, 'no_create_edit': True}"
