@@ -10,11 +10,15 @@ class DailyConstructionReport(models.Model):
     _rec_name = 'project_id'
 
     project_id = fields.Many2one('project.project', string="Project", required=True)
-    site_location = fields.Char(string="Site Location")
-    attendance = fields.Char(string="Attendance")
+    site_location = fields.Char(string="Site Location",required=True,tracking=True)
+    attendance = fields.Char(string="Attendance",required=True)
     date = fields.Date(string="Date", default=fields.Date.context_today)
-    weather = fields.Float(string="Weather")
+    weather = fields.Float(string="Weather",required=True)
 
+    company_id = fields.Many2one(
+        'res.company', string="Company",
+        related='project_id.company_id',required=True
+    )
     # Stage field
     state = fields.Selection([
         ('new', 'New'),
@@ -25,17 +29,17 @@ class DailyConstructionReport(models.Model):
     ], string='Status', default='new', tracking=True)
 
     # Execution Tab
-    description = fields.Char(string="Description")
-    machine = fields.Char(string="Machine")
-    delivery = fields.Char(string="Delivery")
+    description = fields.Text(string="Description")
+    machine = fields.Text(string="Machine")
+    delivery = fields.Text(string="Delivery")
 
     # Incidents Tab
-    incidents = fields.Char(string="Incidents")
-    incident_1 = fields.Char(string="Incidents")
-    incident_2 = fields.Char(string="Incidents")
-    incident_3 = fields.Char(string="Incidents")
-    incident_4 = fields.Char(string="Incidents")
-    incident_5 = fields.Char(string="Incidents")
+    incidents = fields.Text(string="Incidents")
+    incident_1 = fields.Text(string="Incidents")
+    incident_2 = fields.Text(string="Incidents")
+    incident_3 = fields.Text(string="Incidents")
+    incident_4 = fields.Text(string="Incidents")
+    incident_5 = fields.Text(string="Incidents")
     incident_attachment = fields.Binary(string="Incident Attachment")
 
     # Sign Off Tab
@@ -94,6 +98,7 @@ class DailyConstructionReport(models.Model):
         return self.env.ref('ks_project_extend.action_daily_construction_pdf').report_action(self)
 
     def action_send_esignature_report(self):
+        """This functions will redirect the page to sign the customer on daily construction report"""
         self.ensure_one()
 
         # Get the report and render PDF

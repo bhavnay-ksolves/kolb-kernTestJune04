@@ -1,31 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import base64
-import logging
+from odoo import models, fields, api
 from datetime import datetime
-from datetime import datetime, date, timedelta
-from odoo import models, fields, api, exceptions
-
 from odoo.http import request
+import base64
+class PurchaseOrder(models.Model):
+    _inherit = 'purchase.order'
 
-from odoo import models, fields
-from odoo import models, fields, api, exceptions
-import requests
-from lxml import etree
-from odoo import models,fields
-from meteostat import Point, Hourly, Daily
-import logging
-
-_logger = logging.getLogger(__name__)
-THUNDERSTORM_WEATHER_CODES = [95, 96, 97, 98, 99]
-
-
-class SaleOrder(models.Model):
-    _inherit = 'sale.order'
-
-    ks_name = fields.Char()
-
-    def action_download_x86_file(self):
+    def action_download_x81_file_po(self):
         self.ensure_one()
         now = datetime.now()
 
@@ -35,13 +17,15 @@ class SaleOrder(models.Model):
             'date': now.strftime('%Y-%m-%d'),
             'time': now.strftime('%H:%M:%S'),
         }
-        xml_body = request.env['ir.ui.view']._render_template('ks_gaeb.x86_sale_order_template', values)
+        xml_body = request.env['ir.ui.view']._render_template(
+            'ks_gaeb.x81_purchase_order_template', values
+        )
 
         # Prepend the XML declaration manually
         full_xml = f'<?xml version="1.0" encoding="UTF-8"?>\n{xml_body}'
 
         # Create attachment for download
-        filename = f"{self.name}.x86"
+        filename = f"{self.name}.x81"
         attachment = self.env['ir.attachment'].create({
             'name': filename,
             'type': 'binary',
@@ -57,13 +41,13 @@ class SaleOrder(models.Model):
             'target': 'self',
         }
 
-    def action_download_d86_file(self):
+    def action_download_d81_file_po(self):
         self.ensure_one()
 
         currency = self.currency_id.name if self.currency_id else 'EUR'
 
         rendered_text = request.env['ir.ui.view']._render_template(
-            'ks_gaeb.gaeb_d86_sale_template',
+            'ks_gaeb.gaeb_d81_purchase_template',
             {
                 'order': self,
                 'currency': currency,
@@ -73,7 +57,7 @@ class SaleOrder(models.Model):
         # Rendered text is a list of strings joined by newlines
         content = rendered_text.strip()
 
-        filename = f"{self.name}.d86"
+        filename = f"{self.name}.d81"
         attachment = self.env['ir.attachment'].create({
             'name': filename,
             'type': 'binary',

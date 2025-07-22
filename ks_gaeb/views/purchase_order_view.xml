@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_purchase_order_inherit_x86_button" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.x86</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_download_x81_file_po"
+                        type="object"
+                        string="Download .x81"
+                        class="btn-primary"
+                        icon="fa-download"/>
+                <button name="action_download_d81_file_po"
+                            type="object"
+                            string="Download .d81"
+                            class="btn-secondary"
+                            icon="fa-download"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

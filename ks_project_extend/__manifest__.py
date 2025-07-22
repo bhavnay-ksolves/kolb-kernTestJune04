@@ -7,6 +7,7 @@
     'depends': ['base','project','ks_custom_security'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/daily_construction_report_views.xml',
         'views/project_project.xml',
         'views/type_of_work.xml',

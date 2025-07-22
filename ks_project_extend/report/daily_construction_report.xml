@@ -1,50 +1,49 @@
 <odoo>
     <template id="report_daily_construction">
         <t t-call="web.html_container">
+            <style>
+                .page-break-after {
+                page-break-after: always;
+                }
+            </style>
             <div class="page">
             <t t-foreach="docs" t-as="doc">
-<!--                <main>-->
-
                 <div style="font-family: sans-serif;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding: 24px 0; text-align: center;">
+                                <span style="font-size: 36px; font-weight: 700; color: red; display: inline-block;">
+                                    Daily Construction Report
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                     <!-- General Info -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%"
-                        style="
-                        width: 100%;
-                        ">
-                        <thead>
-                            <tr>
-                                <td style="border-top: 25px solid #f0f5f9;"></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;
-                                    padding: 24px 0;">
-                                    <img src="haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
-                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">
-                                        <span style="color: red;">(Daily Construction Report)</span>
-                                    </span>
-                                </td>
-                            </tr>
-                        </thead>
+                        style="width: 100%;" class="page-break-after" >
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <td style="text-align: center;-->
+<!--                                    padding: 24px 0;">-->
+<!--&lt;!&ndash;                                    <img src="https://fastly.picsum.photos/id/844/200/300.jpg?hmac=FoLTDoQx77auo3mU-LS3Bs5tj69F-FoyzZhwSVv77xk" width="46" height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
+<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
+<!--                                        <span style="color: red;">Daily Construction Report</span>-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
                         <tbody>
                             <tr>
-                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px; font-weight: 600;">
+                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
+                                 font-weight: 600;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%"
                                         style="
                                         width: 100%;
                                         ">
                                         <tr>
-                                            <td style="background-color: #fff; border-radius: 4px;
+                                            <td style="background-color: #f0f5f9; border-radius: 4px;
                                                 text-align: center; padding: 8px;">
-                                                <span style="color: red;">(General)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Execution)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Incidents)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Sign-Off)</span>
+                                                <span style="color: red;">General</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -53,61 +52,75 @@
                             <tr>
                                 <td style="padding-top: 12px; padding-bottom: 24px;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                        width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9; padding: 16px; border-radius: 4px;
+                                        width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9; padding: 16px;
+                                        border-radius: 4px;
                                         ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
-                                                <img src="/ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon" style="vertical-align: top;" />
-<!--                                                <i class="fa fa-list-ul" style="font-size: 20px; vertical-align: top;color:black;"></i>-->
-                                                <span style="font-size:18px; color:#007bff;">🔹</span>
+                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            padding-bottom: 12px;">
+<!--                                                <img src="/ks_project_extend/static/src/img/list-icon.png" width="26"-->
+<!--                                                     height="26" alt="list icon" style="vertical-align: top;" />-->
 
                                                 <span style="color: red; padding-left: 4px;">
-                                                    (Site Information)
+                                                    Site Information
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="outline: 2px solid #93a0b9; border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span><t t-esc="doc.project_id.name" /></span>
+                                            <td style="border: 1px solid #dde9f3;
+                                            border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.project_id.name" /></span>
                                             </td>
-                                            <td style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span><t t-esc="doc.site_location" /></span>
+                                            <td style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                            font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.site_location" /></span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
                                                 <span style="padding-right: 16px; color: #000;"><t t-esc="doc.date" /></span>
-                                                <img t-attf-src="ks_project_extend/static/src/img/calender-icon.png" width="20" height="20" alt="calender icon" style="vertical-align: top;" />
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/calender-icon.png"-->
+<!--                                                     width="20" height="20" alt="calender icon" style="vertical-align: top;" />-->
                                             </td>
                                             <td
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png" width="20" height="20" alt="cloud icon" style="vertical-align: top;" />
-                                                <span style="padding-left: 4px;">
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png"-->
+<!--                                                     width="20" height="20" alt="cloud icon" style="vertical-align: top;" />-->
+                                                <span style="padding-left: 4px;color: #000;">
                                                     <t t-esc="doc.weather"/>
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px; padding-top: 16px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon" style="vertical-align: top;" />
+                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            padding-bottom: 12px; padding-top: 16px;">
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
+<!--                                                     width="26" height="26" alt="list icon" style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    (Attendance)
+                                                    Attendance
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <textarea rows="4" style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
+                                                <div style="border: 1px solid #dde9f3; border-radius: 8px;
+                                                color: #000; font-size: 16px; padding: 12px; width: 100%;
+                                                box-sizing: border-box;">
                                                     <t t-esc="doc.attendance"/>
-                                                </textarea>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anwesende Personen (Vor- und Nachname, Rolle) (Present persons: First &amp; Last name, Role)</textarea>
-                                            </td>
+<!--                                            <td colspan="2" style="padding-top: 12px;">-->
+<!--                                                <textarea rows="4"-->
+<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px;-->
+<!--                                                    color: #93a0b9; font-size: 16px; padding: 12px; width: 100%;-->
+<!--                                                    box-sizing: border-box;">-->
+<!--                                                    Anwesende Personen (Vor- und Nachname, Rolle) (Present persons: First &amp; Last name, Role)</textarea>-->
+<!--                                            </td>-->
                                         </tr>
                                     </table>
                                 </td>
@@ -117,41 +130,33 @@
 
                     <!-- Execution Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                        width: 100%;
-                        ">
+                        width: 100%;" class="page-break-after">
                         <thead>
-                            <tr>
-                                <td style="border-top: 25px solid #f0f5f9;"></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;
-                                                        padding: 24px 0;">
-                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
-                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">
-                                        <span style="color: red;">(Daily Construction Report)</span>
-                                    </span>
-                                </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td style="text-align: center;-->
+<!--                                                        padding: 24px 0;">-->
+<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
+<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
+<!--                                        <span style="color: red;">Daily Construction Report</span>-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px; font-weight: 600;">
-                                    <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                                            width: 100%;
-                                                            ">
+                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
+                                 font-weight: 600;">
+                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                        style="
+                                        width: 100%;
+                                        ">
                                         <tr>
-                                            <td style="background-color: #fff; border-radius: 4px;
-                                                                    text-align: center; padding: 8px;">
-                                                <span style="color: red;">(General)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Execution)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Incidents)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Sign-Off)</span>
+                                            <td style="background-color: #f0f5f9; border-radius: 4px;
+                                                text-align: center; padding: 8px;">
+                                                <span style="color: red;">Execution</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -160,78 +165,86 @@
                             <tr>
                                 <td style="padding-top: 12px; padding-bottom: 24px;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                                            width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9; padding: 16px; border-radius: 4px;
+                                                            width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9;
+                                                             padding: 16px; border-radius: 4px;
                                                             ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"
-                                                    style="vertical-align: top;" />
+                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            padding-bottom: 12px;">
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
+<!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    (Work Performed)
+                                                    Work Performed
                                                 </span>
                                             </td>
                                         </tr>
+<!--                                        <tr>-->
+<!--                                            <td-->
+<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #000; font-size: 16px; padding: 12px; width: 20%;">-->
+<!--&lt;!&ndash;                                                <img t-attf-src="ks_project_extend/static/src/img/mic-icon.png" width="26" height="26" alt="mic icon" style="vertical-align: middle;" />&ndash;&gt;-->
+<!--                                                <span>Voice Input</span>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <select style="border: 1px solid #dde9f3; border-radius: 8px; background-color: #fff; color: #000; font-size: 16px; padding: 15px;">-->
+<!--                                                    <option>Deutsch...</option>-->
+<!--                                                    <option></option>-->
+<!--                                                </select>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                         <tr>
-                                            <td
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #000; font-size: 16px; padding: 12px; width: 20%;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/mic-icon.png" width="26" height="26" alt="mic icon" style="vertical-align: middle;" />
-                                                <span>(Voice Input)</span>
-                                            </td>
-                                            <td>
-                                                <select style="border: 1px solid #dde9f3; border-radius: 8px; background-color: #fff; color: #000; font-size: 16px; padding: 15px;">
-                                                    <option>Deutsch...</option>
-                                                    <option></option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anwesende Firmen / Gewerke (Companies / Trades present)</textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>Ort der Ausführung (Location of work)</span>
+                                            <td colspan="2" style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.description"/></span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>Mengen It. LV (Quantities as per spec)</span>
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.machine"/></span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>Maschinen &amp; Einsatzdauer (Machines &amp; Duration)</span>
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.delivery"/> </span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td style="padding-top: 8px; padding-bottom: 16px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" width="24" height="20" alt="add icon" style="vertical-align: top;" />
-                                                <span style="color: red;">(Add machine)</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>Materiallieferungen (Art &amp; Menge) (Material deliveries: type &amp; quantity)</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding-top: 8px; padding-bottom: 16px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" width="24" height="20" alt="add icon" style="vertical-align: top;" />
-                                                <span style="color: red;">(Add delivery)</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anweisungen durch AG / Architekt (Instructions by client/architect)</textarea>
-                                            </td>
-                                        </tr>
+<!--                                        <tr>-->
+<!--                                            <td colspan="2"-->
+<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; -->
+<!--                                                font-size: 16px; padding: 12px; width: 50%;">-->
+<!--                                                <span>Maschinen &amp; Einsatzdauer (Machines &amp; Duration)</span>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td style="padding-top: 8px; padding-bottom: 16px;">-->
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" -->
+<!--                                                     width="24" height="20" alt="add icon" -->
+<!--                                                     style="vertical-align: top;" />-->
+<!--                                                <span style="color: red;">Add machine</span>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td colspan="2"-->
+<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; -->
+<!--                                                font-size: 16px; padding: 12px; width: 50%;">-->
+<!--                                                <span>Materiallieferungen (Art &amp; Menge) (Material deliveries: type &amp; quantity)</span>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td style="padding-top: 8px; padding-bottom: 16px;">-->
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" width="24" height="20" alt="add icon" style="vertical-align: top;" />-->
+<!--                                                <span style="color: red;">Add delivery</span>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td colspan="2" style="padding-top: 12px;">-->
+<!--                                                <textarea rows="4"-->
+<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anweisungen durch AG / Architekt (Instructions by client/architect)</textarea>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                     </table>
                                 </td>
                             </tr>
@@ -240,41 +253,32 @@
 
                     <!-- Incidents Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                            width: 100%;
-                                            ">
+                                            width: 100%;" class="page-break-after">
                         <thead>
-                            <tr>
-                                <td style="border-top: 25px solid #f0f5f9;"></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;
-                                                        padding: 24px 0;">
-                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
-                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">
-                                        <span style="color: red;">(Daily Construction Report)</span>
-                                    </span>
-                                </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td style="text-align: center;-->
+<!--                                                        padding: 24px 0;">-->
+<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46"-->
+<!-- height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
+<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
+<!--                                        <span style="color: red;">Daily Construction Report</span>-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px; font-weight: 600;">
+                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
+                                 font-weight: 600;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                                             width: 100%;
                                                             ">
                                         <tr>
-                                            <td style="background-color: #fff; border-radius: 4px;
-                                                                    text-align: center; padding: 8px;">
-                                                <span style="color: red;">(General)</span>
-                                            </td>
                                             <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Execution)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Incidents)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Sign-Off)</span>
+                                                <span style="color: red;">Incidents</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -283,69 +287,88 @@
                             <tr>
                                 <td style="padding-top: 12px; padding-bottom: 24px;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                                            width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9; padding: 16px; border-radius: 4px;
+                                                            width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9;
+                                                             padding: 16px; border-radius: 4px;
                                                             ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"
-                                                    style="vertical-align: top;" />
+                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                             padding-bottom: 12px;">
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
+<!--                                                     width="26" height="26" alt="list icon"-->
+<!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    (Observations)
+                                                    Observations
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Ursache, Beteiligte, Dauer) (Obstructions: reason, parties, duration)</textarea>
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing:
+                                                     border-box;"><t t-esc="doc.incidents"/></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Weather-related delays)</textarea>
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px;
+                                                    color: #000; font-size: 16px; padding: 12px; width: 100%;
+                                                    box-sizing: border-box;"><t t-esc="doc.incident_1"/></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Instructions by site management /client)</textarea>
+                                                 <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px;
+                                                    color: #000; font-size: 16px; padding: 12px; width: 100%;
+                                                    box-sizing: border-box;"><t t-esc="doc.incident_2"/></div>
                                             </td>
                                         </tr>
                                         
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Safety issues / Incidents)</textarea>
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
+                                                    <t t-esc="doc.incident_3"/></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Coordination with other trades)</textarea>
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
+                                                    <t t-esc="doc.incident_4"/></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Attending supervisors, architects etc.)</textarea>
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
+                                                    <t t-esc="doc.incident_5"/></div>
                                             </td>
                                         </tr>
+<!--                                        <tr>-->
+<!--                                            <td colspan="2" style="padding-top: 12px;">-->
+<!--                                                <textarea rows="4"-->
+<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Remarks on change orders, defects etc.)</textarea>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
-                                                <textarea rows="4"
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Remarks on change orders, defects etc.)</textarea>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <div style="border: 1px dashed #dde9f3; border-radius: 8px; font-size: 18px; padding: 24px; width: 100%; box-sizing: border-box;
-                                                    text-align: center;">
-                                                    <img t-attf-src="ks_project_extend/static/src/img/cloud-arrow-icon.png" width="26" height="26" alt="cloud arrow icon" style="vertical-align: top;" />
+                                                <div style="border: 1px dashed #dde9f3; border-radius: 8px;
+                                                font-size: 18px; padding: 24px; width: 100%; box-sizing: border-box;">
+<!--                                                    <img t-attf-src="ks_project_extend/static/src/img/cloud-arrow-icon.png" -->
+<!--                                                         width="26" height="26" alt="cloud arrow icon" style="vertical-align: top;" />-->
                                                     <div style="padding-top: 4px;">
-                                                        <img t-attf-src="ks_project_extend/static/src/img/cam-icon.png" width="26" height="26" alt="camera icon" style="vertical-align: middle;" />
+<!--                                                        <img t-attf-src="ks_project_extend/static/src/img/cam-icon.png" -->
+<!--                                                             width="26" height="26" alt="camera icon" -->
+<!--                                                             style="vertical-align: middle;" />-->
                                                         <span style="padding-left: 4px;
-                                                        color: red;">(Upload photos or documents)</span>
+                                                        color: red;"><img t-if="doc.incident_attachment"
+                                                                          t-att-src="image_data_uri(doc.incident_attachment)"/></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -358,41 +381,31 @@
                     
                     <!-- Sign Off Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                            width: 100%;
-                                            ">
+                                            width: 100%;">
                         <thead>
-                            <tr>
-                                <td style="border-top: 25px solid #f0f5f9;"></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center;
-                                                                            padding: 24px 0;">
-                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />
-                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">
-                                        <span style="color: red;">(Daily Construction Report)</span>
-                                    </span>
-                                </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td style="text-align: center;padding: 24px 0;">-->
+<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46"-->
+<!--height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
+<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
+<!--                                        <span style="color: red;">Daily Construction Report</span>-->
+<!--                                    </span>-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px; font-weight: 600;">
+                                <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
+                                font-weight: 600;">
                                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                                                                 width: 100%;
                                                                                 ">
                                         <tr>
-                                            <td style="background-color: #fff; border-radius: 4px;
-                                                                                        text-align: center; padding: 8px;">
-                                                <span style="color: red;">(General)</span>
-                                            </td>
                                             <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Execution)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Incidents)</span>
-                                            </td>
-                                            <td style="text-align: center; padding: 8px;">
-                                                <span style="color: red;">(Sign-Off)</span>
+                                                <span style="color: red;">Sign-Off</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -400,44 +413,71 @@
                             </tr>
                             <tr>
                                 <td style="padding-top: 12px; padding-bottom: 24px;">
-                                    <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
-                                                                                width: 100%; border-spacing: 16px; border: 2px solid #f0f5f9; padding: 16px; border-radius: 4px;
-                                                                                ">
+                                    <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                                           style="width: 100%; border-spacing: 16px;border: 2px solid #f0f5f9;
+                                           padding: 16px; border-radius: 4px;">
                                         <tr>
                                             <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
-                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"
-                                                    style="vertical-align: top;" />
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
+<!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    (Sign-Off)
+                                                    Sign-Off
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>(Name of reporter)</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 50%;">
-                                                <span>(Client/Supervisor signature)</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="float: right; padding-top: 8px;" colspan="2">
-                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%;">
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; padding: 12px; width: 50%;">
+                                                <table style="width: 100%; border-collapse: collapse;">
                                                     <tr>
-                                                        <td>
-                                                            <div style="border: 1px solid #dde9f3; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Back)</div>
-                                                        </td>
-                                                        <td style="padding-left: 8px;">
-                                                            <div style="background-color: blue; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Save Report)</div>
-                                                        </td>
+                                                        <t t-foreach="doc.responsible" t-as="person">
+                                                            <td style="border: 1px solid #93a0b9; border-radius: 6px;
+                                                            padding: 6px 10px; background-color: #f0f4fa; margin: 4px;">
+                                                                <t t-esc="person.name"/>
+                                                            </td>
+                                                        </t>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span> <img t-if="doc.supervisor_signature"
+                                                            t-att-src="image_data_uri(doc.supervisor_signature)"/></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span><img t-if="doc.client_signature"
+                                                           t-att-src="image_data_uri(doc.client_signature)"/></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+                                                <span><img t-if="doc.signoff_attachment"
+                                                           t-att-src="image_data_uri(doc.signoff_attachment)"/></span>
+                                            </td>
+                                        </tr>
+<!--                                        <tr>-->
+<!--                                            <td style="float: right; padding-top: 8px;" colspan="2">-->
+<!--                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%;">-->
+<!--                                                    <tr>-->
+<!--                                                        <td>-->
+<!--                                                            <div style="border: 1px solid #dde9f3; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Back)</div>-->
+<!--                                                        </td>-->
+<!--                                                        <td style="padding-left: 8px;">-->
+<!--                                                            <div style="background-color: blue; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Save Report)</div>-->
+<!--                                                        </td>-->
+<!--                                                    </tr>-->
+<!--                                                </table>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                     </table>
                                 </td>
                             </tr>

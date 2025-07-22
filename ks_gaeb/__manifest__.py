@@ -12,6 +12,8 @@
         'views/d86_sale_order_template.xml',
         'views/sale_order_template.xml',
         'views/sale_order_view.xml',
+        'views/purchase_order_view.xml',
+        'views/purchase_order_template.xml',
     ],
     'installable': True,
     'application': False,
