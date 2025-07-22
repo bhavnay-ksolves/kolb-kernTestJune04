@@ -81,3 +81,8 @@ msgstr "Sonderpreis des Herstellers"
 #: model:ir.model,name:ks_purchase_extend.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "Bestellposition"
+
+#. module: ks_purchase_extend
+#: model:ir.model.fields,field_description:ks_purchase_extend.field_purchase_order_line__product_description
+msgid "Product Description"
+msgstr "Produktbeschreibung"
