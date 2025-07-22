@@ -27,7 +27,7 @@ class EfbOffer(models.Model):
     order_line_id = fields.Many2one('sale.order.line', string='Order Line Reference')
     description = fields.Char(string='Description')
     long_desc = fields.Text(string='Long Description')
-    sequence = fields.Float(string="Sequence", digits='Product Price', default=0.0)
+    ks_pos = fields.Char(string="POS", default='POS 1')
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company, index=True)
     product_uom_qty = fields.Float(
         string="Quantity",
@@ -50,20 +50,20 @@ class EfbOffer(models.Model):
     price_unit = fields.Float(string="Unit Price", digits='Product Price')
     price_subtotal = fields.Float(string="Total", compute="_compute_amount", store=True)
 
-    @api.model
-    def create(self, vals):
-        """
-        Overrides the create method to generate a sequence number for the offer.
-
-        The sequence is incremented based on the highest existing sequence
-        in the database.
-
-        Args:
-            vals (dict): Dictionary of values for the new record.
-
-        Returns:
-            recordset: The newly created record.
-        """
-        max_seq = self.search([], order='sequence desc', limit=1).sequence or 0
-        vals['sequence'] = max_seq + 1
-        return super().create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     """
+    #     Overrides the create method to generate a sequence number for the offer.
+    #
+    #     The sequence is incremented based on the highest existing sequence
+    #     in the database.
+    #
+    #     Args:
+    #         vals (dict): Dictionary of values for the new record.
+    #
+    #     Returns:
+    #         recordset: The newly created record.
+    #     """
+    #     max_seq = self.search([], order='sequence desc', limit=1).sequence or 0
+    #     vals['sequence'] = max_seq + 1
+    #     return super().create(vals)
