@@ -31,6 +31,7 @@ class MeasurementCalculationLine(models.Model):
                                      string='Measurement')
     order_id = fields.Many2one(related='measurement_id.order_id', tracking=True, )
 
+
 class MeasurementCalculationSubtable(models.Model):
     _name = 'measurement.calculation.subtable'
     _description = 'Measurement Calculation Subtable'

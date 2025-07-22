@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields,api
 
+
 class ProjectProject(models.Model):
     _inherit = 'project.project'
     responsible = fields.Many2many('res.users',string='Responsible',tracking=True)

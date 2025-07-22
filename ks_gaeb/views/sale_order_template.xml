@@ -1,30 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-    <template id="x86_sale_order_template">
-        <!-- GXML Toolbox V3.2 R20190425;  http://www.gaeb-toolbox.de/  -->
-        <GAEB xmlns="http://www.gaeb.de/GAEB_DA_XML/DA86/3.2">
-            <GAEBInfo>
-                <Version>3.2</Version>
-                <VersDate>2013-10</VersDate>
-                <Date t-esc="date"/>
-                <Time t-esc="time.strftime('%H:%M:%S')"/>
-                <ProgSystem>/ GXML Toolbox V3.2 R20190425</ProgSystem>
-            </GAEBInfo>
-            <SaleOrder>
-                <OrderName t-esc="order.name"/>
-                <Customer t-esc="order.partner_id.name"/>
-                <OrderLines>
-                    <t t-foreach="order.order_line" t-as="line">
-                        <Line>
-                            <Product t-esc="line.name"/>
-                            <Quantity t-esc="line.product_uom_qty"/>
-                            <UnitPrice t-esc="line.price_unit"/>
-                            <Subtotal t-esc="line.price_subtotal"/>
-                        </Line>
-                    </t>
-                </OrderLines>
-            </SaleOrder>
-        </GAEB>
-    </template>
+    <!-- Download template for GAEB X86    -->
+
+<template id="x86_sale_order_template">
+<![CDATA[<!--- GXML Toolbox V3.2 R20190425;  http://www.gaeb-toolbox.de/  -->]]>
+<GAEB xmlns="http://www.gaeb.de/GAEB_DA_XML/DA83/3.2">
+    <GAEBInfo>
+        <Version>3.2</Version>
+        <VersDate>2013-10</VersDate>
+        <Date t-esc="date"/>
+        <Time t-esc="time.strftime('%H:%M:%S')"/>
+        <ProgSystem>/ GXML Toolbox V3.2 R20190425</ProgSystem>
+        <ProgName>Odoo ERP</ProgName>
+    </GAEBInfo>
+    <PrjInfo>
+        <NamePrj t-esc="order.name"/>
+        <LblPrj t-esc="order.project_id.name or 'Offer'"/>
+        <Cur t-esc="order.currency_id.symbol"/>
+        <CurLbl t-esc="order.currency_id.name"/>
+    </PrjInfo>
+    <Award>
+        <DP>86</DP>
+        <AwardInfo>
+        <BidDate t-esc="order.date_order"/>
+        </AwardInfo>
+        <OWN>
+            <Address>
+                <Name1 t-esc="order.company_id.name"/>
+                <Street t-esc="order.company_id.street"/>
+                <PCode t-esc="order.company_id.zip"/>
+                <City t-esc="order.company_id.city"/>
+                <Country t-esc="order.company_id.country_id.name"/>
+            </Address>
+        </OWN>
+        <CTR>
+           <Address>
+            <Name1 t-esc="order.partner_id.name"/>
+            <Street t-esc="order.partner_id.street"/>
+            <PCode t-esc="order.partner_id.zip"/>
+            <City t-esc="order.partner_id.city"/>
+            <Country t-esc="order.partner_id.country_id.name"/>
+           </Address>
+        </CTR>
+        <BoQ>
+            <BoQInfo>
+                <Name>Angebot</Name>
+                <LblBoQ>VAT</LblBoQ>
+                <OutlCompl>AllTxt</OutlCompl>
+                <BoQBkdn>
+                    <Type>BoQLevel</Type>
+                    <LblBoQBkdn>Titel</LblBoQBkdn>
+                    <Length>1</Length>
+                    <Num>Yes</Num>
+                </BoQBkdn>
+                <BoQBkdn>
+                    <Type>Item</Type>
+                    <LblBoQBkdn>Position</LblBoQBkdn>
+                    <Length>2</Length>
+                    <Num>No</Num>
+                    <Alignment>left</Alignment>
+                </BoQBkdn>
+            </BoQInfo>
+            <BoQBody>
+                <Remark>
+                 <Description>
+                  <CompleteText>
+                   <DetailTxt>
+                    <Text>
+                     <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                      <span>Sehr geehrte Damen und Herren,</span>
+                     </p>
+                     <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                      <span> </span>
+                     </p>
+                     <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                      <span>wir danken Ihnen für Ihre Anfrage und bieten nachstehend an:</span>
+                     </p>
+                    </Text>
+                   </DetailTxt>
+                   <OutlineText>
+                    <OutlTxt>
+                     <TextOutlTxt>
+                      <span>automatik: Kopf (NACH)</span>
+                     </TextOutlTxt>
+                    </OutlTxt>
+                   </OutlineText>
+                  </CompleteText>
+                 </Description>
+                </Remark>
+                <BoQCtgy>
+                 <LblTx>
+                  <span>Vorbereitende Arbeiten</span>
+                 </LblTx>
+                 <BoQBody>
+                 <Itemlist>
+                <Remark>
+                    <Description>
+                     <CompleteText>
+                      <DetailTxt>
+                       <Text>
+                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                         <span>Gerüststellung </span>
+                        </p>
+                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                         <span>Das Angebot für die Gerüststellung liegt von der Fa. KOLB &#x26; KERN Gerüstbau GmbH bei.</span>
+                        </p>
+                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                         <span>Da es sich hier um eine rechtlich selbstständige Firma handelt, haben Sie dadurch einen Kostenvorteil. </span>
+                        </p>
+                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
+                         <span>Die Abwicklung läuft hierbei über uns, so dass Sie dadurch keine zusätzliche Belastung haben.</span>
+                        </p>
+                       </Text>
+                      </DetailTxt>
+                      <OutlineText>
+                       <OutlTxt>
+                        <TextOutlTxt>
+                         <span>Gerüstangebot</span>
+                        </TextOutlTxt>
+                       </OutlTxt>
+                      </OutlineText>
+                     </CompleteText>
+                    </Description>
+                   </Remark>
+                <t t-set="index" t-value="0"/>
+                <t t-foreach="order.efb_line" t-as="line">
+                    <t t-set="index" t-value="index + 1"/>
+                    <Item t-att-ID="'item-%s' % line.id" t-att-RNoPart="'%02d' % index">
+                        <Qty t-esc="line.product_uom_qty"/>
+                        <QU t-esc="line.product_uom.name"/>
+                        <UP t-esc="line.price_unit"/>
+                        <IT t-esc="line.price_subtotal"/>
+                        <Description>
+                            <CompleteText>
+                                <DetailTxt>
+                                    <Text>
+                                        <p>
+                                            <span t-esc="line.long_desc"/>
+                                        </p>
+                                    </Text>
+                                </DetailTxt>
+                                <OutlineText>
+                                    <OutlTxt>
+                                        <TextOutlTxt/>
+                                    </OutlTxt>
+                                </OutlineText>
+                            </CompleteText>
+                        </Description>
+                    </Item>
+                </t>
+                </Itemlist>
+                </BoQBody>
+                </BoQCtgy>
+            </BoQBody>
+        </BoQ>
+    </Award>
+</GAEB>
+</template>
 </odoo>
