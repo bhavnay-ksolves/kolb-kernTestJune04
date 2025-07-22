@@ -164,3 +164,19 @@ msgstr "Risikomanagement"
 #: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment_template__name
 msgid "Risk Type"
 msgstr "Risikotyp"
+
+#. module: ks_risk_assessment
+#: model:ir.model.fields,field_description:ks_risk_assessment.field_risk_assessment__company_id
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.view_risk_assessment_search
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.view_risk_assessment_template_search
+msgid "Group By"
+msgstr "Gruppieren nach"
+
+#. module: ks_risk_assessment
+#: model_terms:ir.ui.view,arch_db:ks_risk_assessment.view_task_form_risk_management
+msgid "Send Risk Report for E-Signature"
+msgstr "Risiko-Bericht zur elektronischen Unterschrift senden"

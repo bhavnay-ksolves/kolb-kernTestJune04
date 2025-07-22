@@ -17,7 +17,7 @@
                     <td style="vertical-align: top; width: 70%;">
                         <table style="width: 100%; border: none;">
                             <tr>
-                                <td><strong>Project Number:</strong><t t-esc="''"/></td>
+                                <td><strong>Project Number:</strong><t t-esc="project.sequence_code"/></td>
                             </tr>
                             <tr>
                                 <td>

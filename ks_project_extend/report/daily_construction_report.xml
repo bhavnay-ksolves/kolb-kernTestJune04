@@ -42,7 +42,7 @@
                                         ">
                                         <tr>
                                             <td style="background-color: #f0f5f9; border-radius: 4px;
-                                                text-align: center; padding: 8px;">
+                                                text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
                                                 <span style="color: red;">General</span>
                                             </td>
                                         </tr>
@@ -56,7 +56,7 @@
                                         border-radius: 4px;
                                         ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px;">
 <!--                                                <img src="/ks_project_extend/static/src/img/list-icon.png" width="26"-->
 <!--                                                     height="26" alt="list icon" style="vertical-align: top;" />-->
@@ -95,7 +95,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px; padding-top: 16px;">
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
 <!--                                                     width="26" height="26" alt="list icon" style="vertical-align: top;" />-->
@@ -155,7 +155,7 @@
                                         ">
                                         <tr>
                                             <td style="background-color: #f0f5f9; border-radius: 4px;
-                                                text-align: center; padding: 8px;">
+                                                text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
                                                 <span style="color: red;">Execution</span>
                                             </td>
                                         </tr>
@@ -169,7 +169,7 @@
                                                              padding: 16px; border-radius: 4px;
                                                             ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px;">
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
 <!--                                                    style="vertical-align: top;" />-->
@@ -277,7 +277,7 @@
                                                             width: 100%;
                                                             ">
                                         <tr>
-                                            <td style="text-align: center; padding: 8px;">
+                                            <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
                                                 <span style="color: red;">Incidents</span>
                                             </td>
                                         </tr>
@@ -291,7 +291,7 @@
                                                              padding: 16px; border-radius: 4px;
                                                             ">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;
+                                            <td colspan="2" style="font-size: 19px; font-weight: 600;
                                              padding-bottom: 12px;">
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
 <!--                                                     width="26" height="26" alt="list icon"-->
@@ -404,7 +404,7 @@
                                                                                 width: 100%;
                                                                                 ">
                                         <tr>
-                                            <td style="text-align: center; padding: 8px;">
+                                            <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
                                                 <span style="color: red;">Sign-Off</span>
                                             </td>
                                         </tr>
@@ -417,7 +417,7 @@
                                            style="width: 100%; border-spacing: 16px;border: 2px solid #f0f5f9;
                                            padding: 16px; border-radius: 4px;">
                                         <tr>
-                                            <td colspan="2" style="font-size: 22px; font-weight: 600;     padding-bottom: 12px;">
+                                            <td colspan="2" style="font-size: 19px; font-weight: 600;     padding-bottom: 12px;">
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
 <!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
