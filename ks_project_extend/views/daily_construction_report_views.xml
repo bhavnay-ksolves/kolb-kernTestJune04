@@ -38,7 +38,7 @@
                              icon="fa-pencil-square-o"/>
 
                      <field name="state" widget="statusbar"
-                            statusbar_visible="new,in_progress,submitted,approved,rejected"/>
+                            statusbar_visible="new,in_progress,submitted,approved"/>
 
                      <button name="action_start_progress" type="object" string="In Progress"
                              invisible="state != 'new'"
@@ -186,7 +186,7 @@
 
     <!-- Bulk Reject using existing method -->
     <record id="action_bulk_reject_reports" model="ir.actions.server">
-        <field name="name">Reject Daily Conatruction Reports</field>
+        <field name="name">Reject Daily Construction Reports</field>
         <field name="model_id" ref="model_daily_construction_report"/>
         <field name="binding_model_id" ref="model_daily_construction_report"/>
         <field name="binding_type">action</field>
