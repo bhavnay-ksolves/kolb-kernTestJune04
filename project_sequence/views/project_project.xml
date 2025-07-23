@@ -12,7 +12,7 @@
                     <div>
                         <label
                             for="sequence_code"
-                            class="oe_inline fw-bold"
+                            class="oe_inline fw-bold me-5"
                             string="Project Number"
                         />
                         <field name="sequence_code" class="oe_inline oe_input_align" />
