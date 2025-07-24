@@ -14,5 +14,6 @@ class PurchaseOrderLine(models.Model):
 class StockContainer(models.Model):
     _name = 'product.container'
     _description = 'Container'
+    _rec_name = 'name'
 
     name = fields.Char(string="Container Name", required=True)
