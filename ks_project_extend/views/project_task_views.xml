@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_task_form_weather" model="ir.ui.view">
+        <field name="name">project.task.form.weather</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <!-- Add button to header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_fetch_weather"
+                        string="Fetch Weather"
+                        type="object"
+                        class="btn-primary"
+                        icon="fa-cloud"/>
+            </xpath>
+
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="ks_weather"/>
+            </xpath>
+
+            <!-- Add tab with weather report table -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Weather Report">
+                    <field name="weather_ids">
+                        <list editable="bottom">
+                            <field name="report_date"/>
+                            <field name="temp_min"/>
+                            <field name="temp_max"/>
+                            <field name="humidity"/>
+                            <field name="conditions"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

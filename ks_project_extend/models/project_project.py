@@ -11,6 +11,8 @@ class ProjectProject(models.Model):
                                 required=True,tracking=True)
     work_order_description = fields.Char(string="Work Order Description",tracking=True)
     type_of_work_id = fields.Many2one('type.of.work', string="Type of Work",tracking=True,store=True)
+    latitude = fields.Char(string="Latitude")
+    longitude = fields.Char(string="Longitude")
     company_id = fields.Many2one('res.company', string='Company', compute="_compute_company_id",
                                  inverse="_inverse_company_id", store=True, readonly=False,
                                  default=lambda self: self.env.company)

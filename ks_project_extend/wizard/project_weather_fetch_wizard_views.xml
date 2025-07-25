@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_weather_fetch_wizard_form" model="ir.ui.view">
+        <field name="name">project.weather.fetch.wizard.form</field>
+        <field name="model">project.weather.fetch.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fetch Weather Data">
+                <group>
+                    <field name="task_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="latitude" readonly="1"/>
+                    <field name="longitude" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_fetch_weather" type="object" class="btn-primary" string="Fetch Weather"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
