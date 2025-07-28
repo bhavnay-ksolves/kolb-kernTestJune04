@@ -16,6 +16,10 @@
                         </list>
                     </field>
                 </page>
+                <page name="sign_report" string="Sign Report">
+                    <field name="sign_request_ids">
+                    </field>
+                </page>
             </xpath>
             <xpath expr="//header" position="inside">
                 <button name="action_report"

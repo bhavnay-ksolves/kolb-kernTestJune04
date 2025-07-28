@@ -208,6 +208,13 @@
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
+                                                <span style="color: #000;"><t t-esc="doc.areas_worked_on"/></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
                                                 <span style="color: #000;"><t t-esc="doc.delivery"/> </span>
                                             </td>
                                         </tr>
@@ -251,7 +258,7 @@
                         </tbody>
                     </table>
 
-                    <!-- Incidents Section -->
+                    <!-- Special Incidents Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                             width: 100%;" class="page-break-after">
                         <thead>
@@ -278,7 +285,7 @@
                                                             ">
                                         <tr>
                                             <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">Incidents</span>
+                                                <span style="color: red;">Special Incidents</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -296,9 +303,7 @@
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
 <!--                                                     width="26" height="26" alt="list icon"-->
 <!--                                                    style="vertical-align: top;" />-->
-                                                <span style="color: red; padding-left: 4px;">
-                                                    Observations
-                                                </span>
+                                                <span style="color: red; padding-left: 4px;">Observations</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -307,47 +312,6 @@
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
                                                     font-size: 16px; padding: 12px; width: 100%; box-sizing:
                                                      border-box;"><t t-esc="doc.incidents"/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <div
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px;
-                                                    color: #000; font-size: 16px; padding: 12px; width: 100%;
-                                                    box-sizing: border-box;"><t t-esc="doc.incident_1"/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                 <div
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px;
-                                                    color: #000; font-size: 16px; padding: 12px; width: 100%;
-                                                    box-sizing: border-box;"><t t-esc="doc.incident_2"/></div>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <div
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
-                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
-                                                    <t t-esc="doc.incident_3"/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <div
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
-                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
-                                                    <t t-esc="doc.incident_4"/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="padding-top: 12px;">
-                                                <div
-                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
-                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">
-                                                    <t t-esc="doc.incident_5"/></div>
                                             </td>
                                         </tr>
 <!--                                        <tr>-->
@@ -379,7 +343,7 @@
                         </tbody>
                     </table>
                     
-                    <!-- Sign Off Section -->
+                    <!-- Release Grant Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                             width: 100%;">
                         <thead>
@@ -405,7 +369,7 @@
                                                                                 ">
                                         <tr>
                                             <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">Sign-Off</span>
+                                                <span style="color: red;">Release Grant</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -421,7 +385,7 @@
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
 <!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    Sign-Off
+                                                    Release Grant
                                                 </span>
                                             </td>
                                         </tr>

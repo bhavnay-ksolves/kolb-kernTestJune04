@@ -10,3 +10,7 @@ class RiskAssessmentTemplate(models.Model):
     implementation = fields.Text(string="Implementation of the measures")
     review = fields.Text(string="Review of implementation")
     project_id = fields.Many2one('project.project', string="Project")
+    # Reference to the company, related to the project
+    company_id = fields.Many2one(
+        'res.company', string="Company",default=lambda self: self.env.company.id, readonly=True
+    )

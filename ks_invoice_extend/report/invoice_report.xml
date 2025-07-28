@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_kolb_kern_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+
+                    <!-- Header Row: Logo -->
+                    <tr>
+                        <td style="text-align: right;" colspan="4">
+                            <t t-if="doc.company_id.logo">
+                                <img t-att-src="image_data_uri(doc.company_id.logo)"
+                                     style="height: 95px; width: 120px; object-fit: cover;"/>
+                            </t>
+                        </td>
+                    </tr>
+
+                    <!-- Address Section -->
+                    <tr>
+                        <td style="padding-top: 20px;">
+                            <strong>Strauss Trading KG</strong>
+                            <br/>
+<!--                            <t t-esc="doc.partner_id.name"/>-->
+<!--                            <t t-esc="doc.partner_id.street or ''"/>-->
+<!--                            <t t-esc="doc.partner_id.street2 or ''"/>-->
+<!--                            <t t-esc="(doc.partner_id.zip or '') + ' ' + (doc.partner_id.city or '')"/>-->
+<!--                            <t t-esc="doc.partner_id.country_id.name or ''"/>-->
+                        </td>
+                        <!-- Bank Details Section -->
+                        <td style="padding-top: 20px; width: 70%; vertical-align: top; text-align: right;">
+                            <!--                        <strong>Sparkasse Aschaffenburg-Alzenau</strong>-->
+                            <!--                        <br/>-->
+                            <!--                        IBAN: DE19 7955 0000 0008 2049 01-->
+                            <!--                        <br/>-->
+                            <!--                        BIC: BYLADEM1ASA-->
+                            <!--                        <br/>-->
+                            <!--                        <br/>-->
+                            <strong>Frankfurter Volksbank Rhein/Main eG</strong>
+                            <br/>
+                            IBAN: DE54 5019 0000 0000 0239 90
+                            <br/>
+                            BIC: FFVBDEFF
+                            <br/>
+                            <span style="color: red;">
+                                <strong>Achtung: neue Bankverbindung bei der Volksbank</strong>
+                            </span>
+                        </td>
+
+                        <!-- QR Codes Column -->
+                        <t t-set="qrcode"
+                           t-value="request.env['ir.config_parameter'].sudo().get_param('ks_invoice_extend.qrcode')"/>
+                        <td style="padding-top: 20px;vertical-align: top; text-align: center;">
+                            <img t-if="qrcode" t-att-src="'data:image/png;base64,%s' % qrcode"
+                                 style="width:50px;margin-bottom:10px;"/>
+                            <br/>
+                            <!--                        <img src="/path/to/qr_volksbank.png" style="width:50px;"/>-->
+                        </td>
+                    </tr>
+
+                    <!-- Project Info (shown only once) -->
+                    <tr>
+                        <td colspan="4" style="padding-top: 30px;">
+                            <h3>Name of the invoices</h3>
+                            <table style="width: 100%; margin-top: 10px;">
+                                <tr>
+                                    <!-- Left side: Project Details -->
+                                   <td style="width: 60%; vertical-align: top; text-align: left;">
+                                       <strong t-esc="doc.name"/>
+                                       <br/>
+                                       Object: Boarding House / Hotel Neubau, Jahnstraße 52 + 53, 63619 Bad Orb
+                                       <br/>
+                                       Service provided between
+                                       <strong>
+                                           <t t-if="doc.date_start">
+                                               <t t-esc="doc.date_start.strftime('%d.%m.%Y')"/>
+                                           </t>
+                                       </strong>
+                                       and
+                                       <strong>
+                                           <t t-if="doc.date">
+                                               <t t-esc="doc.date.strftime('%d.%m.%Y')"/>
+                                           </t>
+                                       </strong>
+                                   </td>
+
+                                    <!-- Right side: Project Number -->
+                                    <td style="width: 40%; vertical-align: top; text-align: right;">
+                                        Project No.:
+                                        <t t-esc="doc.sequence_code"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Loop through all invoices -->
+                    <t t-foreach="doc.sale_order_id.invoice_ids" t-as="invoice">
+
+                        <!-- Invoice Header -->
+                        <tr>
+                            <td colspan="4" style="padding-top: 20px;">
+                                <h4>Invoice:
+                                    <t t-esc="invoice.name"/>
+                                </h4>
+                                Date:
+                                <!--                            <strong>-->
+                                <!--                                <t t-esc="invoice.invoice_date"/>-->
+                                <!--                            </strong>-->
+                            </td>
+                        </tr>
+
+                        <!-- Table Header -->
+                        <tr>
+                            <th style="border: 1px solid #000; text-align:left; padding:5px;">Pos</th>
+                            <th style="border: 1px solid #000; text-align:left; padding:5px;">Service</th>
+                            <th style="border: 1px solid #000; text-align:right; padding:5px;">Unit Price [EUR]</th>
+                            <th style="border: 1px solid #000; text-align:right; padding:5px;">Total [EUR]</th>
+                        </tr>
+
+                        <!-- Invoice Lines -->
+                        <t t-foreach="invoice.invoice_line_ids" t-as="line">
+                            <tr>
+                                <!-- Position -->
+                                <td style="border: 1px solid #000; padding:5px;">
+                                    <t t-esc="line.ks_pos"/>
+                                </td>
+
+                                <!-- Description -->
+                                <td style="border: 1px solid #000; padding:5px;">
+                                    <t t-esc="line.product_id.name"/>
+                                    <br/>
+                                    <t t-esc="line.short_description"/>
+                                    <br/>
+                                    <t t-esc="line.long_description"/>
+                                    <br/>
+                                    <t t-esc="line.quantity"/>
+                                    <t t-esc="line.product_uom_id.name"/>
+                                </td>
+
+                                <!-- Unit Price -->
+                                <td style="border: 1px solid #000; text-align:right; padding:5px;">
+                                    <t t-esc="line.price_unit"/>
+                                </td>
+
+                                <!-- Subtotal -->
+                                <td style="border: 1px solid #000; text-align:right; padding:5px;">
+                                    <t t-esc="line.price_subtotal"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <!-- Invoice Total -->
+                        <tr>
+                            <td colspan="3" style="border: 1px solid #000; text-align:right; padding:5px;">
+                                <strong>Total</strong>
+                            </td>
+                            <td style="border: 1px solid #000; text-align:right; padding:5px;">
+                                <t t-esc="invoice.amount_total"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <!--                    Invoice short details description-->
+                    <!-- Title Summary -->
+                    <tr>
+                        <td colspan="4" style="padding-top:20px; font-weight:bold; font-size:12px;">
+                            Title Summary :
+                        </td>
+                    </tr>
+
+                    <!-- Loop through invoices -->
+                    <table style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+                        <t t-foreach="doc.sale_order_id.invoice_ids" t-as="invoice">
+                            <tr>
+                                <!-- Invoice Number -->
+                                <td style="width: 25%; padding:5px; text-align:left; border: 1px solid #000;">
+                                    <t t-esc="invoice.name"/>
+                                </td>
+
+                                <!-- Invoice Name -->
+                                <td style="width: 25%; padding:5px; text-align:left; border: 1px solid #000;">
+                                    <t t-esc="invoice.name"/>
+                                </td>
+
+                                <!-- Total Amount -->
+                                <td style="width: 25%; padding:5px; text-align:right; border: 1px solid #000;">
+                                    <t t-esc="'%.2f' % (invoice.amount_total or 0.0)"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                    <!-- Grand Total Row -->
+                    <t t-set="grand_total" t-value="sum((inv.amount_total or 0.0) for inv in doc.sale_order_id.invoice_ids)"/>
+
+                    <tr>
+                        <td colspan="4" style="padding:5px; border-top:1px solid #000;">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="text-align:left; font-weight:bold;">Net Total</td>
+                                    <td style="text-align:right; font-weight:bold;">
+                                        <t t-esc="'%.2f' % grand_total"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="padding:5px; border-top:1px solid #000;">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="text-align:left; font-weight:bold;">VAT</td>
+                                    <td style="text-align:right; font-weight:bold;">
+                                        VAT tax
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Separator Line -->
+                    <tr>
+                        <td colspan="4" style="border-top:2px solid #000; height:5px;"></td>
+                    </tr>
+
+                    <!-- Gross Amount Row -->
+                    <tr>
+                        <td colspan="4" style="padding:5px;">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="text-align:left; font-weight:bold;">Gross Amount</td>
+                                    <td style="text-align:right; font-weight:bold;">
+                                        <t t-esc="'%.2f' % (grand_total + 0)"/> <!-- Replace +0 with VAT if needed -->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- ================== Invoice Summary Table ================== -->
+                    <table style="width:100%; border-collapse: collapse; font-size:12px;">
+
+                        <!-- ===== Table Header Row ===== -->
+                        <tr style="font-weight:bold; border-bottom:1px solid #000;">
+                            <th style="text-align:left; padding:5px; border:1px solid #000;">Invoice No.</th>
+                            <th style="text-align:left; padding:5px; border:1px solid #000;">Date</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">Net Amount</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">VAT</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">Gross Amount</th>
+                        </tr>
+
+                        <!-- ===== Loop over all related invoices ===== -->
+                        <t t-foreach="doc.sale_order_id.invoice_ids" t-as="invoice">
+                            <tr>
+                                <!-- Invoice Number -->
+                                <td style="padding:5px; border:1px solid #000; text-align:left;">
+                                    <t t-esc="invoice.name"/>
+                                </td>
+
+                                <!-- Invoice Date -->
+                                <td style="padding:5px; border:1px solid #000; text-align:left;">
+                                    <t t-if="invoice.invoice_date">
+                                        <t t-esc="invoice.invoice_date"/>
+                                    </t>
+                                </td>
+
+                                <!-- Net Amount (Untaxed) -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (invoice.amount_untaxed or 0.0)"/>
+                                </td>
+
+                                <!-- VAT Amount -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (invoice.amount_tax or 0.0)"/>
+                                </td>
+
+                                <!-- Gross Amount (Total) -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (invoice.amount_total or 0.0)"/>
+                                </td>
+                            </tr>
+                        </t>
+
+                        <!-- ===== Compute Totals for All Invoices ===== -->
+                        <t t-set="sum_net" t-value="sum((inv.amount_untaxed or 0.0) for inv in doc.sale_order_id.invoice_ids)"/>
+                        <t t-set="sum_tax" t-value="sum((inv.amount_tax or 0.0) for inv in doc.sale_order_id.invoice_ids)"/>
+                        <t t-set="sum_gross" t-value="sum((inv.amount_total or 0.0) for inv in doc.sale_order_id.invoice_ids)"/>
+
+                        <!-- ===== Total Amount Before Current Invoice ===== -->
+                        <tr style="font-weight:bold; border-top:2px solid #000;">
+                            <td colspan="2" style="padding:5px; text-align:left;">Total so far:</td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_net"/>
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_tax"/>
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_gross"/>
+                            </td>
+                        </tr>
+
+                        <!-- ===== Increase with Current Invoice (if applicable) ===== -->
+                        <tr style="font-weight:bold;">
+                            <td colspan="2" style="padding:5px; text-align:left;">Increase with this bill</td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (doc.amount_untaxed or 0.0)"/>-->
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (doc.amount_tax or 0.0)"/>-->
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (doc.amount_total or 0.0)"/>-->
+                            </td>
+                        </tr>
+
+                        <!-- ===== Total Performance (Net + Increase) ===== -->
+                        <tr style="font-weight:bold; border-top:2px solid #000;">
+                            <td colspan="2" style="padding:5px; text-align:right;">Previous Achievements</td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (sum_net + (doc.amount_untaxed or 0.0))"/>-->
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (sum_tax + (doc.amount_tax or 0.0))"/>-->
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (sum_gross + (doc.amount_total or 0.0))"/>-->
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- ============= Payment Summary Table ============= -->
+                    <table style="width:100%; border-collapse: collapse; font-size:12px;">
+
+                        <!-- Table Header -->
+                        <tr style="font-weight:bold; border-bottom:1px solid #000;">
+                            <th style="text-align:left; padding:5px; border:1px solid #000;">Invoice No.</th>
+                            <th style="text-align:left; padding:5px; border:1px solid #000;">Payment Date</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">Net Amount</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">VAT</th>
+                            <th style="text-align:right; padding:5px; border:1px solid #000;">Gross Amount</th>
+                        </tr>
+
+                        <!-- Loop through payments -->
+                        <t t-foreach="doc.sale_order_id.invoice_ids.mapped('payment_ids')" t-as="payment">
+                            <tr>
+                                <!-- Invoice Number -->
+                                <td style="padding:5px; border:1px solid #000; text-align:left;">
+                                    <t t-esc="payment"/>
+                                    <t t-esc="payment.name if payment.name else ''"/>
+                                </td>
+
+                                <!-- Payment Date -->
+                                <td style="padding:5px; border:1px solid #000; text-align:left;">
+                                    <t t-esc="payment.date"/>
+                                </td>
+
+                                <!-- Net Amount -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (payment.amount or 0.0)"/>
+                                </td>
+
+                                <!-- VAT Amount -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (payment.amount_tax or 0.0)"/>
+                                </td>
+
+                                <!-- Gross Amount -->
+                                <td style="padding:5px; border:1px solid #000; text-align:right;">
+                                    <t t-esc="'%.2f' % (payment.amount or 0.0)"/>
+                                </td>
+                            </tr>
+                        </t>
+
+                        <!-- Totals (Calculate after loop) -->
+                        <t t-set="sum_net"
+                           t-value="sum((p.amount_untaxed or 0.0) for p in doc.sale_order_id.invoice_ids.mapped('payment_ids'))"/>
+                        <t t-set="sum_tax"
+                           t-value="sum((p.amount_tax or 0.0) for p in doc.sale_order_id.invoice_ids.mapped('payment_ids'))"/>
+                        <t t-set="sum_gross"
+                           t-value="sum((p.amount or 0.0) for p in doc.sale_order_id.invoice_ids.mapped('payment_ids'))"/>
+
+                        <!-- Sum of Payments -->
+                        <tr style="font-weight:bold; border-top:2px solid #000;">
+                            <td colspan="2" style="padding:5px; text-align:left;">Total Payments:</td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_net"/>
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_tax"/>
+                            </td>
+                            <td style="padding:5px; text-align:right;">
+                                <t t-esc="'%.2f' % sum_gross"/>
+                            </td>
+                        </tr>
+
+                        <!-- Granted Discount -->
+                        <tr style="font-weight:bold;">
+                            <td colspan="4" style="padding:5px; text-align:left;">Granted Discount:</td>
+                            <td style="padding:5px; text-align:right;">
+                                <!--                            <t t-esc="'%.2f' % (doc.discount_amount or 0.0)"/>-->
+                            </td>
+                        </tr>
+
+                        <!-- Amount Payable -->
+                        <tr style="font-weight:bold; border-top:2px solid #000;">
+                            <td colspan="4" style="padding:5px; text-align:left;">Amount to be paid within this invoice:</td>
+                            <td style="padding:5px; text-align:right; text-decoration:underline;">
+                                <!--                            <t t-esc="'%.2f' % (sum_gross - (doc.discount_amount or 0.0))"/>-->
+                            </td>
+                        </tr>
+                    </table>
+                </table>
+            </t>
+        </t>
+    </template>
+
+    <!-- Paper Format -->
+    <record id="paperformat_kolb_kern_invoice" model="report.paperformat">
+        <field name="name">Invoice Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Report Action -->
+    <record id="action_kolb_kern_invoice_pdf" model="ir.actions.report">
+        <field name="name">Invoice</field>
+        <field name="model">project.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ks_invoice_extend.report_kolb_kern_invoice</field>
+        <field name="report_file">ks_invoice_extend.report_kolb_kern_invoice</field>
+        <field name="print_report_name">'%s - Kolb Kern Invoice' % (object.name or 'No Ref')</field>
+        <field name="paperformat_id" ref="ks_invoice_extend.paperformat_kolb_kern_invoice"/>
+    </record>
+
+</odoo>

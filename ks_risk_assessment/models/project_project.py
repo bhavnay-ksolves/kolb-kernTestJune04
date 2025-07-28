@@ -93,6 +93,11 @@ class ProjectTask(models.Model):
         'project_id',
         string='Risk Assessments'
     )
+    sign_request_ids = fields.One2many(
+        'sign.template',
+        'project_id',
+        string='Sign Reports'
+    )
 
     def action_report(self):
         """
@@ -146,6 +151,7 @@ class ProjectTask(models.Model):
         sign_template = self.env['sign.template'].create({
             'attachment_id': attachment.id,
             'name': f"Risk Assessment Template - {self.name or self.id}",
+            'project_id': self.id,
         })
         return {
             "type": "ir.actions.client",

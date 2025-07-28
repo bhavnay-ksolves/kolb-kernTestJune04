@@ -12,7 +12,7 @@ class DailyConstructionReport(models.Model):
 
     project_id = fields.Many2one('project.project', string="Project", required=True)
     site_location = fields.Char(string="Site Location",required=True,tracking=True)
-    attendance = fields.Char(string="Attendance",required=True)
+    attendance = fields.Char(string="Attendance (number,function,duration)",required=True)
     date = fields.Date(string="Date", default=fields.Date.context_today)
     weather = fields.Float(string="Weather",required=True)
 
@@ -30,17 +30,15 @@ class DailyConstructionReport(models.Model):
     ], string='Status', default='new', tracking=True)
 
     # Execution Tab
-    description = fields.Text(string="Description")
-    machine = fields.Text(string="Machine")
-    delivery = fields.Text(string="Delivery")
+    description = fields.Text(string="Description of the work carried out and the progress", required=True)
+    machine = fields.Text(string="Machine devices")
+    areas_worked_on = fields.Text(string="Areas worked on")
+    delivery = fields.Text(string="Consumed materials/delivery")
 
     # Incidents Tab
-    incidents = fields.Text(string="Incidents")
-    incident_1 = fields.Text(string="Incidents")
-    incident_2 = fields.Text(string="Incidents")
-    incident_3 = fields.Text(string="Incidents")
-    incident_4 = fields.Text(string="Incidents")
-    incident_5 = fields.Text(string="Incidents")
+    incidents = fields.Html(string="Incidents")
+    images_ids = fields.One2many('daily.construction.report.image', 'report_id', string="Images")
+    incidents_image = fields.One2many('ir.attachment', 'res_id', string="Incident Images")
     incident_attachment = fields.Binary(string="Incident Attachment")
 
     # Sign Off Tab
@@ -95,7 +93,7 @@ class DailyConstructionReport(models.Model):
             rec.message_post(body="Report has been submitted.")
 
     def daily_construction_report(self):
-        """Generate PDF report for Execution, Incidents, and Sign Off."""
+        """Generate PDF report for Execution, Incidents, and Release Grant."""
         return self.env.ref('ks_project_extend.action_daily_construction_pdf').report_action(self)
 
     def action_send_esignature_report(self):
@@ -126,6 +124,7 @@ class DailyConstructionReport(models.Model):
         sign_template = self.env['sign.template'].create({
             'attachment_id': attachment.id,
             'name': f"Daily Construction Template - {self.project_id.name or self.id}",
+            'project_id': self.project_id.id,
         })
         return {
             "type": "ir.actions.client",
@@ -139,6 +138,16 @@ class DailyConstructionReport(models.Model):
                 "resModel": self._name,
             },
         }
+
+class DailyConstructionReportImage(models.Model):
+    _name = 'daily.construction.report.image'
+    _description = 'Daily Construction Report Image'
+    _rec_name = 'description'
+
+    name = fields.Char('Name', required=True)
+    report_id = fields.Many2one('daily.construction.report', required=True)
+    image = fields.Binary('Image')
+
 
 
 
