@@ -10,18 +10,24 @@
                 <xpath expr="//header" position="inside">
                     <button name="action_download_x86_file"
                             type="object"
-                            string="Download .x86"
+                            string=".x86"
                             class="btn-primary"
-                            icon="fa-download"/>
+                            icon="fa-download"
+                            invisible="state != 'sale'"/>
 
                     <button name="action_download_d86_file"
                             type="object"
-                            string="Download .d86"
-                            class="btn-secondary"
-                            icon="fa-download"/>
-                    <button name="%(action_import_sale_order_x83)d" string="Import GAEB" type="action"/>
-
+                            string=".d86"
+                            class="btn-primary"
+                            icon="fa-download"
+                            invisible="state != 'sale'"/>
                 </xpath>
+
+                <xpath expr="//button[@name='action_quotation_send']" position="after">
+                    <button name="%(action_import_sale_order_x83)d" string="GAEB" icon="fa-upload"
+                            type="action" class="btn-primary" invisible="state != 'draft'"/>
+                </xpath>
+
             </field>
         </record>
 

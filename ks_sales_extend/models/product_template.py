@@ -16,3 +16,10 @@ class ProductTemplate(models.Model):
         string='To Be Printed on PDF',
         default=False
     )
+
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    # Related to filter Main position
+    to_be_printed_on_pdf = fields.Boolean(related='product_tmpl_id.to_be_printed_on_pdf')

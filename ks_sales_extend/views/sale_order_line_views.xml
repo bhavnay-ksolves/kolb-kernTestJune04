@@ -21,18 +21,20 @@
             </div>
 
             <!-- Add buttons to the header -->
-            <xpath expr="//header" position="inside">
-                <!-- Button to copy offer to EFB -->
+            <xpath expr="//button[@name='action_quotation_send']" position="after">
+                <!-- Button to copy offer to EFB, conditionally invisible -->
                 <button name="action_copy_offer_to_efb"
                         type="object"
-                        string="Add to EFB"
-                        class="btn btn-primary"/>
+                        string="Offer to EFB"
+                        class="btn btn-primary"
+                        invisible="state != 'draft'"/>
+
                 <!-- Button to copy EFB to offer, conditionally invisible -->
                 <button name="action_copy_efb_to_offer"
                         type="object"
-                        string="Add to Offer"
+                        string="EFB to Offer"
                         invisible="show_efb_to_order_btn"
-                        class="btn btn-secondary"/>
+                        class="btn btn-primary"/>
             </xpath>
 
             <!-- Replace label for the date_order field -->
@@ -47,7 +49,7 @@
 
             <!-- Add long POS field to Sale Order lines -->
             <xpath expr="//field[@name='order_line']/list/field[@name='product_template_id']" position="before">
-                <field name="ks_pos"/>
+                <field name="ks_pos" readonly="state != 'draft'"/>
             </xpath>
 
             <!-- Rename the order_lines page to Detailed offer -->
@@ -90,7 +92,7 @@
                     <!-- EFB line details -->
                     <field name="efb_line">
                         <list editable="bottom">
-                            <field name="ks_pos"/>
+                            <field name="ks_pos" attrs="{'readonly': [('order_id.state', 'in', ['sale', 'done'])]}"/>
                             <field name="description"/>
                             <field name="long_desc"/>
                             <field name="company_id" groups="base.group_multi_company" optional="hide"/>
@@ -102,8 +104,8 @@
                     </field>
                     <group>
                         <group></group>
-                        <!-- EFB totals group, conditionally visible -->
-                        <group string="EFB Totals" name="efb_totals" invisible='not efb_line'>
+                        <!-- EFB totals group -->
+                        <group string="EFB Totals" name="efb_totals">
                             <field name="efb_total_unit_price" widget="monetary" readonly="1"/>
                             <field name="efb_total_price" widget="monetary" readonly="1"/>
                         </group>

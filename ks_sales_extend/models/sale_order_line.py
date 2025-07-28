@@ -80,6 +80,7 @@ class SaleOrder(models.Model):
             ks_msg = ''
             for efb_line in order.efb_line:
                 new_order_lines.append((0, 0, {
+                    'ks_pos': efb_line.ks_pos,
                     'product_id': ks_product,
                     'long_desc': efb_line.long_desc,
                     'to_be_printed_on_pdf': True,
@@ -136,6 +137,7 @@ class SaleOrder(models.Model):
                     unit_price = total_price / total_qty if total_qty else 0.0
 
                     efb_lines.append((0, 0, {
+                        'ks_pos': main_line.ks_pos,
                         'product_uom_qty': total_qty,
                         'product_uom': main_line.product_uom.id,
                         'description': main_line.name,
@@ -192,10 +194,15 @@ class SaleOrderLine(models.Model):
     to_be_printed_on_pdf = fields.Boolean(string='To Be Printed on PDF', default=False)
     efb_id = fields.Many2one('offer.efb', string='EFB Reference')
     long_desc = fields.Text(string='Long Description')
-    ks_pos = fields.Char(string="POS", digits='Product Price', default='POS 1')
+    ks_pos = fields.Float(string="POS", default='1.0')
 
     @api.onchange('product_id')
     def _onchange_product_id_set_pdf_flag(self):
         """Onchange to autopopulate 'To be printed on pdf' boolean"""
         if self.product_id:
             self.to_be_printed_on_pdf = self.product_id.to_be_printed_on_pdf
+
+    def _prepare_invoice_line(self, **optional_values):
+        res = super()._prepare_invoice_line(**optional_values)
+        res['ks_pos'] = self.ks_pos
+        return res

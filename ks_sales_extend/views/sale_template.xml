@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Sale template Form View Inherit -->
+    <record id="ks_sale_template_view_form" model="ir.ui.view">
+        <!-- Name of the view -->
+        <field name="name">sale.order.template.form</field>
+        <!-- Model associated with the view -->
+        <field name="model">sale.order.template</field>
+        <!-- Reference to the parent view to inherit -->
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
+        <!-- XML architecture of the view -->
+        <field name="arch" type="xml">
+        <!-- Add POS field to Sale template lines -->
+            <xpath expr="//notebook/page[@name='order_lines']/field/list/field[@name='product_id']" position="before">
+                <field name="ks_pos" />
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+</odoo>

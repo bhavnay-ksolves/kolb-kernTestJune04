@@ -19,6 +19,7 @@
         "views/measurement_calulation_view.xml",
         "views/measurement_calculation_subtotal_view.xml",
         "views/project_project_view.xml",
+        "views/sale_template.xml",
         "views/account_move_view.xml"
     ],
     "installable": True,
