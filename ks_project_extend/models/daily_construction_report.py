@@ -139,6 +139,7 @@ class DailyConstructionReport(models.Model):
             },
         }
 
+# For image
 class DailyConstructionReportImage(models.Model):
     _name = 'daily.construction.report.image'
     _description = 'Daily Construction Report Image'
