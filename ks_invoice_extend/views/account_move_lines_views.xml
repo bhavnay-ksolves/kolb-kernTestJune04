@@ -9,9 +9,9 @@
                 <field name="delivered_work" optional="hide"/>
             </xpath>
              <xpath expr="//field[@name='product_id']" position="before">
-                <field name="ks_pos"/>
                 <field name="short_description" optional="hide"/>
                 <field name="long_description" optional="hide"/>
+                <field name="ks_pos" readonly="state != 'draft'"/>
             </xpath>
         </field>
     </record>

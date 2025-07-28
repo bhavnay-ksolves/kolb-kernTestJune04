@@ -8,11 +8,13 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'report/daily_construction_report.xml',
         'views/daily_construction_report_views.xml',
         'views/project_project.xml',
         'views/type_of_work.xml',
-        'report/daily_construction_report.xml',
-        'wizard/daily_construction_comment_wizard.xml'
+        'views/project_task_views.xml',
+        'wizard/daily_construction_comment_wizard.xml',
+        'wizard/project_weather_fetch_wizard_views.xml'
     ],
     'license': 'LGPL-3',
     'installable': True,
