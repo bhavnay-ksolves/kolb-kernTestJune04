@@ -5,7 +5,7 @@
         <field name="arch" type="xml">
             <form string="Fetch Weather Data">
                 <group>
-                    <field name="task_id"/>
+                    <field name="project_id"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
                     <field name="latitude" readonly="1"/>

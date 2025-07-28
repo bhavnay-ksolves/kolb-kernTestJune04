@@ -27,6 +27,28 @@
                     <field name="daily_construction_report_ids" widget="statinfo" string="Daily Construction Report"/>
                 </button>
             </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="action_fetch_weather"
+                        type="object"
+                        class="btn-primary"
+                        icon="fa-cloud"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Weather Report">
+                    <field name="weather_ids">
+                        <list create="false" edit="false" delete="false">
+                            <field name="report_date"/>
+                            <field name="temp_min"/>
+                            <field name="temp_max"/>
+                            <field name="humidity"/>
+                            <field name="conditions"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+
         </field>
     </record>
 </odoo>

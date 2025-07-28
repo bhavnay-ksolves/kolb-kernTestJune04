@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields,api
+from odoo.exceptions import UserError
 
 
 class ProjectProject(models.Model):
@@ -22,6 +23,7 @@ class ProjectProject(models.Model):
         'project_id',
         string='Daily Construction Reports'
     )
+    weather_ids = fields.One2many('project.project.weather', 'project_id', string="Weather Reports")
 
     @api.model
     def create(self, vals):
@@ -51,3 +53,18 @@ class ProjectProject(models.Model):
                 'user_ids': [(6, 0, user_ids)]
             })
 
+    def action_fetch_weather(self):
+        self.ensure_one()
+        if not self.latitude or not self.longitude:
+            raise UserError("Project has no latitude or longitude configured.")
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Fetch Weather',
+            'res_model': 'project.weather.fetch.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_task_id': self.id,
+            },
+        }

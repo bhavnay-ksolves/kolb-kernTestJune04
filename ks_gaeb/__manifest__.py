@@ -2,7 +2,7 @@
 {
     'name': 'Sale Order X86 File',
     'version': '1.0',
-    'depends': ['sale'],
+    'depends': ['base', 'sale', 'purchase'],
     'author': 'Ksolves',
     'category': 'Sales',
     'description': 'Adds a button on Sale Order to import/export .x86 file',

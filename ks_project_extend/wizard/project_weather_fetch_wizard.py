@@ -45,11 +45,12 @@ WEATHER_CODES = {
     29: "Thunderstorm with hail",
 }
 
+
 class ProjectWeatherFetchWizard(models.TransientModel):
     _name = 'project.weather.fetch.wizard'
     _description = 'Fetch Weather Wizard'
 
-    task_id = fields.Many2one('project.task', string="Task", required=True, readonly=True)
+    project_id = fields.Many2one('project.project', string="Task", required=True, readonly=True)
     start_date = fields.Date(string="Start Date", required=True)
     end_date = fields.Date(string="End Date", required=True)
     latitude = fields.Char(string="Latitude", required=True)
@@ -58,14 +59,14 @@ class ProjectWeatherFetchWizard(models.TransientModel):
     @api.model
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
-        task = self.env['project.task'].browse(self.env.context.get('active_id'))
-        if task.project_id.latitude is False or task.project_id.longitude is False:
+        project = self.env['project.project'].browse(self.env.context.get('active_id'))
+        if project.latitude is False or project.longitude is False:
             raise UserError("Project has no latitude/longitude. Please set coordinates first.")
 
         res.update({
-            'task_id': task.id,
-            'latitude': task.project_id.latitude,
-            'longitude': task.project_id.longitude,
+            'project_id': project.id,
+            'latitude': project.latitude,
+            'longitude': project.longitude,
         })
         return res
 
@@ -591,7 +592,7 @@ class ProjectWeatherFetchWizard(models.TransientModel):
             }))
 
         # Step 6: Replace existing lines
-        self.task_id.weather_ids = [(5, 0, 0)] + lines_to_create
+        self.project_id.sudo().weather_ids = [(5, 0, 0)] + lines_to_create
 
         if not lines_to_create:
             raise UserError(_("Weather data was fetched, but no valid rows were found."))

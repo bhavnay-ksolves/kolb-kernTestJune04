@@ -27,7 +27,7 @@ class EfbOffer(models.Model):
     order_line_id = fields.Many2one('sale.order.line', string='Order Line Reference')
     description = fields.Char(string='Description')
     long_desc = fields.Text(string='Long Description')
-    ks_pos = fields.Char(string="POS", default='POS 1')
+    ks_pos = fields.Float(string="POS")
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company, index=True)
     product_uom_qty = fields.Float(
         string="Quantity",
@@ -50,20 +50,19 @@ class EfbOffer(models.Model):
     price_unit = fields.Float(string="Unit Price", digits='Product Price')
     price_subtotal = fields.Float(string="Total", compute="_compute_amount", store=True)
 
-    # @api.model
-    # def create(self, vals):
-    #     """
-    #     Overrides the create method to generate a sequence number for the offer.
-    #
-    #     The sequence is incremented based on the highest existing sequence
-    #     in the database.
-    #
-    #     Args:
-    #         vals (dict): Dictionary of values for the new record.
-    #
-    #     Returns:
-    #         recordset: The newly created record.
-    #     """
-    #     max_seq = self.search([], order='sequence desc', limit=1).sequence or 0
-    #     vals['sequence'] = max_seq + 1
-    #     return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals):
+        # Auto-assign sequence if not provided and parent is known
+        if not vals[0].get('ks_pos') and vals[0].get('order_id'):
+            parent = self.env['sale.order'].browse(vals[0].get('order_id'))
+            if parent.exists():
+                existing_sequences = parent.efb_line.mapped('ks_pos')
+                vals[0]['ks_pos'] = max(existing_sequences or [0.0]) + 1.0
+            else:
+                vals[0]['ks_pos'] = 1.0
+        elif not vals[0].get('ks_pos'):
+            # Fallback if no parent
+            vals[0]['ks_pos'] = 1.0
+
+        return super(EfbOffer, self).create(vals)
+
