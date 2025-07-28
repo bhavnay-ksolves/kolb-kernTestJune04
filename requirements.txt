@@ -1,0 +1,2 @@
+# python3-* equivalent distributed in Ubuntu 24.04 and Debian 12
+meteostat==1.7.0
