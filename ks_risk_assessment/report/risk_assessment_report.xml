@@ -2,6 +2,12 @@
 <odoo>
     <template id="report_risk_assessment_document">
     <t t-call="web.html_container">
+        <style>
+            * {
+            font-family: 'DejaVu Sans', sans-serif;
+            }
+        </style>
+
         <t t-foreach="docs" t-as="project">
             <table class="page" style="width: 100%; border: none; margin: 0; padding: 0;">
                 <!-- Title Row -->
@@ -17,16 +23,16 @@
                     <td style="vertical-align: top; width: 70%;">
                         <table style="width: 100%; border: none;">
                             <tr>
-                                <td><strong>Project Number:</strong><t t-esc="project.sequence_code"/></td>
+                                <td>Project Number:<t t-esc="project.sequence_code"/></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <strong>Project Name:</strong>
+                                    Project Name:
                                     <t t-esc="project.name or ''"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Date of Creating Risk Assessment Report:</strong><t t-esc="project.date_report_creation.strftime('%d.%m.%Y') if project.date_report_creation else ''"/></td>
+                                <td>Date of Creating Risk Assessment Report:<t t-esc="project.date_report_creation.strftime('%d.%m.%Y') if project.date_report_creation else ''"/></td>
                             </tr>
                         </table>
                     </td>

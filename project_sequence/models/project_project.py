@@ -20,6 +20,7 @@ class ProjectProject(models.Model):
     sequence_code = fields.Char(
         copy=False,
         readonly=True,
+        string="Project Number"
     )
     name = fields.Char(
         # We actually require it with the SQL constraint, but it is disabled

@@ -34,11 +34,6 @@
                 </div>
                 <field name="invoice_stage"/>
             </xpath>
-             <xpath expr="//group[@name='accounting_info_group']" position="after">
-                 <group string="Customer Payment QR">
-                     <field name="qr_code" widget="image" class="oe_avatar"/>
-                 </group>
-             </xpath>
         </field>
     </record>
 </odoo>

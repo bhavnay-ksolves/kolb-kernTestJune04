@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_project_form_inherit_kolb_kern" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.kolb.kern</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="print_kolb_kern_invoices"
+                        type="object"
+                        string="Print Invoice Report"
+                        class="btn-primary"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

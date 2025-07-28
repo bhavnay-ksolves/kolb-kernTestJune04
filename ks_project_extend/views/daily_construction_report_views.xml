@@ -15,6 +15,7 @@
                 <field name="description" optional="hide"/>
                 <field name="machine" optional="hide"/>
                 <field name="delivery" optional="hide"/>
+                <field name="areas_worked_on" optional="hide"/>
             </list>
         </field>
     </record>
@@ -80,23 +81,24 @@
                             <group>
                                 <field name="description"/>
                                 <field name="machine"/>
+                                <field name="areas_worked_on"/>
                                 <field name="delivery"/>
                             </group>
                         </page>
 
-                        <page string="Incidents">
+                        <page string="Special incidents">
                             <group>
                                 <field name="incidents"/>
-                                <field name="incident_1"/>
-                                <field name="incident_2"/>
-                                <field name="incident_3"/>
-                                <field name="incident_4"/>
-                                <field name="incident_5"/>
+<!--                                 <field name="images_ids">-->
+<!--                                     <list editable="bottom">-->
+<!--                                         <field name="image"/>-->
+<!--                                     </list>-->
+<!--                                 </field>-->
                                 <field name="incident_attachment" widget="image"/>
                             </group>
                         </page>
 
-                        <page string="Sign Off">
+                        <page string="Release Grant">
                             <group>
                                 <field name="responsible" widget="many2many_tags"/>
                                 <field name="supervisor_signature" widget="image"/>
@@ -125,12 +127,8 @@
                 <field name="description"/>
                 <field name="machine"/>
                 <field name="delivery"/>
+                <field name="areas_worked_on"/>
                 <field name="incidents"/>
-                <field name="incident_1"/>
-                <field name="incident_2"/>
-                <field name="incident_3"/>
-                <field name="incident_4"/>
-                <field name="incident_5"/>
 
                 <separator/>
                 <filter name="filter_new" string="New" domain="[('state', '=', 'new')]"/>
@@ -151,6 +149,8 @@
                     <filter name="group_by_description" string="Description" context="{'group_by': 'description'}"/>
                     <filter name="group_by_machine" string="Machine" context="{'group_by': 'machine'}"/>
                     <filter name="group_by_delivery" string="Delivery" context="{'group_by': 'delivery'}"/>
+                    <filter name="group_by_areas_worked_on" string="Areas worked on"
+                            context="{'group_by': 'areas_worked_on'}"/>
                 </group>
             </search>
         </field>

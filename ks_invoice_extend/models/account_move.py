@@ -18,7 +18,6 @@ class AccountMove(models.Model):
         ('intermediate', 'Intermediate Invoice'),
         ('final', 'Final Invoice'),
     ], string='Invoice Stage', default='intermediate',required=True)
-    qr_code = fields.Binary("Payment QR Code",tracking=True)
     project_number = fields.Char(
         string='Project Number',
         related='project_id.sequence_code',

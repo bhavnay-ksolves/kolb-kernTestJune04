@@ -1,26 +1,8 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* ks_project_extend
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: Odoo Server 18.0+e\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-21 11:55+0000\n"
-"PO-Revision-Date: 2025-07-21 11:55+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
-
 #. module: ks_project_extend
 #: model:ir.actions.report,print_report_name:ks_project_extend.action_daily_construction_pdf
 msgid ""
 "'%s - Daily Construction Report' % (object.project_id.name or 'No Project')"
-msgstr ""
-"'%s - Täglicher Baubericht' % (object.project_id.name or 'Kein Projekt')"
+msgstr "'%s - Täglicher Baubericht' % (object.project_id.name or 'Kein Projekt')"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
@@ -35,24 +17,18 @@ msgstr ""
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
-msgid ""
-"<span style=\"color: red; padding-left: 4px;\">\n"
-"                                                    Observations\n"
-"                                                </span>"
-msgstr ""
-"<span style=\"color: red; padding-left: 4px;\">\n"
-"                                                    Beobachtungen\n"
-"                                                </span>"
+msgid "<span style=\"color: red; padding-left: 4px;\">Observations</span>"
+msgstr "<span style=\"color: red; padding-left: 4px;\">Beobachtungen</span>"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
 msgid ""
 "<span style=\"color: red; padding-left: 4px;\">\n"
-"                                                    Sign-Off\n"
+"                                                    Release Grant\n"
 "                                                </span>"
 msgstr ""
 "<span style=\"color: red; padding-left: 4px;\">\n"
-"                                                    Abzeichnung\n"
+"                                                    Freigabe\n"
 "                                                </span>"
 
 #. module: ks_project_extend
@@ -89,13 +65,13 @@ msgstr "<span style=\"color: red;\">Allgemein</span>"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
-msgid "<span style=\"color: red;\">Incidents</span>"
-msgstr "<span style=\"color: red;\">Vorfälle</span>"
+msgid "<span style=\"color: red;\">Release Grant</span>"
+msgstr "<span style=\"color: red;\">Freigabe</span>"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
-msgid "<span style=\"color: red;\">Sign-Off</span>"
-msgstr "<span style=\"color: red;\">Abzeichnung</span>"
+msgid "<span style=\"color: red;\">Special Incidents</span>"
+msgstr "<span style=\"color: red;\">Besondere Vorfälle</span>"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.report_daily_construction
@@ -126,7 +102,7 @@ msgstr "Aktivitäten"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Aktivität-Ausnahme-Dekoration"
+msgstr "Aktivitätsausnahme-Dekoration"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_state
@@ -136,7 +112,7 @@ msgstr "Aktivitätsstatus"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "Symbol des Aktivitätstyps"
+msgstr "Symbol für Aktivitätstyp"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_comment_wizard_form
@@ -171,6 +147,12 @@ msgid "Approved"
 msgstr "Genehmigt"
 
 #. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__areas_worked_on
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
+msgid "Areas worked on"
+msgstr "Bearbeitete Bereiche"
+
+#. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_project_project__art_type
 msgid "Art Type"
 msgstr "Art-Typ"
@@ -178,13 +160,17 @@ msgstr "Art-Typ"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_attachment_count
 msgid "Attachment Count"
-msgstr "Anzahl der Anhänge"
+msgstr "Anzahl Anhänge"
 
 #. module: ks_project_extend
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__attendance
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Attendance"
 msgstr "Anwesenheit"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__attendance
+msgid "Attendance (number,function,duration)"
+msgstr "Anwesenheit (Anzahl, Funktion, Dauer)"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_comment_wizard_form
@@ -194,7 +180,7 @@ msgstr "Abbrechen"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__client_signature
 msgid "Client Signature"
-msgstr "Unterschrift des Kunden"
+msgstr "Kundensignatur"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_comment_wizard__comment
@@ -203,8 +189,14 @@ msgstr "Kommentar"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__company_id
+#: model:ir.model.fields,field_description:ks_project_extend.field_project_project__company_id
 msgid "Company"
 msgstr "Unternehmen"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__delivery
+msgid "Consumed materials/delivery"
+msgstr "Verbrauchte Materialien/Lieferung"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_comment_wizard__create_uid
@@ -223,7 +215,7 @@ msgstr "Erstellt am"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_project_project__customer_address
 msgid "Customer Address / Construction Address"
-msgstr "Kundenadresse / Baustellenadresse"
+msgstr "Kundenadresse / Bauadresse"
 
 #. module: ks_project_extend
 #: model:ir.actions.report,name:ks_project_extend.action_daily_construction_pdf
@@ -253,16 +245,19 @@ msgid "Date"
 msgstr "Datum"
 
 #. module: ks_project_extend
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__delivery
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Delivery"
 msgstr "Lieferung"
 
 #. module: ks_project_extend
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__description
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Description"
 msgstr "Beschreibung"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__description
+msgid "Description of the work carried out and the progress"
+msgstr "Beschreibung der durchgeführten Arbeiten und des Fortschritts"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_comment_wizard__display_name
@@ -284,17 +279,17 @@ msgstr "Fest"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_follower_ids
 msgid "Followers"
-msgstr "Abonnenten"
+msgstr "Follower"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Abonnenten (Partner)"
+msgstr "Follower (Partner)"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr "Font Awesome-Symbol z. B. fa-tasks"
+msgstr "Font-Awesome-Symbol z. B. fa-tasks"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
@@ -333,7 +328,7 @@ msgstr "Wenn aktiviert, erfordern neue Nachrichten Ihre Aufmerksamkeit."
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__message_has_error
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Wenn aktiviert, haben einige Nachrichten einen Zustellfehler."
+msgstr "Wenn aktiviert, haben einige Nachrichten einen Übermittlungsfehler."
 
 #. module: ks_project_extend
 #: model:ir.model.fields.selection,name:ks_project_extend.selection__daily_construction_report__state__in_progress
@@ -345,23 +340,17 @@ msgstr "In Bearbeitung"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_attachment
 msgid "Incident Attachment"
-msgstr "Anhang zum Vorfall"
+msgstr "Vorfallanhang"
 
 #. module: ks_project_extend
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_1
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_2
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_3
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_4
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_5
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incidents
-#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
 msgid "Incidents"
 msgstr "Vorfälle"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_is_follower
 msgid "Is Follower"
-msgstr "Ist Abonnent"
+msgstr "Ist Follower"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_comment_wizard__write_uid
@@ -378,15 +367,19 @@ msgid "Last Updated on"
 msgstr "Zuletzt aktualisiert am"
 
 #. module: ks_project_extend
-#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__machine
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Machine"
 msgstr "Maschine"
 
 #. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__machine
+msgid "Machine devices"
+msgstr "Maschinengeräte"
+
+#. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_has_error
 msgid "Message Delivery error"
-msgstr "Nachrichtenzustellfehler"
+msgstr "Fehler bei der Nachrichtenübermittlung"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_ids
@@ -407,12 +400,12 @@ msgstr "Neu"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_calendar_event_id
 msgid "Next Activity Calendar Event"
-msgstr "Nächstes Kalenderereignis der Aktivität"
+msgstr "Nächstes Aktivitätskalender-Ereignis"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr "Frist der nächsten Aktivität"
+msgstr "Frist für nächste Aktivität"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_summary
@@ -422,7 +415,7 @@ msgstr "Zusammenfassung der nächsten Aktivität"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_type_id
 msgid "Next Activity Type"
-msgstr "Typ der nächsten Aktivität"
+msgstr "Nächster Aktivitätstyp"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_needaction_counter
@@ -437,12 +430,12 @@ msgstr "Anzahl der Fehler"
 #. module: ks_project_extend
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "Anzahl der Nachrichten, die Maßnahmen erfordern"
+msgstr "Anzahl der Nachrichten, die eine Aktion erfordern"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Anzahl der Nachrichten mit Zustellfehler"
+msgstr "Anzahl der Nachrichten mit Übermittlungsfehler"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
@@ -469,7 +462,7 @@ msgstr "Ablehnen"
 
 #. module: ks_project_extend
 #: model:ir.actions.server,name:ks_project_extend.action_bulk_reject_reports
-msgid "Reject Daily Conatruction Reports"
+msgid "Reject Daily Construction Reports"
 msgstr "Tägliche Bauberichte ablehnen"
 
 #. module: ks_project_extend
@@ -477,6 +470,11 @@ msgstr "Tägliche Bauberichte ablehnen"
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Rejected"
 msgstr "Abgelehnt"
+
+#. module: ks_project_extend
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
+msgid "Release Grant"
+msgstr "Freigabe"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__responsible
@@ -487,43 +485,43 @@ msgstr "Verantwortlich"
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__activity_user_id
 msgid "Responsible User"
-msgstr "Zuständiger Benutzer"
+msgstr "Verantwortlicher Benutzer"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr "SMS-Zustellfehler"
+msgstr "SMS-Übermittlungsfehler"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Search Daily Construction Reports"
-msgstr "Tägliche Bauberichte durchsuchen"
+msgstr "Tägliche Bauberichte suchen"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
 msgid "Send Report for E-Signature"
-msgstr "Bericht zur elektronischen Signatur senden"
-
-#. module: ks_project_extend
-#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
-msgid "Sign Off"
-msgstr "Abzeichnen"
+msgstr "Bericht zur E-Signatur senden"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__signoff_attachment
 msgid "Sign-Off Attachment"
-msgstr "Anhang zur Abzeichnung"
+msgstr "Abschlussanhang"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__site_location
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
 msgid "Site Location"
-msgstr "Standort"
+msgstr "Baustellenstandort"
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_project_form_inherit_custom
 msgid "Site Manager"
 msgstr "Bauleiter"
+
+#. module: ks_project_extend
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
+msgid "Special incidents"
+msgstr "Besondere Vorfälle"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_project_project__date_start
@@ -545,7 +543,7 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 "Status basierend auf Aktivitäten\n"
-"Überfällig: Fälligkeitsdatum ist bereits überschritten\n"
+"Überfällig: Fälligkeitsdatum ist bereits abgelaufen\n"
 "Heute: Aktivitätsdatum ist heute\n"
 "Geplant: Zukünftige Aktivitäten."
 
@@ -562,9 +560,15 @@ msgid "Submitted"
 msgstr "Eingereicht"
 
 #. module: ks_project_extend
+#: model:ir.model.fields.selection,name:ks_project_extend.selection__daily_construction_report__state__submitted
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_search
+msgid "Submitted"
+msgstr "Eingereicht"
+
+#. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__supervisor_signature
 msgid "Supervisor Signature"
-msgstr "Unterschrift des Vorgesetzten"
+msgstr "Unterschrift des Aufsehers"
 
 #. module: ks_project_extend
 #: model:ir.model.fields.selection,name:ks_project_extend.selection__project_project__art_type__temporary
@@ -582,7 +586,7 @@ msgstr "Art der Arbeit"
 #. module: ks_project_extend
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Art der protokollierten Ausnahmeaktivität."
+msgstr "Art der erfassten Ausnahmeaktivität."
 
 #. module: ks_project_extend
 #: model_terms:ir.ui.view,arch_db:ks_project_extend.view_type_of_work_search
@@ -593,7 +597,7 @@ msgstr "Art der Arbeit"
 #: model:ir.actions.act_window,name:ks_project_extend.action_type_of_work
 #: model:ir.ui.menu,name:ks_project_extend.menu_type_of_work
 msgid "Types of Work"
-msgstr "Arten von Arbeiten"
+msgstr "Arten der Arbeit"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__weather
@@ -609,9 +613,9 @@ msgstr "Website-Nachrichten"
 #. module: ks_project_extend
 #: model:ir.model.fields,help:ks_project_extend.field_daily_construction_report__website_message_ids
 msgid "Website communication history"
-msgstr "Kommunikationsverlauf der Website"
+msgstr "Website-Kommunikationsverlauf"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_project_project__work_order_description
 msgid "Work Order Description"
-msgstr "Beschreibung des Arbeitsauftrags"
+msgstr "Arbeitsauftragsbeschreibung"
