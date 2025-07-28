@@ -139,10 +139,10 @@ class DailyConstructionReport(models.Model):
             },
         }
 
+# For image
 class DailyConstructionReportImage(models.Model):
     _name = 'daily.construction.report.image'
     _description = 'Daily Construction Report Image'
-    _rec_name = 'description'
 
     name = fields.Char('Name', required=True)
     report_id = fields.Many2one('daily.construction.report', required=True)
