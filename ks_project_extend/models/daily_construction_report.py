@@ -36,11 +36,16 @@ class DailyConstructionReport(models.Model):
     delivery = fields.Text(string="Consumed materials/delivery")
 
     # Incidents Tab
-    incidents = fields.Html(string="Incidents")
-    images_ids = fields.One2many('daily.construction.report.image', 'report_id', string="Images")
-    incidents_image = fields.One2many('ir.attachment', 'res_id', string="Incident Images")
-    incident_attachment = fields.Binary(string="Incident Attachment")
-
+    incidents_image = fields.One2many('ir.attachment', 'res_id', string="Incident Images",domain=lambda self: [('res_model', '=', 'daily.construction.report')])
+    changes_in_benefits = fields.Text(
+        string="Changes in Benefits"
+    )
+    disabilities_difficulties = fields.Text(
+        string="Disabilities / Difficulties"
+    )
+    special_incidents = fields.Text(
+        string="Special Incidents"
+    )
     # Sign Off Tab
     responsible = fields.Many2many(related='project_id.responsible', readonly=True)
     supervisor_signature = fields.Binary(string="Supervisor Signature")
@@ -140,13 +145,13 @@ class DailyConstructionReport(models.Model):
         }
 
 # For image
-class DailyConstructionReportImage(models.Model):
-    _name = 'daily.construction.report.image'
-    _description = 'Daily Construction Report Image'
-
-    name = fields.Char('Name', required=True)
-    report_id = fields.Many2one('daily.construction.report', required=True)
-    image = fields.Binary('Image')
+# class DailyConstructionReportImage(models.Model):
+#     _name = 'daily.construction.report.image'
+#     _description = 'Daily Construction Report Image'
+#
+#     name = fields.Char('Name', required=True)
+#     report_id = fields.Many2one('daily.construction.report', required=True)
+#     image = fields.Binary('Image')
 
 
 
