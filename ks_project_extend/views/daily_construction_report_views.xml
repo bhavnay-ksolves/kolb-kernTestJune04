@@ -88,13 +88,11 @@
 
                         <page string="Special incidents">
                             <group>
-                                <field name="incidents"/>
-<!--                                 <field name="images_ids">-->
-<!--                                     <list editable="bottom">-->
-<!--                                         <field name="image"/>-->
-<!--                                     </list>-->
-<!--                                 </field>-->
-                                <field name="incident_attachment" widget="image"/>
+                                <field name="changes_in_benefits"/>
+                                <field name="disabilities_difficulties"/>
+                                <field name="special_incidents"/>
+                                <field name="incidents_image" context="{'default_res_model': 'daily.construction.report'}"
+                                       options="{'accepted_file_extensions': 'image/jpeg, image/png'}" widget="many2many_binary"/>
                             </group>
                         </page>
 
@@ -128,7 +126,6 @@
                 <field name="machine"/>
                 <field name="delivery"/>
                 <field name="areas_worked_on"/>
-                <field name="incidents"/>
 
                 <separator/>
                 <filter name="filter_new" string="New" domain="[('state', '=', 'new')]"/>
