@@ -95,6 +95,17 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
+                                                font-size: 16px; padding: 12px; width: 50%;">
+<!--                                                <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png"-->
+<!--                                                     width="20" height="20" alt="cloud icon" style="vertical-align: top;" />-->
+                                                <span style="padding-left: 4px;color: #000;">
+                                                    <t t-esc="doc.temperature"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px; padding-top: 16px;">
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
@@ -113,15 +124,6 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-<!--                                            <td colspan="2" style="padding-top: 12px;">-->
-<!--                                                <textarea rows="4"-->
-<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px;-->
-<!--                                                    color: #93a0b9; font-size: 16px; padding: 12px; width: 100%;-->
-<!--                                                    box-sizing: border-box;">-->
-<!--                                                    Anwesende Personen (Vor- und Nachname, Rolle) (Present persons: First &amp; Last name, Role)</textarea>-->
-<!--                                            </td>-->
-                                        </tr>
                                     </table>
                                 </td>
                             </tr>
@@ -131,20 +133,6 @@
                     <!-- Execution Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                         width: 100%;" class="page-break-after">
-                        <thead>
-<!--                            <tr>-->
-<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td style="text-align: center;-->
-<!--                                                        padding: 24px 0;">-->
-<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46" height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
-<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
-<!--                                        <span style="color: red;">Daily Construction Report</span>-->
-<!--                                    </span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-                        </thead>
                         <tbody>
                             <tr>
                                 <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
@@ -197,21 +185,21 @@
                                                 <span style="color: #000;"><t t-esc="doc.description"/></span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.machine">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
                                                 <span style="color: #000;"><t t-esc="doc.machine"/></span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.areas_worked_on">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
                                                 <span style="color: #000;"><t t-esc="doc.areas_worked_on"/></span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.delivery">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
@@ -306,7 +294,7 @@
                                                 <span style="color: red; padding-left: 4px;">Observations</span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.changes_in_benefits">
                                             <td colspan="2">
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
@@ -314,7 +302,7 @@
                                                      border-box;"><t t-esc="doc.changes_in_benefits"/></div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.disabilities_difficulties">
                                             <td colspan="2">
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
@@ -322,7 +310,7 @@
                                                      border-box;"><t t-esc="doc.disabilities_difficulties"/></div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.special_incidents">
                                             <td colspan="2">
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
@@ -423,7 +411,7 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.responsible">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; padding: 12px; width: 50%;">
                                                 <table style="width: 100%; border-collapse: collapse;">
@@ -438,7 +426,7 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr t-if="doc.supervisor_signature">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
@@ -446,22 +434,7 @@
                                                             t-att-src="image_data_uri(doc.supervisor_signature)"/></span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
-                                                font-size: 16px; padding: 12px; width: 50%;">
-                                                <span><img t-if="doc.client_signature"
-                                                           t-att-src="image_data_uri(doc.client_signature)"/></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
-                                                font-size: 16px; padding: 12px; width: 50%;">
-                                                <span><img t-if="doc.signoff_attachment"
-                                                           t-att-src="image_data_uri(doc.signoff_attachment)"/></span>
-                                            </td>
-                                        </tr>
+
 <!--                                        <tr>-->
 <!--                                            <td style="float: right; padding-top: 8px;" colspan="2">-->
 <!--                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%;">-->
