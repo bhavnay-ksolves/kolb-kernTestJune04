@@ -79,10 +79,9 @@ msgid ""
 "<span style=\"font-size: 36px; font-weight: 700; color: red; display: inline-block;\">\n"
 "                                    Daily Construction Report\n"
 "                                </span>"
-msgstr ""
-"<span style=\"font-size: 36px; font-weight: 700; color: red; display: inline-block;\">\n"
-"                                    Täglicher Baubericht\n"
-"                                </span>"
+msgstr "<span style=\"font-size: 36px; font-weight: 700; color: red; display: inline-block;\">\n"
+" Täglicher Baubericht\n"
+" </span>"
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_comment_wizard__action_type
@@ -341,6 +340,12 @@ msgstr "In Bearbeitung"
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incident_attachment
 msgid "Incident Attachment"
 msgstr "Vorfallanhang"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incidents_image
+msgid "Incident Images"
+msgstr "Vorfallbilder"
+
 
 #. module: ks_project_extend
 #: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__incidents
@@ -619,3 +624,18 @@ msgstr "Website-Kommunikationsverlauf"
 #: model:ir.model.fields,field_description:ks_project_extend.field_project_project__work_order_description
 msgid "Work Order Description"
 msgstr "Arbeitsauftragsbeschreibung"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__changes_in_benefits
+msgid "Changes in Benefits"
+msgstr "Änderungen der Leistungen"
+
+#. module: ks_project_extend
+#: model:ir.model.fields,field_description:ks_project_extend.field_daily_construction_report__disabilities_difficulties
+msgid "Disabilities / Difficulties"
+msgstr "Behinderungen / Schwierigkeiten"
+
+#. module: ks_project_extend
+#: model_terms:ir.ui.view,arch_db:ks_project_extend.view_daily_construction_report_form
+msgid "Special Incidents"
+msgstr "Besondere Vorfälle"

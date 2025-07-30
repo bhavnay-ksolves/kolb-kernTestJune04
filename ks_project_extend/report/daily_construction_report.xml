@@ -311,7 +311,23 @@
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
                                                     font-size: 16px; padding: 12px; width: 100%; box-sizing:
-                                                     border-box;"><t t-esc="doc.incidents"/></div>
+                                                     border-box;"><t t-esc="doc.changes_in_benefits"/></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing:
+                                                     border-box;"><t t-esc="doc.disabilities_difficulties"/></div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div
+                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
+                                                    font-size: 16px; padding: 12px; width: 100%; box-sizing:
+                                                     border-box;"><t t-esc="doc.special_incidents"/></div>
                                             </td>
                                         </tr>
 <!--                                        <tr>-->
@@ -320,19 +336,37 @@
 <!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Remarks on change orders, defects etc.)</textarea>-->
 <!--                                            </td>-->
 <!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <td colspan="2" style="padding-top: 12px;">-->
+<!--                                                <div style="border: 1px dashed #dde9f3; border-radius: 8px;-->
+<!--                                                font-size: 18px; padding: 24px; width: 100%; box-sizing: border-box;">-->
+<!--&lt;!&ndash;                                                    <img t-attf-src="ks_project_extend/static/src/img/cloud-arrow-icon.png" &ndash;&gt;-->
+<!--&lt;!&ndash;                                                         width="26" height="26" alt="cloud arrow icon" style="vertical-align: top;" />&ndash;&gt;-->
+<!--                                                    <div style="padding-top: 4px;">-->
+<!--&lt;!&ndash;                                                        <img t-attf-src="ks_project_extend/static/src/img/cam-icon.png" &ndash;&gt;-->
+<!--&lt;!&ndash;                                                             width="26" height="26" alt="camera icon" &ndash;&gt;-->
+<!--&lt;!&ndash;                                                             style="vertical-align: middle;" />&ndash;&gt;-->
+<!--                                                        <span style="padding-left: 4px;-->
+<!--                                                        color: red;"><img t-if="doc.incident_attachment"-->
+<!--                                                                          t-att-src="image_data_uri(doc.incident_attachment)"/></span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
                                                 <div style="border: 1px dashed #dde9f3; border-radius: 8px;
                                                 font-size: 18px; padding: 24px; width: 100%; box-sizing: border-box;">
-<!--                                                    <img t-attf-src="ks_project_extend/static/src/img/cloud-arrow-icon.png" -->
-<!--                                                         width="26" height="26" alt="cloud arrow icon" style="vertical-align: top;" />-->
                                                     <div style="padding-top: 4px;">
-<!--                                                        <img t-attf-src="ks_project_extend/static/src/img/cam-icon.png" -->
-<!--                                                             width="26" height="26" alt="camera icon" -->
-<!--                                                             style="vertical-align: middle;" />-->
                                                         <span style="padding-left: 4px;
-                                                        color: red;"><img t-if="doc.incident_attachment"
-                                                                          t-att-src="image_data_uri(doc.incident_attachment)"/></span>
+                                                        color: red;">
+                                                            <t t-if="doc.incidents_image">
+                                                                <t t-foreach="doc.incidents_image" t-as="img">
+                                                                    <img t-if="img.datas"
+                                                                         t-att-src="image_data_uri(img.datas)"/>
+                                                                </t>
+                                                            </t>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </td>
