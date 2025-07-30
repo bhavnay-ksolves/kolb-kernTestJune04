@@ -25,3 +25,9 @@ class SaleOrderTemplateLine(models.Model):
             vals[0]['ks_pos'] = 1.0
 
         return super(SaleOrderTemplateLine, self).create(vals)
+
+
+class SaleOrderOption(models.Model):
+    _inherit = 'sale.order.option'
+
+    ks_pos = fields.Float(string="POS")

@@ -1,68 +1,108 @@
 <odoo>
 
     <!-- Download template for GAEB D86    -->
-  <template id="gaeb_d86_sale_template">
-     <t t-set="line_no" t-value="1"/>
-        <t t-set="lines" t-value="[]"/>
-        <t t-set="lines" t-value="lines + [('00', '             86L                                  1PP00000090')]"/>
-        <t t-set="lines" t-value="lines + [('01', 'VAT')]"/>
-        <t t-set="lines" t-value="lines + [('02', order.name)]"/>
-        <t t-set="lines" t-value="lines + [('03', order.company_id.name or '')]"/>
-        <t t-set="lines" t-value="lines + [('04', order.partner_id.name or '')]"/>
-        <t t-set="lines" t-value="lines + [('08', order.currency_id.name + '   ' + order.currency_id.name)]"/>
-        <t t-set="lines" t-value="lines + [('20', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '   Sehr geehrte Damen und Herren,')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '   wir danken Ihnen für Ihre Anfrage und bieten nachstehen')]"/>
-        <t t-set="lines" t-value="lines + [('26', '   d an:')]"/>
-        <t t-set="lines" t-value="lines + [('111', '        N    Titel')]"/>
-        <t t-set="lines" t-value="lines + [('12', 'Vorbereitende Arbeiten')]"/>
-        <t t-set="lines" t-value="lines + [('20', '')]"/>
-        <t t-set="counter" t-value="0"/>
-        <t t-foreach="order.efb_line" t-as="ol">
-            <t t-set="lines" t-value="lines + [('26','   ' + ol.long_desc)]"/>
-            <t t-set="code" t-value="'%05d' % (21101 + counter)"/>
-            <t t-set="amount_code" t-value="'%05d' % (23101 + counter)"/>
-            <t t-set="line_text" t-value="'   ' + 'NNN ' + str(ol.product_uom_qty) + ' ' + str(ol.product_uom.name or '')"/>
-            <t t-set="line_amount" t-value="'   ' + str(ol.price_unit or 0.0) + ' ' + str(ol.price_subtotal or 0.0)"/>
-            <t t-set="lines" t-value="lines + [(code, line_text)]"/>
-            <t t-set="lines" t-value="lines + [(amount_code, line_amount)]"/>
-             <t t-set="counter" t-value="counter + 1"/>
-            <t t-set="lines" t-value="lines + [('25', '')]"/>
-        </t>
+    <template id="gaeb_d86_sale_template">
+  <t t-set="line_no" t-value="1"/>
+  <t t-set="lines" t-value="[]"/>
 
-        <t t-set="lines" t-value="lines + [('26', '    Material-, Geräte- und Entsorgungskostenanteil beträgt')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    35(Unknown) % (auf die Tagelohnstunden)')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    Dieses Angebot ist freibleibend. Sofern Sie den Auftrag')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    an uns erteilen möchten, senden Sie uns bitte eine Kop')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    ie unseres Angebotes unterschrieben per Fax: 06021/8591-22')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    bzw. maler@kolb-kern.de oder per Post zurück.')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    Bitte überprüfen Sie die uns vorliegenden Daten Ihrer Anschrift')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    und teilen Sie uns evtl. Korrekturen für die Rechnungsstellung')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    möglichst zeitnah mit.')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    Über Ihren Auftrag würden wir uns sehr freuen. Danke!')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '')]"/>
-        <t t-set="lines" t-value="lines + [('26', '    Ort, Datum\t\tRechtsverbindliche Unterschrift (optional')]"/>
-        <t t-set="lines" t-value="lines + [('26', '     Firmenstempel)')]"/>
-       <t t-set="lines" t-value="lines + [('26', '    ' +str(order.amount_total) if order.amount_total else '   0.0')]"/>
+  <!-- Header lines -->
+  <t t-set="lines" t-value="lines + [('00', '             86L                                  1PP00000090')]"/>
+  <t t-set="lines" t-value="lines + [('01', 'VAT')]"/>
+  <t t-set="lines" t-value="lines + [('02', order.name)]"/>
+  <t t-set="lines" t-value="lines + [('03', order.company_id.name or '')]"/>
+  <t t-set="lines" t-value="lines + [('04', order.partner_id.name or '')]"/>
+  <t t-set="lines" t-value="lines + [('08', order.currency_id.name + '   ' + order.currency_id.name)]"/>
+  <t t-set="lines" t-value="lines + [('20', '')]"/>
+  <t t-set="lines" t-value="lines + [('26', '   Sehr geehrte Damen und Herren,')]"/>
+  <t t-set="lines" t-value="lines + [('26', '')]"/>
+  <t t-set="lines" t-value="lines + [('26', '   wir danken Ihnen für Ihre Anfrage und bieten nachstehen')]"/>
+  <t t-set="lines" t-value="lines + [('26', '   d an:')]"/>
+  <t t-set="lines" t-value="lines + [('111', '        N    Titel')]"/>
+  <t t-set="lines" t-value="lines + [('12', 'Vorbereitende Arbeiten')]"/>
+  <t t-set="lines" t-value="lines + [('20', '')]"/>
 
+  <!-- Main EFB lines -->
+  <t t-foreach="order.efb_line" t-as="ol">
+    <t t-set="ks_pos" t-value="ol.ks_pos or 1"/>
+    <t t-set="desc_lines" t-value="[ol.long_desc[i:i+66] for i in range(0, len(ol.long_desc), 66)]"/>
+    <t t-foreach="desc_lines" t-as="desc_line">
+      <t t-set="lines" t-value="lines + [('26', '   ' + desc_line)]"/>
+    </t>
+    <t t-set="code" t-value="'21' + str(int(ks_pos)).zfill(3)"/>
+    <t t-set="qty_str" t-value="str(int(ol.product_uom_qty)).rjust(11, '0')"/>
+    <t t-set="uom" t-value="(ol.product_uom.name or 'Stk').ljust(6)[:6]"/>
+    <t t-set="lines" t-value="lines + [(code, '      NNN         ' + qty_str + uom)]"/>
+    <t t-set="amount_code" t-value="'23' + str(int(ks_pos)).zfill(3)"/>
+    <t t-set="unit_price" t-value="int(ol.price_unit * 100)"/>
+    <t t-set="subtotal" t-value="int(ol.price_subtotal * 100)"/>
+    <t t-set="lines" t-value="lines + [(amount_code, '      ' + str(unit_price).rjust(10, '0') + '  ' + str(subtotal).rjust(12, '0'))]"/>
+    <t t-set="lines" t-value="lines + [('25', '')]"/>
+  </t>
 
-        <t t-set="output" t-value="[]"/>
-        <t t-foreach="enumerate(lines, start=1)" t-as="pair">
-            <t t-set="code" t-value="pair[1][0]"/>
-            <t t-set="text" t-value="pair[1][1]"/>
-            <t t-set="line_num" t-value="str(pair[0]).zfill(6)"/>
-            <t t-set="output" t-value="output + [(code + text).ljust(74) + line_num]"/>
-        </t>
-            <t t-set="output" t-value="output + [('99' + '    ').ljust(74) + '00028'+line_num]"/>
+  <!-- Optional product title -->
+  <t t-if="order.sale_order_option_ids">
+    <t t-set="lines" t-value="lines + [('112', '        N    Titel')]"/>
+    <t t-set="lines" t-value="lines + [('12', 'Optional Products')]"/>
+    <t t-set="lines" t-value="lines + [('20', '')]"/>
+  </t>
 
-        <t t-esc="'\n'.join(output)"/>
-    </template>
+  <!-- Optional products -->
+  <t t-set="opt_counter" t-value="0"/>
+  <t t-foreach="order.sale_order_option_ids" t-as="opt">
+    <t t-set="ks_pos" t-value="opt.ks_pos or (16 + opt_counter)"/>
+    <t t-set="opt_desc" t-value="opt.name or ''"/>
+    <t t-set="desc_lines" t-value="[opt_desc[i:i+66] for i in range(0, len(opt_desc), 66)]"/>
+    <t t-foreach="desc_lines" t-as="line">
+      <t t-set="lines" t-value="lines + [('26', '   ' + line)]"/>
+    </t>
+    <t t-set="code" t-value="'21' + str(int(ks_pos)).zfill(3)"/>
+    <t t-set="qty_str" t-value="str(int(opt.quantity)).rjust(11, '0')"/>
+    <t t-set="uom" t-value="(opt.uom_id.name or 'Stk').ljust(6)[:6]"/>
+    <t t-set="lines" t-value="lines + [(code, '      NEN         ' + qty_str + uom)]"/>
+    <t t-set="amount_code" t-value="'23' + str(int(ks_pos)).zfill(3)"/>
+    <t t-set="unit_price" t-value="int(opt.price_unit * 100)"/>
+    <t t-set="lines" t-value="lines + [(amount_code, '      ' + str(unit_price).rjust(10, '0'))]"/>
+    <t t-set="lines" t-value="lines + [('25', '')]"/>
+    <t t-set="opt_counter" t-value="opt_counter + 1"/>
+  </t>
+
+  <!-- Note field (cleaned from HTML & blank lines) -->
+  <t t-if="order.note_stripped">
+  <!-- Split into lines -->
+  <t t-set="note_lines" t-value="order.note_stripped.splitlines()"/>
+  <t t-foreach="note_lines" t-as="note_line">
+    <!-- Strip whitespace and skip empty lines -->
+    <t t-if="note_line.strip()">
+      <!-- Break long lines into 66-char chunks -->
+      <t t-set="chunks" t-value="[note_line[i:i+66] for i in range(0, len(note_line), 66)]"/>
+      <t t-foreach="chunks" t-as="chunk">
+        <t t-set="lines" t-value="lines + [('26', '   ' + chunk)]"/>
+      </t>
+    </t>
+  </t>
+</t>
+
+  <!-- Footer totals -->
+  <t t-set="lines" t-value="lines + [('312', '')]"/>
+  <t t-set="grand_total" t-value="int(order.efb_total_price * 100)"/>
+  <t t-set="lines" t-value="lines + [('322', '         ' + str(grand_total).rjust(12, '0'))]"/>
+
+  <!-- Line formatting with final line numbers -->
+  <t t-set="output" t-value="[]"/>
+  <t t-foreach="enumerate(lines, start=1)" t-as="pair">
+    <t t-set="code" t-value="pair[1][0]"/>
+    <t t-set="text" t-value="pair[1][1]"/>
+    <t t-set="line_num" t-value="str(pair[0]).zfill(6)"/>
+    <t t-set="output" t-value="output + [(code + text).ljust(74) + line_num]"/>
+  </t>
+
+  <!-- Final line: 99 + padded space + total line count as 8-digit number -->
+  <t t-set="last_num" t-value="str(len(output) + 1).zfill(8)"/>
+  <t t-set="output" t-value="output + [('99' + ' ' * 67 +'00028'+ last_num)]"/>
+
+  <!-- Final render -->
+  <t t-esc="'\n'.join(output)"/>
+</template>
+
 
 </odoo>

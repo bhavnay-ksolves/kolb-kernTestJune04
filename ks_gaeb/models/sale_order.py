@@ -21,6 +21,7 @@ import logging
 from datetime import datetime
 
 from odoo.http import request
+
 from odoo import models, fields, api, exceptions
 
 _logger = logging.getLogger(__name__)
