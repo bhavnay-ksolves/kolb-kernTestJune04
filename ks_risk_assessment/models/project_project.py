@@ -76,7 +76,7 @@ class RiskAssessment(models.Model):
             self.review = self.danger.review
 
 
-class ProjectTask(models.Model):
+class ProjectProject(models.Model):
     """
     Extends the `project.project` model to include risk assessment functionality.
 
@@ -146,12 +146,13 @@ class ProjectTask(models.Model):
             'res_id': self.id,
             'mimetype': 'application/pdf',
         })
-
+        tag = self.env['sign.template.tag'].search([('name', '=', 'Risk Assessment Report')], limit=1)
         # Create new template from attachment
         sign_template = self.env['sign.template'].create({
             'attachment_id': attachment.id,
             'name': f"Risk Assessment Template - {self.name or self.id}",
             'project_id': self.id,
+            'tag_ids': [(6, 0, [tag.id])] if tag else [],
         })
         return {
             "type": "ir.actions.client",
