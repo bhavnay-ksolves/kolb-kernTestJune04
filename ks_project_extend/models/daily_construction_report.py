@@ -2,7 +2,8 @@
 from odoo import models, fields, api
 import base64
 from odoo.exceptions import UserError
-
+from odoo.exceptions import ValidationError
+import magic
 
 class DailyConstructionReport(models.Model):
     _name = 'daily.construction.report'
@@ -14,7 +15,8 @@ class DailyConstructionReport(models.Model):
     site_location = fields.Char(string="Site Location",required=True,tracking=True)
     attendance = fields.Char(string="Attendance (number,function,duration)",required=True)
     date = fields.Date(string="Date", default=fields.Date.context_today)
-    weather = fields.Float(string="Weather",required=True)
+    temperature = fields.Float(string="Temperature")
+    weather = fields.Char(string="Weather")
 
     company_id = fields.Many2one(
         'res.company', string="Company",
@@ -30,13 +32,12 @@ class DailyConstructionReport(models.Model):
     ], string='Status', default='new', tracking=True)
 
     # Execution Tab
-    description = fields.Text(string="Description of the work carried out and the progress", required=True)
+    description = fields.Text(string="Description of the work carried out and the progress")
     machine = fields.Text(string="Machine devices")
     areas_worked_on = fields.Text(string="Areas worked on")
     delivery = fields.Text(string="Consumed materials/delivery")
 
     # Incidents Tab
-    incidents_image = fields.One2many('ir.attachment', 'res_id', string="Incident Images",domain=lambda self: [('res_model', '=', 'daily.construction.report')])
     changes_in_benefits = fields.Text(
         string="Changes in Benefits"
     )
@@ -49,10 +50,22 @@ class DailyConstructionReport(models.Model):
     # Sign Off Tab
     responsible = fields.Many2many(related='project_id.responsible', readonly=True)
     supervisor_signature = fields.Binary(string="Supervisor Signature")
-    client_signature = fields.Binary(string="Client Signature")
-    signoff_attachment = fields.Binary(string="Sign-Off Attachment")
-
+    signoff_attachment = fields.One2many(
+        'ir.attachment',
+        'res_id',
+        string="Sign-Off PDFs",
+        domain=lambda self: [('res_model', '=', 'daily.construction.report'), ('mimetype', '=', 'application/pdf')]
+    )
     approval_comment = fields.Text(string="Approval/Rejection Comment")
+    incidents_image = fields.One2many(
+        'ir.attachment',
+        'res_id',
+        string="Incident Images",
+        domain=lambda self: [
+            ('res_model', '=', 'daily.construction.report'),
+            ('mimetype', 'in', ['image/jpeg', 'image/png'])
+        ]
+    )
 
     def open_approval_comment_wizard(self):
         """Opens the wizard to add an approval comment."""
@@ -69,33 +82,123 @@ class DailyConstructionReport(models.Model):
             },
         }
 
+    @api.constrains('incidents_image')
+    def _check_image_file(self):
+        """
+        Validate that uploaded incident images are either JPEG or PNG files.
+        Skips validation if no images are uploaded.
+        """
+        allowed_mime_types = ['image/jpeg', 'image/png']  # Allowed image formats
+        for record in self:
+            # If no file is uploaded, skip validation
+            if not record.incidents_image:
+                continue
+
+            for attachment in record.incidents_image:
+                # If file exists, validate it
+                if attachment.datas:
+                    file_data = base64.b64decode(attachment.datas)
+                    mime_type = magic.from_buffer(file_data, mime=True)
+
+                    if mime_type not in allowed_mime_types:
+                        raise ValidationError("Only JPEG or PNG image files are allowed.")
+
+    @api.constrains('signoff_attachment')
+    def _check_signoff_attachment_pdf(self):
+        """
+        Validate that all sign-off attachments are PDF files.
+        Skips validation if no files are uploaded.
+        """
+        for record in self:
+            if not record.signoff_attachment:
+                continue  # No files uploaded, skip
+
+            for attachment in record.signoff_attachment:
+                if attachment.datas:  # Ensure attachment has data
+                    file_data = base64.b64decode(attachment.datas)
+                    mime_type = magic.from_buffer(file_data, mime=True)
+
+                    if mime_type != 'application/pdf':
+                        raise ValidationError("Only PDF files are allowed for sign-off attachment.")
+
+
+    def _validate_execution_fields(self):
+        """
+        Shared validation logic for required execution fields.
+        """
+        for record in self:
+            missing = []
+            if not record.weather:
+                missing.append("Weather")
+            if not record.temperature:
+                missing.append("Temperature")
+            if not record.description:
+                missing.append("Description")
+            if not record.machine:
+                missing.append("Machine Devices")
+            if not record.areas_worked_on:
+                missing.append("Areas Worked On")
+            if not record.delivery:
+                missing.append("Consumed Materials/Delivery")
+            if not record.changes_in_benefits:
+                missing.append("Changes in Benefits")
+            if not record.special_incidents:
+                missing.append("Special Incidents")
+            if not record.disabilities_difficulties:
+                missing.append("Disabilities/Difficulties")
+            if not record.project_id.responsible:
+                missing.append("Responsible (set in Project)")
+
+            if missing:
+                raise ValidationError(
+                    "Cannot proceed. Missing fields: %s" % ", ".join(missing)
+                )
+
     def action_start_progress(self):
-        """Marks the report as in progress and posts a message."""
-        for rec in self:
-            rec.state = 'in_progress'
-            rec.message_post(body="Report is in progress")
+        """
+        Move report to 'in_progress' stage with validation.
+        """
+        self._validate_execution_fields()
+        self.write({'state': 'in_progress'})
+        self.message_post(body="Report is now In Progress.")
 
     def action_approve(self):
-        """Approves the report and posts a message."""
-        for rec in self:
-            rec.state = 'approved'
-            rec.message_post(body="Report has been approved.")
+        """
+        Approve the daily report — requires supervisor signature and log to chatter.
+        """
+        for record in self:
+            if not record.supervisor_signature:
+                raise ValidationError("Please upload Supervisor Signature before approving.")
+
+            # Change state
+            record.write({'state': 'approved'})
+
+            # Post message in chatter
+            record.message_post(body="Report has been approved.")
 
     def action_reject(self):
-        """Rejects the report, resets it to draft, and posts messages."""
-        for rec in self:
-            rec.state = 'rejected'
-            rec.message_post(body="Report has been rejected.")
+        """
+        Reject the daily report — requires supervisor signature and log to chatter.
+        """
+        for record in self:
+            if not record.supervisor_signature:
+                raise ValidationError("Please upload Supervisor Signature before rejecting.")
+
+            # Change state
+            record.write({'state': 'rejected'})
 
             # Immediately set it back to draft (new)
-            rec.state = 'new'
-            rec.message_post(body="Report moved back to draft after rejection.")
+            record.state = 'new'
+            # Post message in chatter
+            record.message_post(body="Report moved back to draft after rejection.")
 
     def action_submit(self):
-        """Submits the report and posts a message."""
-        for rec in self:
-            rec.state = 'submitted'
-            rec.message_post(body="Report has been submitted.")
+        """
+        Submit report for approval with same validation.
+        """
+        self._validate_execution_fields()
+        self.write({'state': 'submitted'})
+        self.message_post(body="Report has been Submitted for Approval.")
 
     def daily_construction_report(self):
         """Generate PDF report for Execution, Incidents, and Release Grant."""
