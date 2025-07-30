@@ -5,7 +5,24 @@ from odoo.exceptions import UserError
 
 class ProjectProject(models.Model):
     _inherit = 'project.project'
-    responsible = fields.Many2many('res.users',string='Responsible',tracking=True)
+    assigned_employees = fields.Many2many(
+        'hr.employee',
+        'project_assigned_employee_rel',
+        'project_id',
+        'employee_id',
+        string="Assigned Employees",
+        tracking=True,
+    )
+
+    responsible = fields.Many2many(
+        'hr.employee',
+        'project_responsible_employee_rel',
+        'project_id',
+        'employee_id',
+        string="Responsible",
+        tracking=True,
+    )
+
     customer_address = fields.Text(string="Customer Address / Construction Address",tracking=True)
     date_start = fields.Datetime(string='Start Date',tracking=True)
     art_type = fields.Selection(selection=[('fixed', 'Fixed'),('temporary', 'Temporary')],string="Art Type",
