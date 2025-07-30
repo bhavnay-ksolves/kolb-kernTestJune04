@@ -67,7 +67,7 @@
                 <group name="project_info" string="Project">
                     <group>
                         <!-- Project-related fields -->
-                        <field name="project_id"/>
+                        <field name="project_id" required="1"/>
                         <field name="category"/>
                         <field name="is_same_delivery_address"/>
                         <field name="on_site"/>
