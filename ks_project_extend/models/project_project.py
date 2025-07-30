@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields,api
 from odoo.exceptions import UserError
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class ProjectProject(models.Model):
@@ -12,8 +15,8 @@ class ProjectProject(models.Model):
                                 required=True,tracking=True)
     work_order_description = fields.Char(string="Work Order Description",tracking=True)
     type_of_work_id = fields.Many2one('type.of.work', string="Type of Work",tracking=True,store=True)
-    latitude = fields.Char(string="Latitude")
-    longitude = fields.Char(string="Longitude")
+    # latitude = fields.Char(string="Latitude")
+    # longitude = fields.Char(string="Longitude")
     company_id = fields.Many2one('res.company', string='Company', compute="_compute_company_id",
                                  inverse="_inverse_company_id", store=True, readonly=False,
                                  default=lambda self: self.env.company)
@@ -24,6 +27,63 @@ class ProjectProject(models.Model):
         string='Daily Construction Reports'
     )
     weather_ids = fields.One2many('project.project.weather', 'project_id', string="Weather Reports")
+
+    # Define new fields to store the project's customer coordinates
+    # These fields will be computed based on the linked partner_id's address.
+    latitude = fields.Float(
+        string='Project Latitude',
+        digits=(10, 7),  # Standard precision for latitude/longitude
+        help="The latitude of the project's customer address, automatically fetched.",
+        compute='_compute_project_coordinates',  # This field is computed
+        store=True,  # Store the computed value in the database for performance
+        readonly=True,  # Prevent manual editing, as it's computed
+    )
+    longitude = fields.Float(
+        string='Project Longitude',
+        digits=(10, 7),  # Standard precision for latitude/longitude
+        help="The longitude of the project's customer address, automatically fetched.",
+        compute='_compute_project_coordinates',  # This field is computed
+        store=True,  # Store the computed value in the database
+        readonly=True,  # Prevent manual editing
+    )
+
+    @api.depends(
+        'partner_id',  # Trigger computation if the customer is changed
+        'partner_id.partner_latitude',  # Trigger if the customer's latitude changes
+        'partner_id.partner_longitude',  # Trigger if the customer's longitude changes
+        # Optionally, you can also depend on address fields if you want to re-compute
+        # even if the partner's lat/lon are not yet populated but address changes.
+        # However, it's generally assumed that partner.latitude/longitude will be
+        # populated by Odoo's OOTB geolocalization or another mechanism.
+        'partner_id.street',
+        'partner_id.city',
+        'partner_id.zip',
+        'partner_id.state_id',
+        'partner_id.country_id',
+    )
+    def _compute_project_coordinates(self):
+        """
+        Computes the project_latitude and project_longitude based on the
+        latitude and longitude of the linked customer (partner_id).
+        If the partner doesn't have coordinates, or no partner is linked,
+        the project coordinates will be cleared.
+        """
+        for project in self:
+            if project.partner_id and project.partner_id.partner_latitude is not None and project.partner_id.partner_longitude is not None:
+                # If partner exists and has coordinates, copy them to the project
+                project.latitude = project.partner_id.partner_latitude
+                project.longitude = project.partner_id.partner_longitude
+                _logger.info(
+                    f"Project '{project.name}' coordinates updated from customer '{project.partner_id.display_name}': Lat={project.latitude}, Lng={project.longitude}")
+            else:
+                # If no partner, or partner has no coordinates, clear project coordinates
+                project.latitude = False
+                project.longitude = False
+                if project.partner_id:
+                    _logger.warning(
+                        f"Customer '{project.partner_id.display_name}' for Project '{project.name}' does not have latitude/longitude. Clearing project coordinates.")
+                else:
+                    _logger.info(f"No customer linked to Project '{project.name}'. Clearing project coordinates.")
 
     @api.model
     def create(self, vals):

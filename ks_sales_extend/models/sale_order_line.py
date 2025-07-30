@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+import html
+from bs4 import BeautifulSoup
 
 
 class SaleOrder(models.Model):
@@ -49,6 +51,19 @@ class SaleOrder(models.Model):
         compute="_compute_efb_line_totals",
         store=True
     )
+
+    note_stripped = fields.Text(compute="_compute_note_stripped", store=False)
+
+    def clean_html_text(self, raw_html):
+        # Decode HTML entities
+        decoded = html.unescape(raw_html or "")
+        # Remove HTML tags
+        return BeautifulSoup(decoded, "html.parser").get_text()
+
+    @api.depends('note')
+    def _compute_note_stripped(self):
+        for order in self:
+            order.note_stripped = self.clean_html_text(order.note)
 
     @api.depends('efb_line.price_unit', 'efb_line.product_uom_qty')
     def _compute_efb_line_totals(self):

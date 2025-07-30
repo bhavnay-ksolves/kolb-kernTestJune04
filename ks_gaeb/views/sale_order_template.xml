@@ -99,28 +99,8 @@
                     <Description>
                      <CompleteText>
                       <DetailTxt>
-                       <Text>
-                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
-                         <span>Gerüststellung </span>
-                        </p>
-                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
-                         <span>Das Angebot für die Gerüststellung liegt von der Fa. KOLB &#x26; KERN Gerüstbau GmbH bei.</span>
-                        </p>
-                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
-                         <span>Da es sich hier um eine rechtlich selbstständige Firma handelt, haben Sie dadurch einen Kostenvorteil. </span>
-                        </p>
-                        <p style="text-indent:0pt;margin-top:0pt;margin-bottom:0pt;font-family:&#x27;Klavika Basic&#x27;;font-size:10pt;">
-                         <span>Die Abwicklung läuft hierbei über uns, so dass Sie dadurch keine zusätzliche Belastung haben.</span>
-                        </p>
-                       </Text>
+                      <Text t-esc="order.note"/>
                       </DetailTxt>
-                      <OutlineText>
-                       <OutlTxt>
-                        <TextOutlTxt>
-                         <span>Gerüstangebot</span>
-                        </TextOutlTxt>
-                       </OutlTxt>
-                      </OutlineText>
                      </CompleteText>
                     </Description>
                    </Remark>

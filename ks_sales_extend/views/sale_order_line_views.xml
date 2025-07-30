@@ -52,6 +52,11 @@
                 <field name="ks_pos" readonly="state != 'draft'"/>
             </xpath>
 
+            <!-- Add optional POS field to optional lines -->
+            <xpath expr="//field[@name='sale_order_option_ids']/list/field[@name='product_id']" position="before">
+                <field name="ks_pos"/>
+            </xpath>
+
             <!-- Rename the order_lines page to Detailed offer -->
             <xpath expr="//notebook/page[@name='order_lines']" position='attributes'>
                 <attribute name="string">Detailed offer</attribute>
