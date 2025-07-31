@@ -10,18 +10,12 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
     assigned_employees = fields.Many2many(
         'hr.employee',
-        'project_assigned_employee_rel',
-        'project_id',
-        'employee_id',
         string="Assigned Employees",
         tracking=True,
     )
 
     responsible = fields.Many2many(
-        'hr.employee',
-        'project_responsible_employee_rel',
-        'project_id',
-        'employee_id',
+        'res.users',
         string="Responsible",
         tracking=True,
     )
@@ -112,22 +106,38 @@ class ProjectProject(models.Model):
     def write(self, vals):
         """Overrides write to sync task user_ids when user or responsible changes."""
         res = super().write(vals)
-        if 'user_id' in vals or 'responsible' in vals:
+        if 'user_id' in vals or 'responsible' in vals or 'assigned_employees' in vals:
             self._sync_task_user_ids()
         return res
 
     def _sync_task_user_ids(self):
-        """Syncs user_ids of all tasks with project's user_id and responsible users."""
+        """
+        Sync user_ids on all tasks from:
+        - responsible (res.users)
+        - assigned_employees (hr.employee -> res.users)
+        - site_manager (user_id)
+        """
         for project in self:
-            user_ids = []
-            if project.user_id:
-                user_ids.append(project.user_id.id)
-            if project.responsible:
-                user_ids += project.responsible.ids
+            user_ids = set()
 
-            # Update user_ids on all related tasks
+            # Add users from responsible (already res.users)
+            if project.responsible:
+                user_ids.update(project.responsible.ids)
+
+            # Add users from assigned_employees (map employee -> user_id)
+            if project.assigned_employees:
+                user_ids.update(project.assigned_employees.mapped('user_id.id'))
+
+            # Add site_manager (user_id on project)
+            if project.user_id:
+                user_ids.add(project.user_id.id)
+
+            # Remove None (employees without user_id)
+            user_ids.discard(False)
+
+            # Update user_ids on related tasks
             project.task_ids.write({
-                'user_ids': [(6, 0, user_ids)]
+                'user_ids': [(6, 0, list(user_ids))]
             })
 
     def action_fetch_weather(self):

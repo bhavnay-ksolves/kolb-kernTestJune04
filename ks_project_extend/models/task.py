@@ -6,7 +6,7 @@ from odoo import models, fields
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    # weather_ids = fields.One2many('project.task.weather', 'task_id', string="Weather Reports")
+    weather_ids = fields.One2many('project.task.weather', 'task_id', string="Weather Reports")
     ks_weather = fields.Selection(selection=[('bad', 'Bad'),('clear', 'Clear Skies')],string="Weather",default='clear',tracking=True)
 
     def action_fetch_weather(self):

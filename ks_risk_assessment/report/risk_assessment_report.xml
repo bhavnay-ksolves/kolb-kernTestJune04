@@ -2,12 +2,7 @@
 <odoo>
     <template id="report_risk_assessment_document">
     <t t-call="web.html_container">
-        <style>
-            * {
-            font-family: 'DejaVu Sans', 'Helvetica', 'Arial', sans-serif !important;
-            }
-        </style>
-
+        <meta charset="utf-8" />
         <t t-foreach="docs" t-as="project">
             <table class="page" style="width: 100%; border: none; margin: 0; padding: 0;">
                 <!-- Title Row -->
@@ -65,16 +60,16 @@
                         <t t-foreach="project.risk_assessment_ids" t-as="assessment">
                             <tr>
                                 <td style="text-align: left; border: 1px solid black;">
-                                    <t t-esc="assessment.danger.name"/>
+                                    <t t-esc="assessment.danger.name" t-options='{"widget": "text"}'/>
                                 </td>
                                 <td style="text-align: left; border: 1px solid black;">
-                                    <t t-esc="assessment.threat_measures"/>
+                                    <t t-esc="assessment.threat_measures" t-options='{"widget": "text"}'/>
                                 </td>
                                 <td style="text-align: left; border: 1px solid black;">
-                                    <t t-esc="assessment.implementation"/>
+                                    <t t-esc="assessment.implementation" t-options='{"widget": "text"}'/>
                                 </td>
                                 <td style="text-align: left; border: 1px solid black;">
-                                    <t t-esc="assessment.review"/>
+                                    <t t-esc="assessment.review" t-options='{"widget": "text"}'/>
                                 </td>
                                 <td style="text-align: left; border: 1px solid black;">
                                     <!-- Fill documentation info if needed -->

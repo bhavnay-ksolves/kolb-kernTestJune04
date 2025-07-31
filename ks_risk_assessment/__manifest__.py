@@ -8,6 +8,7 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/sign_tag_data.xml',
         'views/project_project.xml',
         'views/risk_assessment_template.xml',
         'report/risk_assessment_report.xml',
