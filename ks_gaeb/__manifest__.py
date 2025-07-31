@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Sale Order X86 File',
+    'name': 'Gaeb Functionalities',
     'version': '1.0',
     'depends': ['base', 'sale', 'purchase'],
     'author': 'Ksolves',

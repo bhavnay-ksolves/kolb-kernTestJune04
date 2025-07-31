@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sign_tag_risk_assessment_report" model="sign.template.tag">
+        <field name="name">Risk Assessment Report</field>
+    </record>
+    <record id="sign_tag_daily_construction_report" model="sign.template.tag">
+        <field name="name">Daily Construction Report</field>
+    </record>
+</odoo>

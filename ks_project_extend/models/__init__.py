@@ -3,9 +3,4 @@ from . import type_of_work
 from . import daily_construction_report
 from . import project_weather
 from . import task
-from . import project_weather
-from . import task
-from . import project_weather
-from . import task
-from . import project_weather
-from . import task
+

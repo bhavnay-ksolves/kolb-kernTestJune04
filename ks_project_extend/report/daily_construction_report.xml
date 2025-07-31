@@ -1,6 +1,7 @@
 <odoo>
     <template id="report_daily_construction">
         <t t-call="web.html_container">
+            <meta charset="utf-8" />
             <style>
                 .page-break-after {
                 page-break-after: always;
@@ -13,7 +14,7 @@
                         <tr>
                             <td style="padding: 24px 0; text-align: center;">
                                 <span style="font-size: 36px; font-weight: 700; color: red; display: inline-block;">
-                                    Daily Construction Report
+                                    Täglicher Baubericht
                                 </span>
                             </td>
                         </tr>
@@ -21,17 +22,6 @@
                     <!-- General Info -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%"
                         style="width: 100%;" class="page-break-after" >
-<!--                        <thead>-->
-<!--                            <tr>-->
-<!--                                <td style="text-align: center;-->
-<!--                                    padding: 24px 0;">-->
-<!--&lt;!&ndash;                                    <img src="https://fastly.picsum.photos/id/844/200/300.jpg?hmac=FoLTDoQx77auo3mU-LS3Bs5tj69F-FoyzZhwSVv77xk" width="46" height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
-<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
-<!--                                        <span style="color: red;">Daily Construction Report</span>-->
-<!--                                    </span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                        </thead>-->
                         <tbody>
                             <tr>
                                 <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
@@ -43,7 +33,7 @@
                                         <tr>
                                             <td style="background-color: #f0f5f9; border-radius: 4px;
                                                 text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">General</span>
+                                                <span style="color: red;">Allgemein</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -58,11 +48,8 @@
                                         <tr>
                                             <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px;">
-<!--                                                <img src="/ks_project_extend/static/src/img/list-icon.png" width="26"-->
-<!--                                                     height="26" alt="list icon" style="vertical-align: top;" />-->
-
                                                 <span style="color: red; padding-left: 4px;">
-                                                    Site Information
+                                                    Standortinformationen
                                                 </span>
                                             </td>
                                         </tr>
@@ -73,7 +60,8 @@
                                             </td>
                                             <td style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                             font-size: 16px; padding: 12px; width: 50%;">
-                                                <span style="color: #000;"><t t-esc="doc.site_location" /></span>
+                                                <span style="color: #000;"><t t-esc="doc.site_location"
+                                                                              t-options='{"widget": "text"}' /></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -81,14 +69,10 @@
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
                                                 <span style="padding-right: 16px; color: #000;"><t t-esc="doc.date" /></span>
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/calender-icon.png"-->
-<!--                                                     width="20" height="20" alt="calender icon" style="vertical-align: top;" />-->
                                             </td>
                                             <td
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png"-->
-<!--                                                     width="20" height="20" alt="cloud icon" style="vertical-align: top;" />-->
                                                 <span style="padding-left: 4px;color: #000;">
                                                     <t t-esc="doc.weather"/>
                                                 </span>
@@ -98,8 +82,6 @@
                                             <td
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/cloud-icon.png"-->
-<!--                                                     width="20" height="20" alt="cloud icon" style="vertical-align: top;" />-->
                                                 <span style="padding-left: 4px;color: #000;">
                                                     <t t-esc="doc.temperature"/>
                                                 </span>
@@ -111,7 +93,7 @@
 <!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
 <!--                                                     width="26" height="26" alt="list icon" style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    Attendance
+                                                    Anwesenheit
                                                 </span>
                                             </td>
                                         </tr>
@@ -144,7 +126,7 @@
                                         <tr>
                                             <td style="background-color: #f0f5f9; border-radius: 4px;
                                                 text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">Execution</span>
+                                                <span style="color: red;">Ausführung</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -159,87 +141,42 @@
                                         <tr>
                                             <td colspan="2" style="font-size: 19px; font-weight: 600;
                                             padding-bottom: 12px;">
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
-<!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    Work Performed
+                                                    Ausgeführte Arbeiten
                                                 </span>
                                             </td>
                                         </tr>
-<!--                                        <tr>-->
-<!--                                            <td-->
-<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #000; font-size: 16px; padding: 12px; width: 20%;">-->
-<!--&lt;!&ndash;                                                <img t-attf-src="ks_project_extend/static/src/img/mic-icon.png" width="26" height="26" alt="mic icon" style="vertical-align: middle;" />&ndash;&gt;-->
-<!--                                                <span>Voice Input</span>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <select style="border: 1px solid #dde9f3; border-radius: 8px; background-color: #fff; color: #000; font-size: 16px; padding: 15px;">-->
-<!--                                                    <option>Deutsch...</option>-->
-<!--                                                    <option></option>-->
-<!--                                                </select>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
                                         <tr>
                                             <td colspan="2" style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-                                                <span style="color: #000;"><t t-esc="doc.description"/></span>
+                                                <span style="color: #000;"><t t-esc="doc.description"
+                                                                              t-options='{"widget": "text"}'/></span>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.machine">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-                                                <span style="color: #000;"><t t-esc="doc.machine"/></span>
+                                                <span style="color: #000;"><t t-esc="doc.machine"
+                                                t-options='{"widget": "text"}' /></span>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.areas_worked_on">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-                                                <span style="color: #000;"><t t-esc="doc.areas_worked_on"/></span>
+                                                <span style="color: #000;"><t t-esc="doc.areas_worked_on"
+                                                                              t-options='{"widget": "text"}'/></span>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.delivery">
                                             <td colspan="2"
                                                 style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9;
                                                 font-size: 16px; padding: 12px; width: 50%;">
-                                                <span style="color: #000;"><t t-esc="doc.delivery"/> </span>
+                                                <span style="color: #000;"><t t-esc="doc.delivery"
+                                                                              t-options='{"widget": "text"}'/> </span>
                                             </td>
                                         </tr>
-<!--                                        <tr>-->
-<!--                                            <td colspan="2"-->
-<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; -->
-<!--                                                font-size: 16px; padding: 12px; width: 50%;">-->
-<!--                                                <span>Maschinen &amp; Einsatzdauer (Machines &amp; Duration)</span>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <td style="padding-top: 8px; padding-bottom: 16px;">-->
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" -->
-<!--                                                     width="24" height="20" alt="add icon" -->
-<!--                                                     style="vertical-align: top;" />-->
-<!--                                                <span style="color: red;">Add machine</span>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <td colspan="2"-->
-<!--                                                style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; -->
-<!--                                                font-size: 16px; padding: 12px; width: 50%;">-->
-<!--                                                <span>Materiallieferungen (Art &amp; Menge) (Material deliveries: type &amp; quantity)</span>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <td style="padding-top: 8px; padding-bottom: 16px;">-->
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/add-icon.png" width="24" height="20" alt="add icon" style="vertical-align: top;" />-->
-<!--                                                <span style="color: red;">Add delivery</span>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <td colspan="2" style="padding-top: 12px;">-->
-<!--                                                <textarea rows="4"-->
-<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">Anweisungen durch AG / Architekt (Instructions by client/architect)</textarea>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
                                     </table>
                                 </td>
                             </tr>
@@ -249,21 +186,6 @@
                     <!-- Special Incidents Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                             width: 100%;" class="page-break-after">
-                        <thead>
-<!--                            <tr>-->
-<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td style="text-align: center;-->
-<!--                                                        padding: 24px 0;">-->
-<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46"-->
-<!-- height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
-<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
-<!--                                        <span style="color: red;">Daily Construction Report</span>-->
-<!--                                    </span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-                        </thead>
                         <tbody>
                             <tr>
                                 <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
@@ -273,7 +195,7 @@
                                                             ">
                                         <tr>
                                             <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">Special Incidents</span>
+                                                <span style="color: red;">Besondere Vorfälle</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -288,10 +210,7 @@
                                         <tr>
                                             <td colspan="2" style="font-size: 19px; font-weight: 600;
                                              padding-bottom: 12px;">
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png"-->
-<!--                                                     width="26" height="26" alt="list icon"-->
-<!--                                                    style="vertical-align: top;" />-->
-                                                <span style="color: red; padding-left: 4px;">Observations</span>
+                                                <span style="color: red; padding-left: 4px;">Beobachtungen</span>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.changes_in_benefits">
@@ -299,7 +218,8 @@
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
                                                     font-size: 16px; padding: 12px; width: 100%; box-sizing:
-                                                     border-box;"><t t-esc="doc.changes_in_benefits"/></div>
+                                                     border-box;"><t t-esc="doc.changes_in_benefits"
+                                                                     t-options='{"widget": "text"}'/></div>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.disabilities_difficulties">
@@ -307,7 +227,8 @@
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
                                                     font-size: 16px; padding: 12px; width: 100%; box-sizing:
-                                                     border-box;"><t t-esc="doc.disabilities_difficulties"/></div>
+                                                     border-box;"><t t-esc="doc.disabilities_difficulties"
+                                                t-options='{"widget": "text"}'/></div>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.special_incidents">
@@ -315,32 +236,10 @@
                                                 <div
                                                     style="border: 1px solid #dde9f3; border-radius: 8px; color: #000;
                                                     font-size: 16px; padding: 12px; width: 100%; box-sizing:
-                                                     border-box;"><t t-esc="doc.special_incidents"/></div>
+                                                     border-box;"><t t-esc="doc.special_incidents"
+                                                t-options='{"widget": "text"}'/></div>
                                             </td>
                                         </tr>
-<!--                                        <tr>-->
-<!--                                            <td colspan="2" style="padding-top: 12px;">-->
-<!--                                                <textarea rows="4"-->
-<!--                                                    style="border: 1px solid #dde9f3; border-radius: 8px; color: #93a0b9; font-size: 16px; padding: 12px; width: 100%; box-sizing: border-box;">(Remarks on change orders, defects etc.)</textarea>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        <tr>-->
-<!--                                            <td colspan="2" style="padding-top: 12px;">-->
-<!--                                                <div style="border: 1px dashed #dde9f3; border-radius: 8px;-->
-<!--                                                font-size: 18px; padding: 24px; width: 100%; box-sizing: border-box;">-->
-<!--&lt;!&ndash;                                                    <img t-attf-src="ks_project_extend/static/src/img/cloud-arrow-icon.png" &ndash;&gt;-->
-<!--&lt;!&ndash;                                                         width="26" height="26" alt="cloud arrow icon" style="vertical-align: top;" />&ndash;&gt;-->
-<!--                                                    <div style="padding-top: 4px;">-->
-<!--&lt;!&ndash;                                                        <img t-attf-src="ks_project_extend/static/src/img/cam-icon.png" &ndash;&gt;-->
-<!--&lt;!&ndash;                                                             width="26" height="26" alt="camera icon" &ndash;&gt;-->
-<!--&lt;!&ndash;                                                             style="vertical-align: middle;" />&ndash;&gt;-->
-<!--                                                        <span style="padding-left: 4px;-->
-<!--                                                        color: red;"><img t-if="doc.incident_attachment"-->
-<!--                                                                          t-att-src="image_data_uri(doc.incident_attachment)"/></span>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
                                         <tr>
                                             <td colspan="2" style="padding-top: 12px;">
                                                 <div style="border: 1px dashed #dde9f3; border-radius: 8px;
@@ -368,20 +267,6 @@
                     <!-- Release Grant Section -->
                     <table cellspacing="0" cellpadding="0" border="0" width="100%" style="
                                             width: 100%;">
-                        <thead>
-<!--                            <tr>-->
-<!--                                <td style="border-top: 25px solid #f0f5f9;"></td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td style="text-align: center;padding: 24px 0;">-->
-<!--&lt;!&ndash;                                    <img t-attf-src="ks_project_extend/static/src/img/haeder-icon.png" width="46"-->
-<!--height="46" alt="header icon" style="vertical-align: top;" />&ndash;&gt;-->
-<!--                                    <span style="padding-left: 4px; font-size: 36px; font-weight: 700;">-->
-<!--                                        <span style="color: red;">Daily Construction Report</span>-->
-<!--                                    </span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-                        </thead>
                         <tbody>
                             <tr>
                                 <td style="background-color: #f0f5f9; border-radius: 4px; padding: 4px; font-size: 18px;
@@ -391,7 +276,7 @@
                                                                                 ">
                                         <tr>
                                             <td style="text-align: center; padding: 8px;font-size: 22px; font-weight: 600;">
-                                                <span style="color: red;">Release Grant</span>
+                                                <span style="color: red;">Freigabe</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -404,16 +289,15 @@
                                            padding: 16px; border-radius: 4px;">
                                         <tr>
                                             <td colspan="2" style="font-size: 19px; font-weight: 600;     padding-bottom: 12px;">
-<!--                                                <img t-attf-src="ks_project_extend/static/src/img/list-icon.png" width="26" height="26" alt="list icon"-->
-<!--                                                    style="vertical-align: top;" />-->
                                                 <span style="color: red; padding-left: 4px;">
-                                                    Release Grant
+                                                    Freigabe
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr t-if="doc.responsible">
                                             <td colspan="2"
-                                                style="border: 1px solid #dde9f3; border-radius: 8px; padding: 12px; width: 50%;">
+                                                style="border: 1px solid #dde9f3; border-radius: 8px; padding: 12px;
+                                                width: 50%;">
                                                 <table style="width: 100%; border-collapse: collapse;">
                                                     <tr>
                                                         <t t-foreach="doc.responsible" t-as="person">
@@ -434,21 +318,6 @@
                                                             t-att-src="image_data_uri(doc.supervisor_signature)"/></span>
                                             </td>
                                         </tr>
-
-<!--                                        <tr>-->
-<!--                                            <td style="float: right; padding-top: 8px;" colspan="2">-->
-<!--                                                <table cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%;">-->
-<!--                                                    <tr>-->
-<!--                                                        <td>-->
-<!--                                                            <div style="border: 1px solid #dde9f3; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Back)</div>-->
-<!--                                                        </td>-->
-<!--                                                        <td style="padding-left: 8px;">-->
-<!--                                                            <div style="background-color: blue; border-radius: 8px; color: red; font-size: 16px; padding: 12px;">(Save Report)</div>-->
-<!--                                                        </td>-->
-<!--                                                    </tr>-->
-<!--                                                </table>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
                                     </table>
                                 </td>
                             </tr>

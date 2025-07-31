@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Main Position Product for product.product -->
-<!--    <record id="product_main_position_variant" model="product.product">-->
-<!--        <field name="name">Main position</field>-->
-<!--        <field name="type">service</field>-->
-<!--        <field name="list_price">0.0</field>-->
-<!--        <field name="standard_price">0.0</field>-->
-<!--        <field name="to_be_printed_on_pdf">True</field>-->
-<!--        <field name="sale_ok">True</field>-->
-<!--        <field name="purchase_ok">False</field>-->
-<!--        <field name="invoice_policy">order</field>-->
-<!--    </record>-->
+    <record id="product_main_position_variant" model="product.product">
+        <field name="name">Main position</field>
+        <field name="type">service</field>
+        <field name="list_price">0.0</field>
+        <field name="standard_price">0.0</field>
+        <field name="to_be_printed_on_pdf">True</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+        <field name="invoice_policy">order</field>
+    </record>
 </odoo>
 

@@ -12,7 +12,7 @@ class DailyConstructionReport(models.Model):
     _rec_name = 'project_id'
 
     project_id = fields.Many2one('project.project', string="Project", required=True)
-    site_location = fields.Char(string="Site Location",required=True,tracking=True)
+    site_location = fields.Text(string="Site Location",required=True,tracking=True)
     attendance = fields.Char(string="Attendance (number,function,duration)",required=True)
     date = fields.Date(string="Date", default=fields.Date.context_today)
     temperature = fields.Float(string="Temperature")
@@ -228,11 +228,13 @@ class DailyConstructionReport(models.Model):
             'mimetype': 'application/pdf',
         })
 
+        tag = self.env['sign.template.tag'].search([('name', '=', 'Daily Construction Report')], limit=1)
         # Create new template from attachment
         sign_template = self.env['sign.template'].create({
             'attachment_id': attachment.id,
             'name': f"Daily Construction Template - {self.project_id.name or self.id}",
             'project_id': self.project_id.id,
+            'tag_ids': [(6, 0, [tag.id])] if tag else [],
         })
         return {
             "type": "ir.actions.client",
