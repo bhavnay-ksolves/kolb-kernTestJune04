@@ -4,7 +4,7 @@
     'summary': 'Customizations related to project app',
     'description': 'Customizations related to project app',
     'author': 'Ksolves India Ltd.',
-    'depends': ['base','project','ks_custom_security','project_sequence'],
+    'depends': ['base','project','ks_custom_security','project_sequence','sign'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',

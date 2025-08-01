@@ -22,16 +22,17 @@
                 </page>
             </xpath>
             <xpath expr="//header" position="inside">
-                <button name="action_report"
+               <button string="Risk Assessment Report"
+                       name="action_open_risk_report_wizard"
+                       type="object"
+                       class="btn-primary"
+                       icon="fa-file-text-o"/>
+                <button name="print_instruction_report"
                         type="object"
-                        string="Print Risk Report"
+                        string="Print Instruction Report"
                         class="btn-primary"
-                        icon="fa-print"/>
-                 <button name="action_send_esignature"
-                         type="object"
-                         string="Send Risk Report for E-Signature"
-                         class="btn-primary"
-                         icon="fa-pencil"/>
+                        icon="fa-file-text-o"
+                />
             </xpath>
         </field>
     </record>

@@ -17,7 +17,7 @@
                     <!-- Left Column: Project Info -->
                     <td style="vertical-align: top; width: 70%;">
                         <table style="width: 100%; border: none;">
-                            <tr>
+                            <tr t-if="project.sequence_code">
                                 <td>Project Number:<t t-esc="project.sequence_code"/></td>
                             </tr>
                             <tr>

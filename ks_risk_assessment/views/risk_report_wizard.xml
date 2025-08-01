@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- views/risk_report_wizard_views.xml -->
+<odoo>
+    <record id="view_risk_report_wizard_form" model="ir.ui.view">
+        <field name="name">risk.report.wizard.form</field>
+        <field name="model">risk.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Risk Assessment Report">
+                 <div>
+                    Select an action for the Risk Report:
+                </div>
+                <footer>
+                    <button name="action_report"
+                            type="object"
+                            string="Print Risk Report"
+                            class="btn-primary"
+                            icon="fa-print"/>
+                    <button name="action_send_esignature"
+                            type="object"
+                            string="Send Risk Report for E-Signature"
+                            class="btn-secondary"
+                            icon="fa-pencil"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

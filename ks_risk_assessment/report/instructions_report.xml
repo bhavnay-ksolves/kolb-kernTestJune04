@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_instruction_document">
+        <t t-call="web.html_container">
+            <meta charset="utf-8"/>
+            <div class="page" style="font-family: Arial, sans-serif; font-size: 14px;">
+
+               <t t-foreach="docs" t-as="project">
+                   <table style="width:100%; margin-bottom:20px;">
+                       <tr>
+                           <td style="text-align:left;">
+                               <h2 style="margin:0;">Montageanweisung</h2>
+                           </td>
+                           <td style="text-align:right;">
+                               <img t-att-src="image_data_uri(project.company_id.logo)"
+                                    style="height:150px;" alt="Company Logo"/>
+                           </td>
+                       </tr>
+                   </table>
+               </t>
+                <!-- Baustelle -->
+                <table style="width:100%; margin-bottom:10px;">
+                    <tr>
+                        <td style="width:20%;font-weight:600;">Baustelle:</td>
+                        <td style="border-bottom:1px solid #000; height:20px;"></td>
+                    </tr>
+                </table>
+
+                <!-- Auftraggeber -->
+                <table style="width:100%; margin-bottom:10px;">
+                    <tr>
+                        <td style="width:20%;font-weight:600;">Auftraggeber:</td>
+                        <td style="border-bottom:1px solid #000; height:20px;"></td>
+                    </tr>
+                </table>
+
+                <!-- Befähigte Person -->
+                <table style="width:100%; margin-bottom:10px;">
+                    <tr>
+                        <td style="width:20%;font-weight:600;">Befähigte Person:</td>
+                        <td style="border-bottom:1px solid #000; height:20px;"></td>
+                    </tr>
+                </table>
+
+                <!-- Gerüstart -->
+                <table style="width:100%; margin-bottom:10px;">
+                    <tr>
+                        <td style="width:20%;font-weight:600;">Gerüstart:</td>
+                    </tr>
+                </table>
+
+                <!-- Checkboxes for Gerüst types -->
+                <table style="width:100%; border-collapse:collapse; margin-top:10px; margin-bottom:10px;">
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Fassadengerüst
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Raumgerüst
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Treppenturm/Gerüsttreppe
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Fanggerüst
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Dachfanggerüst
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Schutzdach
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Sondergerüst
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <!-- Bottom Line -->
+                <table style="width:100%; margin-top:30px; border-top:1px solid #000;">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <!-- Aufbau nach -->
+                <table style="width:100%; margin-top:15px; border-collapse:collapse;">
+                    <tr>
+                        <td colspan="3" style="padding-bottom:5px;font-weight:600;">
+                            Aufbau nach:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Regelausführung
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Typenprüfung
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            Standsicherheitsnachweis
+                        </td>
+                    </tr>
+                </table>
+                <!-- Bottom Line -->
+                <table style="width:100%; margin-top:30px; border-top:1px solid #000;">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <!-- Load Class Section -->
+                <table style="width:100%; margin-top:20px; border-collapse:collapse;">
+                    <tr>
+                        <td colspan="3" style="padding-bottom:5px;">
+                            <strong>Lastklasse (gleichmäßig verteilte Last)</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            2 (1,5 kN/m²)
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            3 (2,0 kN/m²)
+                        </td>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            4 (3,0 kN/m²)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding:5px 0;">
+                            <input type="checkbox"/>
+                            _______ (_______ kN/m²)
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <!-- Breitenklasse Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Breitenklasse</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            W06
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            W09
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            W ________
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Aufstandsfläche Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Aufstandsfläche</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            tragfähige feste Fläche
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            lastverteilende Unterlage
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            __________________
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Technische Daten Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Technische Daten</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:5px;">
+                            Horizontaler Abstand vom Belag zum Gebäude
+                            <span style="float:right;">______________ m</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:5px;">
+                            Horizontaler Abstand von der Traufe zum Seitenschutz/Schutzwand
+                            <span style="float:right;">______________ m</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:5px;">
+                            Vertikaler Abstand von der Traufe zum obersten Belag
+                            <span style="float:right;">______________ m</span>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Bekleidung / Anbauteile Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Bekleidung/ Anbauteile</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Netze
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Vollholzbeläge
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            innen liegender Seitenschutz
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Planen
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Stahlbeläge
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Konsolen
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Gitterträger Stahl
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Kombibeläge
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Aufzug
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Gitterträger Alu
+                        </td>
+                        <td></td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            __________________
+                        </td>
+                    </tr>
+                </table>
+                <!-- Verankerung Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+                    <tr>
+                        <td colspan="3" style="padding-bottom:5px;">
+                            <strong>Verankerung</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            am inneren Ständer
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            freistehendes Gerüst
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Abspannung
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            über beide Ständer
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Ballastierung
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            _______________
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            V-Anker (Dreieck)
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Abstützung
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            _______________
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Zugang Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Zugang</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Treppe
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Leitergang
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Leiter
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Vertikaltransport Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Vertikaltransport</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            Von Hand, von Lage ______ bis ______
+                            <input type="checkbox" style="margin-left:20px;"/>
+                            mit Aufzug, von Lage ______ bis ______
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            Vorlaufender integrierter Seitenschutz (2 teilig*)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            Montagesicherungs­geländer (2 teilig*)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            PSAgA (Wenn vorgenannte technische Schutzmaßnahmen nicht möglich sind)
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Horizontaltransport Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Horizontaltransport</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            Vorlaufender integrierter Seitenschutz (mind. 1 teilig**)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            Montagesicherungs­geländer (mind. 1 teilig**)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <input type="checkbox"/>
+                            PSAgA (Wenn vorgenannte technische Schutzmaßnahmen nicht möglich sind)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top:5px;">
+                            <span>Beschäftigter:</span>
+                            <span style="display:inline-block; width:90%; border-bottom:1px solid #000; margin-left:15px;"></span>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Besonderheiten Section -->
+                <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+                    <tr>
+                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                            <strong>Besonderheiten</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            Gefahrstoffe
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            elektrische Freileitung
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            öffentlicher Verkehrsraum
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            _______________
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            _______________
+                        </td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            _______________
+                        </td>
+                    </tr>
+                </table>
+
+                                <!-- Kennzeichnung Section -->
+                <table style="width:100%; border-top:1px solid #000; margin-top:10px; padding-top:10px;">
+    <!-- Heading Row -->
+    <tr>
+        <td colspan="3" style="padding-bottom:5px;">
+            <strong>Kennzeichnung</strong>
+        </td>
+    </tr>
+
+    <!-- Content Row -->
+    <tr>
+        <!-- First column -->
+        <td style="width:50%; vertical-align:top;">
+            <input type="checkbox"/>
+            Gefahrenbereich
+            <br/>
+            <input type="checkbox"/>
+            Fertiggestelltes Gerüst
+        </td>
+
+        <!-- Second column -->
+        <td style="width:25%; vertical-align:top;">
+            <input type="checkbox"/>
+            Art:
+            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
+            <br/>
+            <input type="checkbox"/>
+            Art:
+            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
+        </td>
+
+        <!-- Third column -->
+        <td style="width:25%; vertical-align:top;">
+            <input type="checkbox"/>
+            Ort:
+            <span style="display:inline-block; width:100px; border-bottom:1px solid #000;"></span>
+        </td>
+    </tr>
+</table>
+                <!-- Anlagen Section -->
+                <table style="width:100%; border-top:1px solid #000; margin-top:15px; padding-top:10px;">
+                    <tr>
+                        <td colspan="2">
+                            <strong>Anlagen:</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%; vertical-align:top;">
+                            <input type="checkbox"/>
+                            A+V des Herstellers
+                            <br/>
+                            <input type="checkbox"/>
+                            Ergänzende Detailangaben zur A + V
+                            <br/>
+                            <input type="checkbox"/>
+                            Grundmaße Objekt
+                            <br/>
+                            <input type="checkbox"/>
+                            Material-/Stückliste
+                        </td>
+                        <td style="width:50%; vertical-align:top;">
+                            <input type="checkbox"/>
+                            <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>
+                            <br/>
+<!--                            <input type="checkbox"/>-->
+<!--                            <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>-->
+                            <br/>
+                            <input type="checkbox"/>
+                            <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>
+                            <br/>
+                            <input type="checkbox"/>
+                            <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Date and Signature -->
+                <table style="width:100%; margin-top:20px;">
+                    <tr>
+                        <td style="width:30%; text-align:left;">
+                            <span style="display:inline-block; width:80%; border-top:1px solid #000;"></span>
+                            <br/>
+                            Datum
+                        </td>
+                        <td style="width:50%; text-align:right;">
+                            <span style="display:inline-block; width:80%; border-top:1px solid #000;"></span>
+                            <br/>
+                            Unterschrift des Gerüsterstellers
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+    <record id="paperformat_instruction_report" model="report.paperformat">
+        <field name="name">Instruction Report Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">15</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">150</field>
+    </record>
+    <record id="action_instruction_report_pdf" model="ir.actions.report">
+        <field name="name">Instruction Report PDF</field>
+        <field name="model">project.project</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ks_risk_assessment.report_instruction_document</field>
+        <field name="report_file">ks_risk_assessment.report_instruction_document</field>
+        <field name="binding_model_id" ref="model_risk_assessment"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'%s - Instruction Report' % (object.name)</field>
+        <field name="paperformat_id" ref="ks_risk_assessment.paperformat_instruction_report"/>
+    </record>
+</odoo>

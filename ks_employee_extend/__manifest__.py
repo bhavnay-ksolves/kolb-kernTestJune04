@@ -4,7 +4,7 @@
     'summary': 'Customizations related to employee app',
     'description': 'Customizations related to employee app',
     'author': 'Ksolves India Ltd.',
-    'depends': ['base','hr','ks_custom_security'],
+    'depends': ['base','hr','ks_custom_security','hr_hourly_cost'],
     'data': [
     #     'security/ir.model.access.csv',
         'views/hr_employee.xml',
