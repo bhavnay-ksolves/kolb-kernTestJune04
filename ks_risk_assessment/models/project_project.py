@@ -99,70 +99,25 @@ class ProjectProject(models.Model):
         string='Sign Reports'
     )
 
-    def action_report(self):
+    def action_open_risk_report_wizard(self):
         """
-        Generates the risk assessment PDF and sets the report creation date.
+        Opens the risk report wizard for the current project.
+
+        This method returns an action dictionary that opens a form view of the
+        `risk.report.wizard` model. The wizard is used to generate or manage
+        risk reports for the project.
 
         Returns:
-            dict: Action to generate and download the risk assessment report.
+            dict: An action dictionary containing the type, model, view mode,
+            target, and context for opening the wizard.
         """
-        self.write({'date_report_creation': datetime.now()})
-        return self.env.ref(
-            'ks_risk_assessment.action_risk_assessment_pdf'
-        ).report_action(self)
-
-    def action_send_esignature(self):
-        """
-        Sends an e-signature request for the risk assessment report.
-
-        Raises:
-            UserError: If the customer does not have an email address or the report is not found.
-
-        Returns:
-            dict: Action to send the e-signature request.
-        """
-        self.ensure_one()
-
-        # Check that partner has email
-        if not self.partner_id or not self.partner_id.email:
-            raise UserError("Customer must have an email address to send e-signature request.")
-
-        # Get the report and render PDF
-        report = self.env['ir.actions.report']._get_report_from_name(
-            'ks_risk_assessment.report_risk_assessment_document')
-        if not report:
-            raise UserError("Risk report not found.")
-
-        pdf_content, _ = self.env['ir.actions.report']._render_qweb_pdf(
-            'ks_risk_assessment.report_risk_assessment_document', self.id
-        )
-
-        # Create PDF attachment
-        attachment = self.env['ir.attachment'].create({
-            'name': f"Risk_Assessment_{self.name or self.id}.pdf",
-            'type': 'binary',
-            'datas': base64.b64encode(pdf_content),
-            'res_model': self._name,
-            'res_id': self.id,
-            'mimetype': 'application/pdf',
-        })
-        tag = self.env['sign.template.tag'].search([('name', '=', 'Risk Assessment Report')], limit=1)
-        # Create new template from attachment
-        sign_template = self.env['sign.template'].create({
-            'attachment_id': attachment.id,
-            'name': f"Risk Assessment Template - {self.name or self.id}",
-            'project_id': self.id,
-            'tag_ids': [(6, 0, [tag.id])] if tag else [],
-        })
         return {
-            "type": "ir.actions.client",
-            "tag": "sign.Template",
-            "name": f"Template {attachment.name}",
-            "target": "current",
-            "params": {
-                "sign_edit_call": "sign_send_request",  # this can be True or custom context
-                "id": sign_template.id,
-                "sign_directly_without_mail": False,
-                "resModel": self._name,
-            },
+            'type': 'ir.actions.act_window',
+            'res_model': 'risk.report.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'active_id': self.id}
         }
+
+    def print_instruction_report(self):
+        return self.env.ref('ks_risk_assessment.action_instruction_report_pdf').report_action(self)
