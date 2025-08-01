@@ -22,14 +22,14 @@
                 </page>
             </xpath>
             <xpath expr="//header" position="inside">
-               <button string="Risk Assessment Report"
+               <button string="Risk Assessment"
                        name="action_open_risk_report_wizard"
                        type="object"
                        class="btn-primary"
                        icon="fa-file-text-o"/>
                 <button name="print_instruction_report"
                         type="object"
-                        string="Print Instruction Report"
+                        string="Print Instructions"
                         class="btn-primary"
                         icon="fa-file-text-o"
                 />

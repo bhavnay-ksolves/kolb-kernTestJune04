@@ -8,8 +8,9 @@
             <xpath expr="//header" position="inside">
                 <button name="print_kolb_kern_invoices"
                         type="object"
-                        string="Print Invoice Report"
+                        string="Print Invoices"
                         class="btn-primary"
+                         icon="fa-print"
                 />
             </xpath>
         </field>

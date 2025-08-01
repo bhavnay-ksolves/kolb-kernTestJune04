@@ -281,7 +281,10 @@
                             <input type="checkbox"/>
                             Gitterträger Alu
                         </td>
-                        <td></td>
+                        <td style="width:33%; padding-top:5px;">
+                            <input type="checkbox"/>
+                            __________________
+                        </td>
                         <td style="width:33%; padding-top:5px;">
                             <input type="checkbox"/>
                             __________________
@@ -291,7 +294,7 @@
                 <!-- Verankerung Section -->
                 <table style="width:100%; border-collapse:collapse; margin-top:10px;">
                     <tr>
-                        <td colspan="3" style="padding-bottom:5px;">
+                        <td colspan="3" style="border-top:1px solid #000;padding-bottom:5px;">
                             <strong>Verankerung</strong>
                         </td>
                     </tr>
@@ -339,10 +342,18 @@
                     </tr>
                 </table>
 
+                <table style="width:100%; margin-bottom:20px;page-break-before: always;">
+                    <tr>
+                        <td style="text-align:left;">
+                            <h2 style="margin:0;">Montageanweisung</h2>
+                        </td>
+                    </tr>
+                    <tr><td style="height:20px;"></td></tr>
+                </table>
                 <!-- Zugang Section -->
                 <table style="width:100%; border-collapse:collapse; margin-top:15px;">
                     <tr>
-                        <td colspan="3" style="border-top:1px solid #000; padding-top:5px;">
+                        <td colspan="3" style="padding-top:5px;">
                             <strong>Zugang</strong>
                         </td>
                     </tr>
@@ -369,14 +380,16 @@
                             <strong>Vertikaltransport</strong>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="3" style="padding-top:5px;">
-                            <input type="checkbox"/>
-                            Von Hand, von Lage ______ bis ______
-                            <input type="checkbox" style="margin-left:20px;"/>
-                            mit Aufzug, von Lage ______ bis ______
-                        </td>
-                    </tr>
+                   <tr>
+                       <td style="width:65%; padding-top:5px;">
+                           <input type="checkbox"/>
+                           Von Hand, von Lage ______ bis ______
+                       </td>
+                       <td style="width:35%; padding-top:5px;">
+                           <input type="checkbox"/>
+                           mit Aufzug, von Lage ______ bis ______
+                       </td>
+                   </tr>
                     <tr>
                         <td colspan="3" style="padding-top:5px;">
                             <input type="checkbox"/>
@@ -425,7 +438,7 @@
                     <tr>
                         <td colspan="3" style="padding-top:5px;">
                             <span>Beschäftigter:</span>
-                            <span style="display:inline-block; width:90%; border-bottom:1px solid #000; margin-left:15px;"></span>
+                            <span style="display:inline-block; width:87%; border-bottom:1px solid #000; margin-left:115px;"></span>
                         </td>
                     </tr>
                 </table>
@@ -469,43 +482,44 @@
 
                                 <!-- Kennzeichnung Section -->
                 <table style="width:100%; border-top:1px solid #000; margin-top:10px; padding-top:10px;">
-    <!-- Heading Row -->
-    <tr>
-        <td colspan="3" style="padding-bottom:5px;">
-            <strong>Kennzeichnung</strong>
-        </td>
-    </tr>
+                    <!-- Heading Row -->
+                    <tr>
+                        <td colspan="3" style="padding-bottom:5px;">
+                            <strong>Kennzeichnung</strong>
+                        </td>
+                    </tr>
 
-    <!-- Content Row -->
-    <tr>
-        <!-- First column -->
-        <td style="width:50%; vertical-align:top;">
-            <input type="checkbox"/>
-            Gefahrenbereich
-            <br/>
-            <input type="checkbox"/>
-            Fertiggestelltes Gerüst
-        </td>
+                    <!-- Content Row -->
+                    <tr>
+                        <!-- First column -->
+                        <td style="width:50%; vertical-align:top;">
+                            <input type="checkbox"/>
+                            Gefahrenbereich
+                            <br/>
+                            <input type="checkbox"/>
+                            Fertiggestelltes Gerüst
+                        </td>
 
-        <!-- Second column -->
-        <td style="width:25%; vertical-align:top;">
-            <input type="checkbox"/>
-            Art:
-            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
-            <br/>
-            <input type="checkbox"/>
-            Art:
-            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
-        </td>
+                        <!-- Second column -->
+                        <td style="width:25%; vertical-align:top;">
+                            <input type="checkbox"/>
+                            Art:
+                            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
+                            <br/>
+                            <input type="checkbox"/>
+                            Art:
+                            <span style="display:inline-block; width:70px; border-bottom:1px solid #000;"></span>
+                        </td>
 
-        <!-- Third column -->
-        <td style="width:25%; vertical-align:top;">
-            <input type="checkbox"/>
-            Ort:
-            <span style="display:inline-block; width:100px; border-bottom:1px solid #000;"></span>
-        </td>
-    </tr>
-</table>
+                        <!-- Third column -->
+                        <td style="width:25%; vertical-align:top;">
+                            <br/>
+                            <input type="checkbox"/>
+                            Ort:
+                            <span style="display:inline-block; width:100px; border-bottom:1px solid #000;"></span>
+                        </td>
+                    </tr>
+                </table>
                 <!-- Anlagen Section -->
                 <table style="width:100%; border-top:1px solid #000; margin-top:15px; padding-top:10px;">
                     <tr>
@@ -531,8 +545,6 @@
                             <input type="checkbox"/>
                             <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>
                             <br/>
-<!--                            <input type="checkbox"/>-->
-<!--                            <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>-->
                             <br/>
                             <input type="checkbox"/>
                             <span style="display:inline-block; width:80%; border-bottom:1px solid #000;"></span>
@@ -546,6 +558,9 @@
                 <!-- Date and Signature -->
                 <table style="width:100%; margin-top:20px;">
                     <tr>
+                        <br/>
+                        <br/>
+                        <br/>
                         <td style="width:30%; text-align:left;">
                             <span style="display:inline-block; width:80%; border-top:1px solid #000;"></span>
                             <br/>
@@ -567,7 +582,7 @@
         <field name="format">A4</field>
         <field name="page_height">0</field>
         <field name="page_width">0</field>
-        <field name="orientation">Landscape</field>
+        <field name="orientation">Portrait</field>
         <field name="margin_top">15</field>
         <field name="margin_bottom">15</field>
         <field name="margin_left">15</field>
