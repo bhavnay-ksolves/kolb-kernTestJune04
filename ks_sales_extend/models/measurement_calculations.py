@@ -11,7 +11,7 @@ class MeasurementCalculation(models.Model):
     to change the state and interact with related records.
     """
     _name = 'measurement.calculation'
-    _inherit = ['mail.thread']  # Inherits mail.thread for tracking changes.
+    _inherit = ['mail.thread', 'mail.activity.mixin'] # Inherits mail.thread for tracking changes.
     _description = 'Measurement Calculation'
 
     # Name of the measurement calculation version, tracked for changes.

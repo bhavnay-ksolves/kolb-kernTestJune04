@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 import html
 from bs4 import BeautifulSoup
 
@@ -215,7 +215,7 @@ class SaleOrderLine(models.Model):
     def _onchange_product_id_set_pdf_flag(self):
         """Onchange to autopopulate 'To be printed on pdf' boolean"""
         if self.product_id:
-            self.to_be_printed_on_pdf = self.product_id.to_be_printed_on_pdf
+            self.to_be_printed_on_pdf = self.product_id.to_be_printed_on_pdf or False
 
     def _prepare_invoice_line(self, **optional_values):
         res = super()._prepare_invoice_line(**optional_values)

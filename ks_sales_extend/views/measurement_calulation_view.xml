@@ -17,43 +17,41 @@
                             invisible="state not in ('posted', 'draft')"/>
                     <field name="state" widget="statusbar"/>
                 </header>
-                <sheet>
+                <sheet >
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object" icon="fa-file-text-o"
                                 name="action_get_sale_order">
                             <field name="order_id" widget="statinfo"/>
                         </button>
                     </div>
-                    <group>
+                    <group readonly="state in ['cancel', 'posted']">
                         <group>
                             <field name="name" required="True"/>
                             <field name="closing_date" required="state == 'posted'"/>
                         </group>
                         <group>
-                            <field name="order_id" readonly="1"/>
-                            <field name="project_id" readonly="1"/>
+                            <field name="order_id" required="True" readonly="1"/>
+                            <field name="project_id" required="True" readonly="1"/>
                         </group>
                     </group>
-                    <group string="Details">
+                    <group string="Details" readonly="state in ['cancel', 'posted']">
                         <field name="measurement_ids" nolabel="1">
                             <list editable="bottom">
-                                <field name="type" optional="show"/>
                                 <field name="position" optional="show"/>
                                 <field name="rental_position" optional="show"/>
-                                <field name="gvh" optional="show"/>
-                                <field name="gvh_unit" optional="show"/>
                                 <field name="description" optional="show"/>
-                                <field name="target_rental_quantity" optional="show"/>
                                 <field name="quantity" optional="show"/>
-                                <field name="quantity_erected" optional="show"/>
-                                <field name="uom_id" optional="show"/>
-                                <field name="total_price" optional="show"/>
-                                <field name="target_quantity" optional="show"/>
-                                <field name="rental_quantity" optional="show"/>
-                                <field name="rental_unit" optional="show"/>
-                                <field name="rental_unit_price" optional="show"
-                                       sum="Sum of Rental Unit Price"/>
-                                <field name="currency_id" column_invisible="True"/>
+                                <field name="length" optional="show"/>
+                                <field name="width" optional="show"/>
+                                <field name="height" optional="show"/>
+                                <field name="delivered_quantity" optional="show"/>
+                                <field name="rental_total_amount" optional="show"/>
+                                <field name="rental_start_date" optional="show"/>
+                                <field name="rental_cut_off_date" optional="show"/>
+                                <field name="rental_end_date" optional="show"/>
+                                <field name="end_date_gvh" optional="show"/>
+                                <field name="week" optional="show"/>
+                                <field name="currency_id" invisible="1"/>
                             </list>
                         </field>
                     </group>
@@ -115,20 +113,19 @@
             <list string="Measurement Calculation Line" editable="top">
                 <field name="position" optional="show"/>
                 <field name="rental_position" optional="show"/>
-                <field name="gvh" optional="show"/>
-                <field name="gvh_unit" optional="show"/>
                 <field name="description" optional="show"/>
-                <field name="target_rental_quantity" optional="show"/>
                 <field name="quantity" optional="show"/>
-                <field name="quantity_erected" optional="show"/>
-                <field name="uom_id" optional="show"/>
-                <field name="total_price" optional="show"/>
-                <field name="target_quantity" optional="show"/>
-                <field name="rental_quantity" optional="show"/>
-                <field name="rental_unit" optional="show"/>
-                <field name="rental_unit_price" optional="show"
-                       sum="Sum of Rental Unit Price"/>
-                <field name="currency_id" column_invisible="True"/>
+                <field name="length" optional="show"/>
+                <field name="width" optional="show"/>
+                <field name="height" optional="show"/>
+                <field name="delivered_quantity" optional="show"/>
+                <field name="rental_total_amount" optional="show"/>
+                <field name="rental_start_date" optional="show"/>
+                <field name="rental_cut_off_date" optional="show"/>
+                <field name="rental_end_date" optional="show"/>
+                <field name="end_date_gvh" optional="show"/>
+                <field name="week" optional="show"/>
+                <field name="currency_id" invisible="1"/>
             </list>
         </field>
     </record>

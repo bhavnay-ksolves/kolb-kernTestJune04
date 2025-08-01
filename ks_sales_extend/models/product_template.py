@@ -22,4 +22,4 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     # Related to filter Main position
-    to_be_printed_on_pdf = fields.Boolean(related='product_tmpl_id.to_be_printed_on_pdf')
+    to_be_printed_on_pdf = fields.Boolean(related='product_tmpl_id.to_be_printed_on_pdf', default=False)
